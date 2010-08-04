@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{190E63DF-EA87-4DC6-B1B4-6C2EB3444858}</ProjectGuid>
+    <ProjectTypeGuids>{F85E285D-A4E0-4152-9332-AB1D724D3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Site</RootNamespace>
+    <AssemblyName>Site</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\FileSystemController.cs" />
+    <Compile Include="Controllers\PagesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Libs\SinchosaurMembershipProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\AccountServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FileSystemServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserEventsServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\thickbox.css" />
+    <Content Include="Content\images\body-bg.png" />
+    <Content Include="Content\images\code.png" />
+    <Content Include="Content\images\ff.jpg" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\nav-bg.png" />
+    <Content Include="Content\images\post-title.png" />
+    <Content Include="Content\images\quote.png" />
+    <Content Include="Content\images\searchbg.gif" />
+    <Content Include="Content\images\shade.gif" />
+    <Content Include="Content\images\sidebar-title.png" />
+    <Content Include="Content\js\contextmenu.js" />
+    <Content Include="Content\js\dynatree\jquery.dynatree.min.js" />
+    <Content Include="Content\js\dynatree\skin\cbChecked.gif" />
+    <Content Include="Content\js\dynatree\skin\cbChecked_hover.gif" />
+    <Content Include="Content\js\dynatree\skin\cbIntermediate.gif" />
+    <Content Include="Content\js\dynatree\skin\cbIntermediate_hover.gif" />
+    <Content Include="Content\js\dynatree\skin\cbUnchecked.gif" />
+    <Content Include="Content\js\dynatree\skin\cbUnchecked_hover.gif" />
+    <Content Include="Content\js\dynatree\skin\customDoc1.gif" />
+    <Content Include="Content\js\dynatree\skin\customFolder1.gif" />
+    <Content Include="Content\js\dynatree\skin\ltDoc.gif" />
+    <Content Include="Content\js\dynatree\skin\ltD_ne.gif" />
+    <Content Include="Content\js\dynatree\skin\ltD_nes.gif" />
+    <Content Include="Content\js\dynatree\skin\ltError.gif" />
+    <Content Include="Content\js\dynatree\skin\ltFld.gif" />
+    <Content Include="Content\js\dynatree\skin\ltFld_o.gif" />
+    <Content Include="Content\js\dynatree\skin\ltL_.gif" />
+    <Content Include="Content\js\dynatree\skin\ltL_ne.gif" />
+    <Content Include="Content\js\dynatree\skin\ltL_nes.gif" />
+    <Content Include="Content\js\dynatree\skin\ltL_ns.gif" />
+    <Content Include="Content\js\dynatree\skin\ltM_ne.gif" />
+    <Content Include="Content\js\dynatree\skin\ltM_nes.gif" />
+    <Content Include="Content\js\dynatree\skin\ltP_ne.gif" />
+    <Content Include="Content\js\dynatree\skin\ltP_nes.gif" />
+    <Content Include="Content\js\dynatree\skin\ltWait.gif" />
+    <Content Include="Content\js\dynatree\skin\rbChecked.gif" />
+    <Content Include="Content\js\dynatree\skin\rbChecked_hover.gif" />
+    <Content Include="Content\js\dynatree\skin\rbIntermediate.gif" />
+    <Content Include="Content\js\dynatree\skin\rbIntermediate_hover.gif" />
+    <Content Include="Content\js\dynatree\skin\rbUnchecked.gif" />
+    <Content Include="Content\js\dynatree\skin\rbUnchecked_hover.gif" />
+    <Content Include="Content\js\dynatree\skin\ui.dynatree.css" />
+    <Content Include="Content\js\jquery.cookie.js" />
+    <Content Include="Content\js\thickbox.js" />
+    <Content Include="Content\js\ui.core.js" />
+    <Content Include="Global.asax" />
+    <None Include="Service References\AccountServiceReference\Server.Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountServiceReference\service.wsdl" />
+    <None Include="Service References\AccountServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountServiceReference\Site.AccountServiceReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\AccountServiceReference\configuration.svcinfo" />
+    <None Include="Service References\AccountServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\FileSystemServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\FileSystemServiceReference\configuration.svcinfo" />
+    <None Include="Service References\FileSystemServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\FileSystemServiceReference\Site.FileSystemServiceReference.DynaTreeNode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserEventsServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\UserEventsServiceReference\configuration.svcinfo" />
+    <None Include="Service References\UserEventsServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\FileSystem\CreateDirectory.aspx" />
+    <Content Include="Views\FileSystem\Move.aspx" />
+    <Content Include="Views\FileSystem\ShowFolder.aspx" />
+    <Content Include="Views\Pages\Download.aspx" />
+    <Content Include="Views\Pages\Main.aspx" />
+    <Content Include="Views\Pages\UserEvents.aspx" />
+    <Content Include="Views\Shared\SelectFolder.ascx" />
+    <Content Include="Views\Users\Login.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Layouts\Frontend.Master" />
+    <None Include="Service References\FileSystemServiceReference\Message.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FileSystemServiceReference\Server.Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FileSystemServiceReference\service.wsdl" />
+    <None Include="Service References\FileSystemServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FileSystemServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FileSystemServiceReference\Site.FileSystemServiceReference.MyFile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserEventsServiceReference\Server.Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserEventsServiceReference\service.wsdl" />
+    <None Include="Service References\UserEventsServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserEventsServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserEventsServiceReference\Site.UserEventsServiceReference.EventInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <Content Include="Views\Layouts\Blank.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Views\Errors\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccountServiceReference\" />
+    <WCFMetadataStorage Include="Service References\FileSystemServiceReference\" />
+    <WCFMetadataStorage Include="Service References\UserEventsServiceReference\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8574</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
