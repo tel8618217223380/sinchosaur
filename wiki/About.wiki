@@ -1,12 +1,17 @@
+= About Sinchosaur =
 
-= Sinchosaur =
-
-Sinchosaur its system for synchronize directories at different computers through a proxy server with the ability to access files through the site and preservation of all changes in the files. Is written on .NET Framework 4, C#.
+Sinchosaur its system for synchronize directories at different computers through a proxy server with the ability to access files through the site and preservation of all changes in the files.
 
 
-= Details =
+== Sinchosaur includes ==
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+  # Console Server
+  # GUI Client
+  # Web suite
+  # Tools for administration soon
+
+== Detail ==
+
+System is write at .NET Framework 4.0, C#.  
+For communication between client, server and web site use WCF.
+Web suite is write at ASP MVC 2. 
