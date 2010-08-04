@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nlog-viewer>
+  <parameters>
+    <name>Client</name>
+    <columns>
+      <column name="ID" width="55" />
+      <column name="Received Time" width="99" />
+      <column name="Level" width="83" />
+      <column name="Logger" width="100" visible="false" />
+      <column name="Thread" width="100" visible="false" />
+      <column name="Time" width="100" visible="false" />
+      <column name="Text" width="382" />
+      <column name="SourceApplication" width="243" />
+      <column name="SourceMachine" width="100" visible="false" />
+    </columns>
+    <max-log-entries>10000</max-log-entries>
+    <show-tree>false</show-tree>
+    <show-details>true</show-details>
+    <sort-by>ID</sort-by>
+    <sort-ascending>false</sort-ascending>
+    <receiver-type>UDP</receiver-type>
+    <parser-type>XML</parser-type>
+    <loggers />
+  </parameters>
+  <UdpReceiver>
+    <Port>4000</Port>
+  </UdpReceiver>
+  <Log4JXmlLogEventParser />
+</nlog-viewer>
