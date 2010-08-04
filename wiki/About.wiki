@@ -1,0 +1,12 @@
+
+= Sinchosaur =
+
+Sinchosaur its system for synchronize directories at different computers through a proxy server with the ability to access files through the site and preservation of all changes in the files. Is written on .NET Framework 4, C#.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
