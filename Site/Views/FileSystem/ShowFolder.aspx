@@ -82,10 +82,10 @@
     </div>
     <div class="contextMenu" id="ContextMenu">
       <ul>
-        <li id="move"><img src="/content/images/folder.png" alt=""/> Переместить</li>
-        <li id="copyto"><img src="/content/images/email.png" alt=""/> Скопировать</li>
-        <li id="rename"><img src="/content/images/disk.png" alt=""/> Переименовать</li>
-        <li id="delete"><img src="/content/images/cross.png" alt=""/> Удалить</li>
+        <li id="move"><img src="/content/images/move.png" alt=""/> Переместить</li>
+        <li id="copyto"><img src="/content/images/copy.png" alt=""/> Скопировать</li>
+        <li id="rename"><img src="/content/images/rename.png" alt=""/> Переименовать</li>
+        <li id="delete"><img src="/content/images/delete.png" alt=""/> Удалить</li>
       </ul>
     </div>
     
