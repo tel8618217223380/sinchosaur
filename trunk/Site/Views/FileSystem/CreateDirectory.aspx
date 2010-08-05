@@ -3,9 +3,14 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
-        function closeTB() {
-            alert('Каталог добавлен');
-            location.href = '<%=Url.RouteUrl("ShowFolder",new{id=ViewData["directoryId"]})%>';
+        function ajaxOnComplete(result) {
+            var object = result.get_response().get_object();
+            if (!object.success) {
+                alert(object.error);
+            }
+            else {
+                location.href = '<%=Url.RouteUrl("ShowFolder",new{id=ViewData["directoryId"]})%>';
+            }
         }
     </script>
     <div id="left">
@@ -15,7 +20,7 @@
             <div class="postitem">
                 <h2>Новая диретория</h2>
 
-                <% using (Ajax.BeginForm(new AjaxOptions {OnSuccess = "closeTB"} ))
+                <% using (Ajax.BeginForm(new AjaxOptions { OnComplete = "ajaxOnComplete" }))
                    { %>
                 <div class="form">
                     <%=Html.Hidden("directoryId", ViewData["directoryId"])%>

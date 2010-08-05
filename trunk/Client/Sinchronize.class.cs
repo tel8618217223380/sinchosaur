@@ -88,7 +88,7 @@ namespace Client
                             OnChangeSinchronizeStatus(this, SinchronizeStatus.UserNotExist);
                         break;
                     default:
-                        logger.Fatal("Фатальная ошибка сервера. "+ ex.ToString());
+                        logger.Fatal(ex.ToString());
                         Console.Write(ex.ToString());
                         break;
                 }

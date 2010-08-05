@@ -6,6 +6,7 @@ using Client.ServiceReference;
 
 using System.IO;
 using NLog;
+using System.Threading;
 
 namespace Client
 {
@@ -46,14 +47,37 @@ namespace Client
         }
         //--------------------------------------------------------------------------------
 
-
-        //--------------------------------------------------------------------------------
-        public void DeleteDirectory(string path)
+        public  void DeleteDirectory(string path)
         {
             if (path != "" && Directory.Exists(StorageFolder + path))
-                Directory.Delete(StorageFolder + path, true);
+            {
+                _DeleteDirectory(StorageFolder + path);
+            }
         }
-        //--------------------------------------------------------------------------------
+         
+
+        //удаление директории
+        //исправление бага с эксепшеном http://stackoverflow.com/questions/329355/cannot-delete-directory-with-directory-deletepath-true
+        public  void _DeleteDirectory(string path)
+        {
+            if (path != "" && Directory.Exists(path))
+            {
+                string[] files = Directory.GetFiles(path);
+                string[] dirs = Directory.GetDirectories(path);
+
+                foreach (string file in files)
+                {
+                    File.SetAttributes(file, FileAttributes.Normal);
+                    File.Delete(file);
+                }
+
+                foreach (string dir in dirs)
+                {
+                    _DeleteDirectory(dir);
+                }
+                Directory.Delete(path, false);
+            }
+        }
 
 
         //возвращает список файлов на клиенте в заданной директории

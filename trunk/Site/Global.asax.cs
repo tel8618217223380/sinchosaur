@@ -24,15 +24,15 @@ namespace Site
             );
 
             routes.MapRoute(
-              "Rename",
-              "file/rename",
-              new { controller = "FileSystem", action = "Rename" } // Parameter defaults
+              "Delete",
+              "file/delete",
+              new { controller = "FileSystem", action = "Delete"} // Parameter defaults
             );
 
             routes.MapRoute(
-              "Delete",
-              "file/delete",
-              new { controller = "FileSystem", action = "Delete" } // Parameter defaults
+              "Rename",
+              "file/rename",
+              new { controller = "FileSystem", action = "Rename" } // Parameter defaults
             );
 
             routes.MapRoute(
@@ -45,7 +45,7 @@ namespace Site
              "Copy",
              "file/copy",
              new { controller = "FileSystem", action = "Copy" } // Parameter defaults
-           );
+            );
 
             routes.MapRoute(
               "CreateDirectory",
