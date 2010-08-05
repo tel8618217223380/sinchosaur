@@ -229,14 +229,20 @@ namespace Server.Service
 
 
         //добавление диретории
-        public void CreateDirectory(string path, string userEmail, string userPass)
+        public void CreateDirectory(string patch, string userEmail, string userPass)
         {
             User userInfo = UserModel.Instance.GetUser(userEmail, userPass);
-            if (!DirectoryModel.Instance.Exist(path, userInfo.UserId))
+            
+            if (patch == "\\")
+                throw new Exception("NameEmpty");
+
+            if (!DirectoryModel.Instance.Exist(patch, userInfo.UserId))
             {
-                logger.Debug("Создание каталога: {0}, пользователя: {1}", path, userEmail);
-                DirectoryModel.Instance.CreateDirectory(userInfo.UserId, path, false);
+                logger.Debug("Создание каталога: {0}, пользователя: {1}", patch, userEmail);
+                DirectoryModel.Instance.CreateDirectory(userInfo.UserId, patch, false);
             }
+            else
+                throw new Exception("NameIsBusy");
         }
 
 

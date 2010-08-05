@@ -70,13 +70,33 @@ namespace Site.Controllers
             if (userEmail == null || userPassword == null)
                 return RedirectToRoute("Logout");
 
-            if (Request.HttpMethod == "POST" && directoryId != 0 && name != "")
+            if (Request.HttpMethod == "POST")
             {
-                FileSystemClient serverFileSystem = new FileSystemClient();
-                MyFile directoryInfo = serverFileSystem.GetDirectory(directoryId, userEmail, userPassword);
-                serverFileSystem.CreateDirectory(directoryInfo.Path + "\\" + name, userEmail, userPassword);
-            }
+                try
+                {
+                    FileSystemClient serverFileSystem = new FileSystemClient();
+                    MyFile directoryInfo = serverFileSystem.GetDirectory(directoryId, userEmail, userPassword);
+                    serverFileSystem.CreateDirectory(directoryInfo.Path + "\\" + name, userEmail, userPassword);
+                    return Json(new { error = "", success = true, id = directoryId });
+                }
+                catch (Exception ex)
+                {
+                    switch (ex.Message)
+                    {
+                        case "NameEmpty":
+                            return Json(new { error = "Введите имя директории!", success = false });
 
+                        case "NameIsBusy":
+                            return Json(new { error = "Директория с таким именем уже существует!", success = false });
+
+                        case "DirectoryNotFound":
+                            return RedirectToRoute("ShowFolder");
+
+                        default:
+                            return Json(new { error = ex.Message, success = false });
+                    }
+                }
+            }
             ViewData["directoryId"] = directoryId;
             return View();
             
@@ -226,9 +246,28 @@ namespace Site.Controllers
 
 
         [Authorize]
-        public ActionResult Delete(string directoryId = "/", string newName = "/")
+        public ActionResult Delete(int fileId , int isDirectory)
         {
-            return View();
+            string userEmail = (string)Session["email"];
+            string userPassword = (string)Session["password"];
+
+            if (userEmail == null || userPassword == null)
+                return RedirectToRoute("Logout");
+
+            FileSystemClient serverFileSystem = new FileSystemClient();
+            MyFile fileInfo;
+                
+            if(isDirectory==1)
+            {
+                fileInfo = serverFileSystem.GetDirectory(fileId, userEmail, userPassword);
+                serverFileSystem.DeleteDirectory(fileId, userEmail, userPassword);
+            }
+            else
+            {
+                fileInfo = serverFileSystem.GetFile(fileId, userEmail, userPassword);
+                serverFileSystem.DeleteFile(fileId, userEmail, userPassword);
+            }
+            return RedirectToRoute("ShowFolder", new { id = fileInfo.ParentDirectoryId });
         }
 
 

@@ -22,7 +22,9 @@
                     },
 
                     'delete': function (t) {
-                        alert('Trigger was ' + t.id + '\nAction was Delete');
+                        confirm_message = isDirectory == 1 ? 'эту директорию ?' : 'этот файл ?';
+                        if (confirm('Вы уверены что хотите удалить ' + confirm_message))
+                            location.href = '/file/delete?fileId=' + fileId + '&isDirectory=' + isDirectory;
                     }
                 }
             });

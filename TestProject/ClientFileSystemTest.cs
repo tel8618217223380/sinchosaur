@@ -72,13 +72,25 @@ namespace TestProject
         [TestMethod()]
         public void GetDirectoryFilesTest()
         {
-            ClientFileSystem target = new ClientFileSystem(); // TODO: инициализация подходящего значения
-            string DirectoryName = "\\"; // TODO: инициализация подходящего значения
-            List<MyFile> expected = null; // TODO: инициализация подходящего значения
+            ClientFileSystem target = new ClientFileSystem(); 
+            string DirectoryName = "\\"; 
+            List<MyFile> expected = null; 
             List<MyFile> actual;
             actual = target.GetDirectoryFiles(DirectoryName);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Проверьте правильность этого метода теста.");
+        }
+
+        /// <summary>
+        ///Тест для DeleteDirectory
+        ///</summary>
+        [TestMethod()]
+        public void DeleteDirectoryTest()
+        {
+            ClientFileSystem target = new ClientFileSystem(); 
+            string path = "\\foldrr3"; 
+            target.DeleteDirectory(path);
+            Assert.Inconclusive("Невозможно проверить метод, не возвращающий значение.");
         }
     }
 }
