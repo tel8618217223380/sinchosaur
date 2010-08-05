@@ -22,13 +22,13 @@ namespace Server
             accountHost.Open();
             userEvents.Open();
 
-            Console.WriteLine("Sinchronize сервер запущен!");
+            Console.WriteLine("Sinchosaur сервер запущен!");
             Console.WriteLine("Listening on " + fileSystemHost.BaseAddresses.First<Uri>().ToString());
             Console.WriteLine("Listening on " + accountHost.BaseAddresses.First<Uri>().ToString());
             Console.WriteLine("Listening on " + userEvents.BaseAddresses.First<Uri>().ToString());
             Console.WriteLine("Click any key to close...");
             Console.ReadKey();
-            Console.WriteLine("Sinchronize сервер завершен!");
+            Console.WriteLine("Sinchosaur сервер завершен!");
             fileSystemHost.Close();
             accountHost.Close();
 

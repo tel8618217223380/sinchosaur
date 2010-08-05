@@ -172,5 +172,35 @@ namespace TestProject
             target.Move(fileId, parentDirectoryId, isDirectory, userEmail, userPass);
             Assert.Inconclusive("Невозможно проверить метод, не возвращающий значение.");
         }
+
+        /// <summary>
+        ///Тест для Copy
+        ///</summary>
+        [TestMethod()]
+        public void CopyTest()
+        {
+            FileSystem target = new FileSystem(); 
+            int sourceFileId = 252; 
+            int outputDirectoryId = 249; 
+            int isDirectory = 1; 
+            string userEmail ="user2@email.ru"; 
+            string userPass = "pass2"; 
+            target.Copy(sourceFileId, outputDirectoryId, isDirectory, userEmail, userPass);
+            Assert.Inconclusive("Невозможно проверить метод, не возвращающий значение.");
+        }
+
+        /// <summary>
+        ///Тест для CopyFile
+        ///</summary>
+        [TestMethod()]
+        public void CopyFileTest()
+        {
+            FileSystem target = new FileSystem(); 
+            int fileId = 1109; 
+            int outputDirectoryId = 250; 
+            int userId = 2; 
+            target.CopyFile(fileId, outputDirectoryId, userId);
+            Assert.Inconclusive("Невозможно проверить метод, не возвращающий значение.");
+        }
     }
 }

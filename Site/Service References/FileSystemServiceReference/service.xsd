@@ -49,7 +49,23 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetParentDirectory">
+  <xs:element name="GetFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fileId" type="xs:int" />
+        <xs:element minOccurs="0" name="userEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userPass" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Server.Service" minOccurs="0" name="GetFileResult" type="q4:MyFile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParentDirectoryId">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="directoryId" type="xs:int" />
@@ -58,10 +74,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetParentDirectoryResponse">
+  <xs:element name="GetParentDirectoryIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Server.Service" minOccurs="0" name="GetParentDirectoryResult" type="q4:MyFile" />
+        <xs:element minOccurs="0" name="GetParentDirectoryIdResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -162,6 +178,38 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="MoveResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Copy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sourceFileId" type="xs:int" />
+        <xs:element minOccurs="0" name="outputDirectoryId" type="xs:int" />
+        <xs:element minOccurs="0" name="isDirectory" type="xs:int" />
+        <xs:element minOccurs="0" name="userEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userPass" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rename">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fileId" type="xs:int" />
+        <xs:element minOccurs="0" name="newName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isDirectory" type="xs:int" />
+        <xs:element minOccurs="0" name="userEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userPass" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RenameResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

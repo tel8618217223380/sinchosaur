@@ -49,7 +49,20 @@ namespace Server.Service.Models
                 return true;
             return false;
         }
-        
+
+
+        //проверяет сущуствование файла по имени
+        public bool ExistByName(string name, int directoryId, int userId)
+        {
+            DatabaseClassesDataContext db = new DatabaseClassesDataContext();
+            var result = from d in db.Files
+                         where d.DirectoryId == directoryId && d.Name == name && d.UserId == userId && d.IsActual == true
+                         select d;
+            if (result.Count<File>() > 0)
+                return true;
+            return false;
+        }
+
 
         //возвращает все файлы каталога
         public File GetFile(int directoryId, string fileName, int userId)
@@ -154,5 +167,17 @@ namespace Server.Service.Models
 
         }
 
+
+        //переименование файла
+        public void Rename(int fileId, string newName, int userId)
+        {
+            DatabaseClassesDataContext db = new DatabaseClassesDataContext();
+            var existFile = (from f in db.Files
+                                where f.FileId == fileId && f.UserId == userId && f.IsActual == true
+                                select f).Single();
+
+            existFile.Name = newName;
+            db.SubmitChanges();
+        }
     }
 }

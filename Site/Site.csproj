@@ -177,6 +177,8 @@
     <Content Include="Views\FileSystem\CreateDirectory.aspx" />
     <Content Include="Views\FileSystem\Move.aspx" />
     <Content Include="Views\FileSystem\ShowFolder.aspx" />
+    <Content Include="Views\FileSystem\Copy.aspx" />
+    <Content Include="Views\FileSystem\Rename.aspx" />
     <Content Include="Views\Pages\Download.aspx" />
     <Content Include="Views\Pages\Main.aspx" />
     <Content Include="Views\Pages\UserEvents.aspx" />

@@ -22,10 +22,14 @@ namespace Server.Service
         [OperationContract]
         MyFile GetDirectory(int directoryId, string userEmail, string userPass);
 
-
-        //возвращает родительский каталог
+        //возвращает каталог
         [OperationContract]
-        MyFile GetParentDirectory(int directoryId, string userEmail, string userPass);
+        MyFile GetFile(int fileId, string userEmail, string userPass);
+
+
+        //возвращает id родительского каталога
+        [OperationContract]
+        int GetParentDirectoryId(int directoryId, string userEmail, string userPass);
 
 
         //возвращает все файлы/диретории пользователя в указанной диретории
@@ -62,6 +66,13 @@ namespace Server.Service
         [OperationContract]
         void Move(int fileId, int directoryId, int isDirectory, string userEmail, string userPass);
 
+        //копирование файла/диретории
+        [OperationContract]
+        void Copy(int sourceFileId, int outputDirectoryId, int isDirectory, string userEmail, string userPass);
+
+        //копирование файла/диретории
+        [OperationContract]
+        void Rename(int fileId, string newName, int isDirectory, string userEmail, string userPass);
 
         //возвращает путь для файла/диретории
         [OperationContract]

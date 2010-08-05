@@ -18,6 +18,7 @@
       <xs:element minOccurs="0" name="IsDirectory" type="xs:boolean" />
       <xs:element minOccurs="0" name="LastWriteTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentDirectoryId" type="xs:int" />
       <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Size" type="xs:long" />
       <xs:element minOccurs="0" name="status" type="tns:FileStatus" />

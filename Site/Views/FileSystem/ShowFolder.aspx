@@ -10,15 +10,17 @@
             $('#file_' + fileId).contextMenu('ContextMenu', {
                 bindings: {
                     'move': function (t) {
-                        tb_show('Перемещение', '<%=Url.RouteUrl("Move")%>?fileId=' + fileId + '&isDirectory=' + isDirectory, "");
+                        tb_show('Переместить', '<%=Url.RouteUrl("Move")%>?fileId=' + fileId + '&isDirectory=' + isDirectory, "");
                     },
 
                     'copyto': function (t) {
-                        alert('Trigger was ' + t.id + '\nAction was Email');
+                        tb_show('Копировать', '<%=Url.RouteUrl("Copy")%>?fileId=' + fileId + '&isDirectory=' + isDirectory, "");
                     },
+
                     'rename': function (t) {
-                        alert('Trigger was ' + t.id + '\nAction was Save');
+                        tb_show('Переименовать', '<%=Url.RouteUrl("Rename")%>?fileId=' + fileId + '&isDirectory=' + isDirectory, "");
                     },
+
                     'delete': function (t) {
                         alert('Trigger was ' + t.id + '\nAction was Delete');
                     }
@@ -29,13 +31,8 @@
     <div id="tab">
         <div id="tabhead">
             <ul>
-                <li class="activetab"><a href="#">Upload</a></li>
                 <li><%=Html.RouteLink("Новая диретория", "CreateDirectory", new { directoryId = ViewData["currenId"] }, new { @class = "thickbox" })%> </li>
-                <li><a href="#">Share folder</a></li>
-                <li><a href="#">Move</a></li>
-                <li><a href="#">Rename</a></li>
-                <li><a href="#">Copy to</a></li>
-                <li><a href="#">Delete</a></li>
+                <li><a href="#">Загрузить файл</a></li>
             </ul>
         </div>
         <div id="tabcontent">
@@ -45,7 +42,7 @@
                     <tr>
                         <th scope="col">Название</th>
                         <th scope="col">Размер</th>
-                        <th scope="col">Изменен</th>
+                        <th scope="col">Синхронизирован</th>
                     </tr>
                     <% 
                     if ( (int)ViewData["parentId"] > 1)

@@ -140,12 +140,12 @@ namespace Server.Service.Models
         }
         
 
-        //проверяет сущуствование директории
+        //проверяет сущуствование директории по имени
         public bool ExistByName(string name, int parentId, int userId)
         {
             DatabaseClassesDataContext db = new DatabaseClassesDataContext();
             var result = from d in db.Directories
-                         where d.ParentId == parentId && d.Name == name && d.UserId == userId
+                         where d.ParentId == parentId && d.Name == name && d.UserId == userId && d.IsActual==true
                          select d;
             if (result.Count<Directory>() > 0)
                 return true;
@@ -168,7 +168,7 @@ namespace Server.Service.Models
         
 
         //создает директорию
-        public void CreateDirectory(int userId, string patch, bool isPublic)
+        public int CreateDirectory(int userId, string patch, bool isPublic)
         {
             DatabaseClassesDataContext db = new DatabaseClassesDataContext();
 
@@ -183,6 +183,26 @@ namespace Server.Service.Models
             db.Directories.InsertOnSubmit(newDirectory);
 
             db.SubmitChanges();
+            return newDirectory.DirectoryId; 
+        }
+
+
+        //создает директорию по имени и parentId
+        public int CreateDirectoryByName(int userId, string name, int parentId, bool isPublic)
+        {
+            DatabaseClassesDataContext db = new DatabaseClassesDataContext();
+            
+            Directory newDirectory = new Directory();
+            newDirectory.UserId = userId;
+            newDirectory.Name = name;
+            newDirectory.IsPublic = isPublic;
+            newDirectory.IsActual = true;
+            newDirectory.ParentId = parentId;
+            newDirectory.Created = DateTime.Now;
+            db.Directories.InsertOnSubmit(newDirectory);
+
+            db.SubmitChanges();
+            return newDirectory.DirectoryId; 
         }
         
 
@@ -226,6 +246,23 @@ namespace Server.Service.Models
             catch { };
         }
 
+
+        //переименование каталога
+        public void Rename(int directoryId, string newName, int userId)
+        {
+            try
+            {
+                DatabaseClassesDataContext db = new DatabaseClassesDataContext();
+                var existFile = (from d in db.Directories
+                                 where d.DirectoryId == directoryId && d.UserId == userId && d.ParentId != 0
+                                 select d).Single();
+
+                existFile.Name = newName;
+                db.SubmitChanges();
+            }
+            catch { };
+        }
+
         
         //перемещает каталог
         public void Move(int directoryId, int outDirectoryId, int userId)
@@ -249,10 +286,33 @@ namespace Server.Service.Models
                                  select d).Single();
 
                 existFile.ParentId = outDirectoryId;
-                existFile.Name = directoryInfo.Name;
+                existFile.Name = directoryName;
                 db.SubmitChanges();
             }
             catch { };
+        }
+
+        // каталог
+        public int Copy(int directoryId, int outDirectoryId, int userId)
+        {
+            
+                Directory directoryInfo = DirectoryModel.Instance.GetDirectoryById(directoryId, userId);
+                Directory parentDirectoryInfo = DirectoryModel.Instance.GetDirectoryById(outDirectoryId, userId);
+
+                string directoryName = directoryInfo.Name;
+
+                int i = 1;
+                while (ExistByName(directoryName, outDirectoryId, userId))
+                {
+                    directoryName = directoryInfo.Name + string.Format("({0})", ++i);
+                }
+
+                DatabaseClassesDataContext db = new DatabaseClassesDataContext();
+                var existDirectory = (from d in db.Directories
+                                 where d.DirectoryId == directoryId && d.UserId == userId
+                                 select d).Single();
+                return CreateDirectoryByName(userId, directoryName, outDirectoryId,false);
+            
         }
 
         //проверяет на перемещение каталога в свой дочерний каталог
@@ -271,6 +331,7 @@ namespace Server.Service.Models
 
         }
         
+
         //удаляет директорию
         public void DeleteDirectory(int direstoryId, int userId)
         {

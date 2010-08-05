@@ -31,9 +31,14 @@ namespace Site.FileSystemServiceReference {
         Site.FileSystemServiceReference.GetDirectoryResponse GetDirectory(Site.FileSystemServiceReference.GetDirectoryRequest request);
         
         // CODEGEN: Параметр "userEmail" требует дополнительной информации о схеме, которую невозможно получить в режиме параметров. Указан атрибут "System.Xml.Serialization.XmlElementAttribute".
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileSystem/GetParentDirectory", ReplyAction="http://tempuri.org/IFileSystem/GetParentDirectoryResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileSystem/GetFile", ReplyAction="http://tempuri.org/IFileSystem/GetFileResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Site.FileSystemServiceReference.GetParentDirectoryResponse GetParentDirectory(Site.FileSystemServiceReference.GetParentDirectoryRequest request);
+        Site.FileSystemServiceReference.GetFileResponse GetFile(Site.FileSystemServiceReference.GetFileRequest request);
+        
+        // CODEGEN: Параметр "userEmail" требует дополнительной информации о схеме, которую невозможно получить в режиме параметров. Указан атрибут "System.Xml.Serialization.XmlElementAttribute".
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileSystem/GetParentDirectoryId", ReplyAction="http://tempuri.org/IFileSystem/GetParentDirectoryIdResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Site.FileSystemServiceReference.GetParentDirectoryIdResponse GetParentDirectoryId(Site.FileSystemServiceReference.GetParentDirectoryIdRequest request);
         
         // CODEGEN: Параметр "GetDirectoryFilesResult" требует дополнительной информации о схеме, которую невозможно получить в режиме параметров. Указан атрибут "System.Xml.Serialization.XmlArrayAttribute".
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileSystem/GetDirectoryFiles", ReplyAction="http://tempuri.org/IFileSystem/GetDirectoryFilesResponse")]
@@ -70,6 +75,16 @@ namespace Site.FileSystemServiceReference {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Site.FileSystemServiceReference.MoveResponse Move(Site.FileSystemServiceReference.MoveRequest request);
         
+        // CODEGEN: Параметр "userEmail" требует дополнительной информации о схеме, которую невозможно получить в режиме параметров. Указан атрибут "System.Xml.Serialization.XmlElementAttribute".
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileSystem/Copy", ReplyAction="http://tempuri.org/IFileSystem/CopyResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Site.FileSystemServiceReference.CopyResponse Copy(Site.FileSystemServiceReference.CopyRequest request);
+        
+        // CODEGEN: Параметр "newName" требует дополнительной информации о схеме, которую невозможно получить в режиме параметров. Указан атрибут "System.Xml.Serialization.XmlElementAttribute".
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileSystem/Rename", ReplyAction="http://tempuri.org/IFileSystem/RenameResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Site.FileSystemServiceReference.RenameResponse Rename(Site.FileSystemServiceReference.RenameRequest request);
+        
         // CODEGEN: Параметр "GetFilePathResult" требует дополнительной информации о схеме, которую невозможно получить в режиме параметров. Указан атрибут "System.Xml.Serialization.XmlElementAttribute".
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileSystem/GetFilePath", ReplyAction="http://tempuri.org/IFileSystem/GetFilePathResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -97,6 +112,10 @@ namespace Site.FileSystemServiceReference {
         private bool lastWriteTimeFieldSpecified;
         
         private string nameField;
+        
+        private int parentDirectoryIdField;
+        
+        private bool parentDirectoryIdFieldSpecified;
         
         private string pathField;
         
@@ -193,7 +212,31 @@ namespace Site.FileSystemServiceReference {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public int ParentDirectoryId {
+            get {
+                return this.parentDirectoryIdField;
+            }
+            set {
+                this.parentDirectoryIdField = value;
+                this.RaisePropertyChanged("ParentDirectoryId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ParentDirectoryIdSpecified {
+            get {
+                return this.parentDirectoryIdFieldSpecified;
+            }
+            set {
+                this.parentDirectoryIdFieldSpecified = value;
+                this.RaisePropertyChanged("ParentDirectoryIdSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
         public string Path {
             get {
                 return this.pathField;
@@ -205,7 +248,7 @@ namespace Site.FileSystemServiceReference {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
         public long Size {
             get {
                 return this.sizeField;
@@ -229,7 +272,7 @@ namespace Site.FileSystemServiceReference {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
         public FileStatus status {
             get {
                 return this.statusField;
@@ -530,8 +573,52 @@ namespace Site.FileSystemServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetParentDirectory", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetParentDirectoryRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetFile", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetFileRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int fileId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userEmail;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userPass;
+        
+        public GetFileRequest() {
+        }
+        
+        public GetFileRequest(int fileId, string userEmail, string userPass) {
+            this.fileId = fileId;
+            this.userEmail = userEmail;
+            this.userPass = userPass;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetFileResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetFileResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public Site.FileSystemServiceReference.MyFile GetFileResult;
+        
+        public GetFileResponse() {
+        }
+        
+        public GetFileResponse(Site.FileSystemServiceReference.MyFile GetFileResult) {
+            this.GetFileResult = GetFileResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetParentDirectoryId", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetParentDirectoryIdRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
         public int directoryId;
@@ -544,10 +631,10 @@ namespace Site.FileSystemServiceReference {
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public string userPass;
         
-        public GetParentDirectoryRequest() {
+        public GetParentDirectoryIdRequest() {
         }
         
-        public GetParentDirectoryRequest(int directoryId, string userEmail, string userPass) {
+        public GetParentDirectoryIdRequest(int directoryId, string userEmail, string userPass) {
             this.directoryId = directoryId;
             this.userEmail = userEmail;
             this.userPass = userPass;
@@ -557,17 +644,17 @@ namespace Site.FileSystemServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetParentDirectoryResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetParentDirectoryResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetParentDirectoryIdResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetParentDirectoryIdResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Site.FileSystemServiceReference.MyFile GetParentDirectoryResult;
+        public int GetParentDirectoryIdResult;
         
-        public GetParentDirectoryResponse() {
+        public GetParentDirectoryIdResponse() {
         }
         
-        public GetParentDirectoryResponse(Site.FileSystemServiceReference.MyFile GetParentDirectoryResult) {
-            this.GetParentDirectoryResult = GetParentDirectoryResult;
+        public GetParentDirectoryIdResponse(int GetParentDirectoryIdResult) {
+            this.GetParentDirectoryIdResult = GetParentDirectoryIdResult;
         }
     }
     
@@ -868,6 +955,97 @@ namespace Site.FileSystemServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Copy", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class CopyRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int sourceFileId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int outputDirectoryId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public int isDirectory;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userEmail;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userPass;
+        
+        public CopyRequest() {
+        }
+        
+        public CopyRequest(int sourceFileId, int outputDirectoryId, int isDirectory, string userEmail, string userPass) {
+            this.sourceFileId = sourceFileId;
+            this.outputDirectoryId = outputDirectoryId;
+            this.isDirectory = isDirectory;
+            this.userEmail = userEmail;
+            this.userPass = userPass;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CopyResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class CopyResponse {
+        
+        public CopyResponse() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Rename", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RenameRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int fileId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string newName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public int isDirectory;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userEmail;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userPass;
+        
+        public RenameRequest() {
+        }
+        
+        public RenameRequest(int fileId, string newName, int isDirectory, string userEmail, string userPass) {
+            this.fileId = fileId;
+            this.newName = newName;
+            this.isDirectory = isDirectory;
+            this.userEmail = userEmail;
+            this.userPass = userPass;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RenameResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RenameResponse {
+        
+        public RenameResponse() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetFilePath", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class GetFilePathRequest {
         
@@ -983,17 +1161,31 @@ namespace Site.FileSystemServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Site.FileSystemServiceReference.GetParentDirectoryResponse Site.FileSystemServiceReference.IFileSystem.GetParentDirectory(Site.FileSystemServiceReference.GetParentDirectoryRequest request) {
-            return base.Channel.GetParentDirectory(request);
+        Site.FileSystemServiceReference.GetFileResponse Site.FileSystemServiceReference.IFileSystem.GetFile(Site.FileSystemServiceReference.GetFileRequest request) {
+            return base.Channel.GetFile(request);
         }
         
-        public Site.FileSystemServiceReference.MyFile GetParentDirectory(int directoryId, string userEmail, string userPass) {
-            Site.FileSystemServiceReference.GetParentDirectoryRequest inValue = new Site.FileSystemServiceReference.GetParentDirectoryRequest();
+        public Site.FileSystemServiceReference.MyFile GetFile(int fileId, string userEmail, string userPass) {
+            Site.FileSystemServiceReference.GetFileRequest inValue = new Site.FileSystemServiceReference.GetFileRequest();
+            inValue.fileId = fileId;
+            inValue.userEmail = userEmail;
+            inValue.userPass = userPass;
+            Site.FileSystemServiceReference.GetFileResponse retVal = ((Site.FileSystemServiceReference.IFileSystem)(this)).GetFile(inValue);
+            return retVal.GetFileResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Site.FileSystemServiceReference.GetParentDirectoryIdResponse Site.FileSystemServiceReference.IFileSystem.GetParentDirectoryId(Site.FileSystemServiceReference.GetParentDirectoryIdRequest request) {
+            return base.Channel.GetParentDirectoryId(request);
+        }
+        
+        public int GetParentDirectoryId(int directoryId, string userEmail, string userPass) {
+            Site.FileSystemServiceReference.GetParentDirectoryIdRequest inValue = new Site.FileSystemServiceReference.GetParentDirectoryIdRequest();
             inValue.directoryId = directoryId;
             inValue.userEmail = userEmail;
             inValue.userPass = userPass;
-            Site.FileSystemServiceReference.GetParentDirectoryResponse retVal = ((Site.FileSystemServiceReference.IFileSystem)(this)).GetParentDirectory(inValue);
-            return retVal.GetParentDirectoryResult;
+            Site.FileSystemServiceReference.GetParentDirectoryIdResponse retVal = ((Site.FileSystemServiceReference.IFileSystem)(this)).GetParentDirectoryId(inValue);
+            return retVal.GetParentDirectoryIdResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1091,6 +1283,36 @@ namespace Site.FileSystemServiceReference {
             inValue.userEmail = userEmail;
             inValue.userPass = userPass;
             Site.FileSystemServiceReference.MoveResponse retVal = ((Site.FileSystemServiceReference.IFileSystem)(this)).Move(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Site.FileSystemServiceReference.CopyResponse Site.FileSystemServiceReference.IFileSystem.Copy(Site.FileSystemServiceReference.CopyRequest request) {
+            return base.Channel.Copy(request);
+        }
+        
+        public void Copy(int sourceFileId, int outputDirectoryId, int isDirectory, string userEmail, string userPass) {
+            Site.FileSystemServiceReference.CopyRequest inValue = new Site.FileSystemServiceReference.CopyRequest();
+            inValue.sourceFileId = sourceFileId;
+            inValue.outputDirectoryId = outputDirectoryId;
+            inValue.isDirectory = isDirectory;
+            inValue.userEmail = userEmail;
+            inValue.userPass = userPass;
+            Site.FileSystemServiceReference.CopyResponse retVal = ((Site.FileSystemServiceReference.IFileSystem)(this)).Copy(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Site.FileSystemServiceReference.RenameResponse Site.FileSystemServiceReference.IFileSystem.Rename(Site.FileSystemServiceReference.RenameRequest request) {
+            return base.Channel.Rename(request);
+        }
+        
+        public void Rename(int fileId, string newName, int isDirectory, string userEmail, string userPass) {
+            Site.FileSystemServiceReference.RenameRequest inValue = new Site.FileSystemServiceReference.RenameRequest();
+            inValue.fileId = fileId;
+            inValue.newName = newName;
+            inValue.isDirectory = isDirectory;
+            inValue.userEmail = userEmail;
+            inValue.userPass = userPass;
+            Site.FileSystemServiceReference.RenameResponse retVal = ((Site.FileSystemServiceReference.IFileSystem)(this)).Rename(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
