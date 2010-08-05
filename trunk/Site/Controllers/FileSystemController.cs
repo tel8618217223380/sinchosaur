@@ -24,11 +24,11 @@ namespace Site.Controllers
             try
             {
                 FileSystemClient serverFileSystem = new FileSystemClient();
-                MyFile parentDirectoryInfo = serverFileSystem.GetParentDirectory(id, userEmail, userPassword);
+                MyFile directoryInfo = serverFileSystem.GetDirectory(id, userEmail, userPassword);
 
-                ViewData["currentPath"] = serverFileSystem.GetFilePath(id, 1, userEmail, userPassword);
+                ViewData["currentPath"] = directoryInfo.Path;
                 ViewData["currenId"] = id;
-                ViewData["parentId"] = parentDirectoryInfo.FileId;
+                ViewData["parentId"] = directoryInfo.ParentDirectoryId;
                 ViewData["files"]= serverFileSystem.GetDirectoryFiles(id, false, userEmail, userPassword);
             }
             catch (Exception)
@@ -39,7 +39,6 @@ namespace Site.Controllers
             return View();
         }
 
-        [Authorize]
         
         [Authorize]
         public ActionResult DownloadFile(int id, string name)
@@ -85,6 +84,13 @@ namespace Site.Controllers
 
 
         [Authorize]
+        public ActionResult UploadFile(string fileId = "/", string newPath = "/")
+        {
+            return View();
+        }
+
+
+        [Authorize]
         public ActionResult Move(int fileId = 0, int outDirectoryId = 0, int isDirectory=0)
         {
             string userEmail = (string)Session["email"];
@@ -125,56 +131,109 @@ namespace Site.Controllers
             return View();
         }
 
-        [Authorize]
-        public ActionResult CopyToDirectory(string directoryId = "/", string newPath = "/")
-        {
-            return View();
-        }
 
         [Authorize]
-        public ActionResult RenameDirectory(string directoryId = "/", string newName = "/")
+        public ActionResult Copy(int fileId = 0, int outDirectoryId = 0, int isDirectory = 0)
         {
-            return View();
-        }
+            string userEmail = (string)Session["email"];
+            string userPassword = (string)Session["password"];
 
-        [Authorize]
-        public ActionResult DeleteDirectory(string directoryId = "/", string newName = "/")
-        {
-            return View();
-        }
+            if (userEmail == null || userPassword == null)
+                return RedirectToRoute("Logout");
 
+            if (Request.HttpMethod == "POST")
+            {
+                try
+                {
+                    FileSystemClient serverFileSystem = new FileSystemClient();
+                    serverFileSystem.Copy(fileId, outDirectoryId, isDirectory, userEmail, userPassword);
+                    return Json(new { error = "", success = true, id = outDirectoryId });
+                }
+                catch (Exception ex)
+                {
+                    switch (ex.Message)
+                    {
+                        case "ParentIdIsNull":
+                            return Json(new { error = "Выберете каталог назначения!", success = false });
 
-        [Authorize]
-        public ActionResult UploadFile(string fileId = "/", string newPath = "/")
-        {
-            return View();
-        }
+                        case "DirectoriesHaveSameIDs":
+                            return Json(new { error = "Скопировать директорию в саму себя нельзя!", success = false });
 
-        [Authorize]
-        public ActionResult MoveFile(string fileId = "/", string newPath = "/")
-        {
-            return View();
-        }
+                        case "DirectoryMovedInItSelf":
+                            return Json(new { error = "Скопировать директорию в свою вложенную папку нельзя!", success = false });
+                        default:
+                            return Json(new { error = ex.Message, success = false });
+                    }
+                }
+            }
+            ViewData["fileId"] = fileId;
+            ViewData["isDirectory"] = isDirectory;
+            ViewData["outDirectoryId"] = outDirectoryId;
 
-        [Authorize]
-        public ActionResult CopyToFile(string fileId = "/", string newPath = "/")
-        {
-            return View();
-        }
-
-        [Authorize]
-        public ActionResult RenameFile(string fileId = "/", string newName = "/")
-        {
-            return View();
-        }
-
-        [Authorize]
-        public ActionResult DeleteFile(string fileId = "/", string newName = "/")
-        {
             return View();
         }
 
 
+        [Authorize]
+        public ActionResult Rename(int fileId , int isDirectory , string name="")
+        {
+            string userEmail = (string)Session["email"];
+            string userPassword = (string)Session["password"];
+
+            if (userEmail == null || userPassword == null)
+                return RedirectToRoute("Logout");
+
+
+            FileSystemClient serverFileSystem = new FileSystemClient();
+
+
+            MyFile fileInfo;
+            if (isDirectory == 1)
+                fileInfo = serverFileSystem.GetDirectory(fileId, userEmail, userPassword);
+            else
+                fileInfo = serverFileSystem.GetFile(fileId, userEmail, userPassword);
+
+            if (Request.HttpMethod == "POST")
+            {
+                try
+                {
+                    serverFileSystem.Rename(fileId, name, isDirectory, userEmail, userPassword);
+                    return Json(new { error = "", success = true, id = fileInfo.ParentDirectoryId });
+                }
+                catch (Exception ex)
+                {
+                    switch (ex.Message)
+                    {
+                        case "FileNotSelected":
+                            return Json(new { error = isDirectory == 1 ? "Выберите директорию для переименования!" : "Выберите файл для переименования", success = false });
+                        case "EmptyNewName":
+                            return Json(new { error = isDirectory == 1 ? "Введите новое имя директории!" : "Введите новое имя файла", success = false });
+                        case "FileNotExist":
+                            return Json(new { error = isDirectory == 1 ? "Такой директории не существует!" : "Такой файл не существует!", success = false });
+                        case "NameIsBusy":
+                            return Json(new { error = isDirectory == 1 ? "Директория с таким именем уже существует!" : "Файл с таким именем уже существует!!", success = false });
+                            
+                        default:
+                            return Json(new { error = ex.Message, success = false });
+                    }
+                }
+            }
+            ViewData["fileId"] = fileId;
+            ViewData["name"] = fileInfo.Name;
+            ViewData["isDirectory"] = isDirectory;
+            return View();
+        }
+
+
+        [Authorize]
+        public ActionResult Delete(string directoryId = "/", string newName = "/")
+        {
+            return View();
+        }
+
+
+        
+       
         [Authorize]
         public ActionResult GetTreeNode( string sleep, string mode,int key=0)
         {

@@ -16,20 +16,36 @@ namespace Site
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //tree
+            
             routes.MapRoute(
               "GetTreeNode",
               "tree/getchild/",
               new { controller = "FileSystem", action = "GetTreeNode" } // Parameter defaults
             );
 
-            //--------------------------------------------
+            routes.MapRoute(
+              "Rename",
+              "file/rename",
+              new { controller = "FileSystem", action = "Rename" } // Parameter defaults
+            );
+
+            routes.MapRoute(
+              "Delete",
+              "file/delete",
+              new { controller = "FileSystem", action = "Delete" } // Parameter defaults
+            );
 
             routes.MapRoute(
               "Move",
               "file/move",
               new { controller = "FileSystem", action = "Move" } // Parameter defaults
             );
+
+            routes.MapRoute(
+             "Copy",
+             "file/copy",
+             new { controller = "FileSystem", action = "Copy" } // Parameter defaults
+           );
 
             routes.MapRoute(
               "CreateDirectory",

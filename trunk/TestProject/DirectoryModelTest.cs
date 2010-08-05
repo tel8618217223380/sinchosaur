@@ -204,5 +204,50 @@ namespace TestProject
             if (target.ExistDirectoryInMovedPath(directoryId, outDirectoryId, userId))
                 Assert.Fail();
         }
+
+        /// <summary>
+        ///Тест для ExistByName
+        ///</summary>
+        [TestMethod()]
+        public void ExistByNameTest()
+        {
+            DirectoryModel target = new DirectoryModel();
+            string name = "folder1_1";
+            int parentId = 242; 
+            int userId = 2; 
+            bool expected = false; 
+            bool actual;
+            actual = target.ExistByName(name, parentId, userId);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Проверьте правильность этого метода теста.");
+        }
+
+        /// <summary>
+        ///Тест для Move
+        ///</summary>
+        [TestMethod()]
+        public void MoveTest()
+        {
+            DirectoryModel target = new DirectoryModel();
+            int directoryId = 244; 
+            int outDirectoryId = 198; 
+            int userId = 2; 
+            target.Move(directoryId, outDirectoryId, userId);
+            Assert.Inconclusive("Невозможно проверить метод, не возвращающий значение.");
+        }
+
+        /// <summary>
+        ///Тест для CreateDirectoryByName
+        ///</summary>
+        [TestMethod()]
+        public void CreateDirectoryByNameTest()
+        {
+            DirectoryModel target = new DirectoryModel(); 
+            int userId = 2;
+            string name = "folder4"; 
+            int parentId = 198; 
+            bool isPublic = false; 
+            int directoryId = target.CreateDirectoryByName(userId, name, parentId, isPublic);
+        }
     }
 }

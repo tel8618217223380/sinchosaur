@@ -26,11 +26,17 @@
   <wsdl:message name="IFileSystem_GetDirectory_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDirectoryResponse" />
   </wsdl:message>
-  <wsdl:message name="IFileSystem_GetParentDirectory_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetParentDirectory" />
+  <wsdl:message name="IFileSystem_GetFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFile" />
   </wsdl:message>
-  <wsdl:message name="IFileSystem_GetParentDirectory_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetParentDirectoryResponse" />
+  <wsdl:message name="IFileSystem_GetFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileSystem_GetParentDirectoryId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetParentDirectoryId" />
+  </wsdl:message>
+  <wsdl:message name="IFileSystem_GetParentDirectoryId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetParentDirectoryIdResponse" />
   </wsdl:message>
   <wsdl:message name="IFileSystem_GetDirectoryFiles_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDirectoryFiles" />
@@ -77,6 +83,18 @@
   <wsdl:message name="IFileSystem_Move_OutputMessage">
     <wsdl:part name="parameters" element="tns:MoveResponse" />
   </wsdl:message>
+  <wsdl:message name="IFileSystem_Copy_InputMessage">
+    <wsdl:part name="parameters" element="tns:Copy" />
+  </wsdl:message>
+  <wsdl:message name="IFileSystem_Copy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CopyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileSystem_Rename_InputMessage">
+    <wsdl:part name="parameters" element="tns:Rename" />
+  </wsdl:message>
+  <wsdl:message name="IFileSystem_Rename_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RenameResponse" />
+  </wsdl:message>
   <wsdl:message name="IFileSystem_GetFilePath_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFilePath" />
   </wsdl:message>
@@ -96,9 +114,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/GetDirectory" message="tns:IFileSystem_GetDirectory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFileSystem/GetDirectoryResponse" message="tns:IFileSystem_GetDirectory_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetParentDirectory">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/GetParentDirectory" message="tns:IFileSystem_GetParentDirectory_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFileSystem/GetParentDirectoryResponse" message="tns:IFileSystem_GetParentDirectory_OutputMessage" />
+    <wsdl:operation name="GetFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/GetFile" message="tns:IFileSystem_GetFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileSystem/GetFileResponse" message="tns:IFileSystem_GetFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParentDirectoryId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/GetParentDirectoryId" message="tns:IFileSystem_GetParentDirectoryId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileSystem/GetParentDirectoryIdResponse" message="tns:IFileSystem_GetParentDirectoryId_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetDirectoryFiles">
       <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/GetDirectoryFiles" message="tns:IFileSystem_GetDirectoryFiles_InputMessage" />
@@ -127,6 +149,14 @@
     <wsdl:operation name="Move">
       <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/Move" message="tns:IFileSystem_Move_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFileSystem/MoveResponse" message="tns:IFileSystem_Move_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Copy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/Copy" message="tns:IFileSystem_Copy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileSystem/CopyResponse" message="tns:IFileSystem_Copy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Rename">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/Rename" message="tns:IFileSystem_Rename_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileSystem/RenameResponse" message="tns:IFileSystem_Rename_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetFilePath">
       <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/GetFilePath" message="tns:IFileSystem_GetFilePath_InputMessage" />
@@ -162,8 +192,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetParentDirectory">
-      <soap:operation soapAction="http://tempuri.org/IFileSystem/GetParentDirectory" style="document" />
+    <wsdl:operation name="GetFile">
+      <soap:operation soapAction="http://tempuri.org/IFileSystem/GetFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParentDirectoryId">
+      <soap:operation soapAction="http://tempuri.org/IFileSystem/GetParentDirectoryId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -230,6 +269,24 @@
     </wsdl:operation>
     <wsdl:operation name="Move">
       <soap:operation soapAction="http://tempuri.org/IFileSystem/Move" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Copy">
+      <soap:operation soapAction="http://tempuri.org/IFileSystem/Copy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Rename">
+      <soap:operation soapAction="http://tempuri.org/IFileSystem/Rename" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

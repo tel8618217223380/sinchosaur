@@ -29,8 +29,9 @@ namespace Server.Service
         public DateTime LastWriteTime;
         public bool IsDirectory;
         public int FileId;
+        public int ParentDirectoryId;
 
-        public MyFile(string Name, string Path, long Size, FileStatus status, DateTime LastWriteTime, bool IsDirectory, int FileId)
+        public MyFile(string Name, string Path, long Size, FileStatus status, DateTime LastWriteTime, bool IsDirectory, int FileId, int ParentDirectoryId)
         {
             this.Name = Name;
             this.Path = Path;
@@ -39,6 +40,7 @@ namespace Server.Service
             this.LastWriteTime = LastWriteTime;
             this.IsDirectory = IsDirectory;
             this.FileId = FileId;
+            this.ParentDirectoryId = ParentDirectoryId;
         }
         
         public override string ToString()

@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью указанного ниже 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("MyFileServer.Service")]
+[assembly: AssemblyTitle("Sinchosaur Server.Service")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("XXX")]
-[assembly: AssemblyProduct("MyFileServer.Service")]
-[assembly: AssemblyCopyright("Copyright © XXX 2010")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Server.Service")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 // Можно указать все значения или установить для номеров редакции и сборки значение по умолчанию 
 // с помощью символа "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.1.1.0")]
+[assembly: AssemblyFileVersion("0.1.1.0")]
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("TestProject")]

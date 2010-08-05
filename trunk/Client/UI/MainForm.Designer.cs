@@ -161,7 +161,7 @@
             // timerSinchronize
             // 
             this.timerSinchronize.Enabled = true;
-            this.timerSinchronize.Interval = 1000;
+            this.timerSinchronize.Interval = 7000;
             this.timerSinchronize.Tick += new System.EventHandler(this.timerSinchronize_Tick);
             // 
             // buttonRefresh

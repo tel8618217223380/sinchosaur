@@ -79,7 +79,8 @@ namespace Server.Service
                         status = FileStatus.Download,
                         LastWriteTime = file.LastWrite,
                         IsDirectory = false,
-                        FileId = file.FileId
+                        FileId = file.FileId,
+                        ParentDirectoryId=file.DirectoryId
                     });
                 }
 
@@ -94,7 +95,8 @@ namespace Server.Service
                         status = FileStatus.Download,
                         LastWriteTime = directory.Created,
                         IsDirectory = true,
-                        FileId = directory.DirectoryId
+                        FileId = directory.DirectoryId,
+                        ParentDirectoryId=directory.ParentId
                     });
 
                     if (recursive)
@@ -239,38 +241,19 @@ namespace Server.Service
 
 
         //возвращает родительскую диреторию
-        public MyFile GetParentDirectory(int directoryId, string userEmail, string userPass)
+        public int GetParentDirectoryId(int directoryId, string userEmail, string userPass)
         {
             User userInfo = UserModel.Instance.GetUser(userEmail, userPass);
             logger.Debug("Получение каталога: {0}, пользователя: {1}", directoryId, userEmail);
 
-            Directory directoryInfo;
-            if (directoryId == 1)
-                return new MyFile{
-                    Name = "",
-                    Path = "",
-                    Size = 0,
-                    status = FileStatus.Download,
-                    IsDirectory = true,
-                    FileId = 1
-                };
-            
-            directoryInfo = DirectoryModel.Instance.GetDirectoryById(directoryId, userInfo.UserId);
-            if (directoryInfo.ParentId == 0)
-                return new MyFile{
-                    Name = "",
-                    Path = "",
-                    Size = 0,
-                    status = FileStatus.Download,
-                    IsDirectory = true,
-                    FileId = 1
-                };
-            
-            return GetDirectory(directoryInfo.ParentId, userEmail, userPass);
+            if (directoryId == 1) return 0;
+
+            Directory directoryInfo = DirectoryModel.Instance.GetDirectoryById(directoryId, userInfo.UserId);
+            return directoryInfo.ParentId;
         }
 
 
-        //возвращает диреторию
+        //возвращает информацию о файле диреторию
         public MyFile GetDirectory(int directoryId, string userEmail, string userPass)
         {
             User userInfo = UserModel.Instance.GetUser(userEmail, userPass);
@@ -287,7 +270,8 @@ namespace Server.Service
                     status = FileStatus.Download,
                     LastWriteTime = directoryInfo.Created,
                     IsDirectory = true,
-                    FileId = directoryInfo.DirectoryId
+                    FileId = directoryInfo.DirectoryId,
+                    ParentDirectoryId = directoryInfo.ParentId
                 };
             }
 
@@ -301,11 +285,37 @@ namespace Server.Service
                     status = FileStatus.Download,
                     LastWriteTime = directoryInfo.Created,
                     IsDirectory = true,
-                    FileId = directoryInfo.DirectoryId
+                    FileId = directoryInfo.DirectoryId,
+                    ParentDirectoryId = directoryInfo.ParentId
                 };
             }
 
             throw new Exception("DirectoryNotFound");
+        }
+
+
+        //возвращает информацию о файле
+        public MyFile GetFile(int fileId, string userEmail, string userPass)
+        {
+            User userInfo = UserModel.Instance.GetUser(userEmail, userPass);
+            logger.Debug("Получение информации о файле: {0}, пользователь: {1}", fileId, userEmail);
+
+            if (FileModel.Instance.ExistById(fileId, userInfo.UserId))
+            {
+                File fileInfo = FileModel.Instance.GetFileById(fileId, userInfo.UserId);
+                return new MyFile
+                {
+                    Name = fileInfo.Name,
+                    Path = DirectoryModel.Instance.GetDirectoryPath(fileInfo.DirectoryId, userInfo.UserId),
+                    Size = fileInfo.Size,
+                    status = FileStatus.Download,
+                    LastWriteTime = fileInfo.LastWrite,
+                    IsDirectory = true,
+                    FileId = fileInfo.FileId,
+                    ParentDirectoryId = fileInfo.DirectoryId
+                };
+            }
+            throw new Exception("FileNotFound");
         }
 
 
@@ -344,6 +354,99 @@ namespace Server.Service
             }
             else
                 throw new Exception("ParentDirectoryNotExist");
+        }
+
+
+        //копирование файла/диретории
+        public void Copy(int sourceFileId, int outputDirectoryId, int isDirectory, string userEmail, string userPass)
+        {
+            User userInfo = UserModel.Instance.GetUser(userEmail, userPass);
+
+            if (outputDirectoryId == 1)
+            {
+                Directory directoryInfo = DirectoryModel.Instance.GetRootDirectory(userInfo.UserId);
+                outputDirectoryId = directoryInfo.DirectoryId;
+            }
+
+            if (outputDirectoryId == 0)
+                throw new Exception("ParentIdIsNull");
+
+            if (sourceFileId == outputDirectoryId)
+                throw new Exception("DirectoriesHaveSameIDs");
+
+            if (DirectoryModel.Instance.ExistById(outputDirectoryId, userInfo.UserId) && sourceFileId != outputDirectoryId && sourceFileId != 0 && outputDirectoryId != 0)
+            {
+                if (isDirectory == 1 && DirectoryModel.Instance.ExistById(sourceFileId, userInfo.UserId))
+                {
+                    logger.Debug("Перемещение каталога: {0} в каталог:{1} , пользователя: {2}", sourceFileId, outputDirectoryId, userEmail);
+                    CopyDirectory(sourceFileId, outputDirectoryId, userInfo.UserId);
+                }
+                if (isDirectory == 0 && FileModel.Instance.ExistById(sourceFileId, userInfo.UserId))
+                {
+                    logger.Debug("Перемещение файла: {0} в каталог:{1} , пользователя: {2}", sourceFileId, outputDirectoryId, userEmail);
+                    CopyFile(sourceFileId, outputDirectoryId, userInfo.UserId);
+                }
+            }
+            else
+                throw new Exception("ParentDirectoryNotExist");
+        }
+
+
+        //переименование файла/диретории
+        public void Rename(int fileId, string newName, int isDirectory, string userEmail, string userPass)
+        {
+            User userInfo = UserModel.Instance.GetUser(userEmail, userPass);
+
+            if (fileId == 0)
+                throw new Exception("FileNotSelected");
+
+            if (newName.Length == 0)
+                throw new Exception("EmptyNewName");
+
+            if (isDirectory == 1 && DirectoryModel.Instance.ExistById(fileId, userInfo.UserId))
+            {
+                Directory directoryInfo = DirectoryModel.Instance.GetDirectoryById(fileId, userInfo.UserId);
+                if (DirectoryModel.Instance.ExistByName(newName, directoryInfo.ParentId, userInfo.UserId))
+                    throw new Exception("NameIsBusy");
+
+                logger.Debug("Переименование каталога: {0} на :{1} , пользователя: {2}", fileId, newName, userEmail);
+                DirectoryModel.Instance.Rename(fileId, newName, userInfo.UserId);
+            }
+            if (isDirectory == 0 && FileModel.Instance.ExistById(fileId, userInfo.UserId))
+            {
+                File fileInfo = FileModel.Instance.GetFileById(fileId, userInfo.UserId);
+                if (FileModel.Instance.ExistByName(newName, fileInfo.DirectoryId, userInfo.UserId))
+                    throw new Exception("NameIsBusy");
+
+                logger.Debug("Переименование файла: {0} на:{1} , пользователя: {2}", fileId, newName, userEmail);
+                FileModel.Instance.Rename(fileId, newName, userInfo.UserId);
+            }
+        }
+
+
+        // копирует диреторию
+        public void CopyDirectory(int sourceDirectoryId, int outputDirectoryId, int userId)
+        {
+            List<File> directoryFiles = FileModel.Instance.GetDirectoryFiles(sourceDirectoryId, userId);
+            List<Directory> subDirectories = DirectoryModel.Instance.GetChildDirectories(sourceDirectoryId, userId);
+
+            outputDirectoryId = DirectoryModel.Instance.Copy(sourceDirectoryId, outputDirectoryId, userId);
+
+            foreach (File directoryFile in directoryFiles)
+                CopyFile(directoryFile.FileId, outputDirectoryId, userId);
+
+            foreach (Directory subDirectory in subDirectories)
+                CopyDirectory(subDirectory.DirectoryId, outputDirectoryId, userId);
+        }
+
+
+        // копирует файл
+        public void CopyFile(int fileId, int outputDirectoryId, int userId)
+        {
+            File fileInfo = FileModel.Instance.GetFileById(fileId, userId);
+            string fileSavePath= GetFileSavePath();
+            System.IO.File.Copy(StorageFolder + fileInfo.PhysicalPath, fileSavePath);
+            FileModel.Instance.CreateFile(userId, fileInfo.Name, fileSavePath.Replace(StorageFolder, ""), outputDirectoryId, false, fileInfo.Size);
         }
 
 
