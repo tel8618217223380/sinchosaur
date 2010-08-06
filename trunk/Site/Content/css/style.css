@@ -130,4 +130,4 @@ blockquote cite {display:block; color:#000000; font-weight:bold; padding:3px; ma
 .form .text:hover{background:#FFFFFF; border: solid 1px #000000;}
 .form .text:focus {background:#F4EFE3; border: solid 1px #000000;}
 .form .button { display:block; border:solid 1px #CBBA96; background:#EAE3D5; padding:5px 20px 5px 20px; margin:15px 0px 10px 0px;}
-.form .button:hover { display:block; border:solid 1px #CBBA96; background: #EDECD1; padding:5px 10px 5px 10px; margin:10px 0px 10px 0px;}
+.form .button:hover { display:block; border:solid 1px #CBBA96; background: #EDECD1; padding:5px 20px 5px 20px; margin:15px 0px 10px 0px;}
