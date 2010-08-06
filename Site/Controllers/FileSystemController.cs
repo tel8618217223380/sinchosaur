@@ -104,8 +104,38 @@ namespace Site.Controllers
 
 
         [Authorize]
-        public ActionResult UploadFile(string fileId = "/", string newPath = "/")
+        public ActionResult Upload( int outDirectoryId)
         {
+            string userEmail = (string)Session["email"];
+            string userPassword = (string)Session["password"];
+
+            if (userEmail == null || userPassword == null)
+                return RedirectToRoute("Logout");
+
+            if (Request.HttpMethod == "POST")
+            {
+                try
+                {
+                    HttpPostedFileBase file = HttpContext.Request.Files["fileData"];
+                    
+
+                    FileSystemClient serverFileSystem = new FileSystemClient();
+                    MyFile directoryInfo = serverFileSystem.GetDirectory(outDirectoryId, userEmail, userPassword);
+                    serverFileSystem.UploadFile(new MyFile {SizeSpecified = true, Name = file.FileName, Size = file.ContentLength, Path = directoryInfo.Path }, userEmail, userPassword, file.InputStream);
+                    return Json(new { error = "", success = true, id = outDirectoryId });
+                }
+                catch (Exception ex)
+                {
+                    switch (ex.Message)
+                    {
+                        case "DirectoryNotExist":
+                            return Json(new { error = "Выберете каталог назначения!", success = false });
+                        default:
+                            return Json(new { error = ex.Message, success = false });
+                    }
+                }
+            }
+
             return View();
         }
 

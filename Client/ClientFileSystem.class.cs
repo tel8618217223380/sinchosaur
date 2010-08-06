@@ -95,6 +95,7 @@ namespace Client
             {
                 try
                 {
+                    File.SetAttributes(file, FileAttributes.Normal);
                     FileStream fs = File.OpenRead(file);
                     fs.Close();
                 }
@@ -105,7 +106,6 @@ namespace Client
                 
                 FileInfo fileInfo = new FileInfo(file);
                 string pathFile = fileInfo.DirectoryName.Replace(StorageFolder, "");
-                if (pathFile == "") pathFile = "\\";
                 files.Add(new MyFile(){
                     Name = fileInfo.Name,
                     Path = pathFile,

@@ -185,7 +185,7 @@ function tb_show(caption, url, imageGroup) {//function called when the user clic
 			var params = tb_parseQuery( queryString );
 
 			TB_WIDTH = (params['width']*1) + 30 || 400; //defaults to 630 if no paramaters were added to URL
-			TB_HEIGHT = (params['height']*1) + 40 || 300; //defaults to 440 if no paramaters were added to URL
+			TB_HEIGHT = (params['height']*1) + 40 || 340; //defaults to 440 if no paramaters were added to URL
 			ajaxContentW = TB_WIDTH - 30;
 			ajaxContentH = TB_HEIGHT - 45;
 			

@@ -11,31 +11,18 @@
             <table cellspacing="0" cellpadding="0">
                 <tbody>
                     <tr>
-                        <th scope="col">Действие</th>
+                        <th scope="col" style="width:70px">Действие</th>
                         <th scope="col">Файл</th>
-                        <th scope="col">Каталог</th>
-                        <th scope="col">Размер</th>
-                        <th scope="col">Изменен</th>
+                        <th scope="col" style="width:80px">Размер</th>
+                        <th scope="col" style="width:135px">Синхронизирован</th>
                     </tr>
                     <% foreach (EventInfo userEvent in (EventInfo[])ViewData["userEvents"])
                        { %>
                     <tr>
-                        <td>
-                            <%=userEvent.Description%>
-                        </td>
-                        <td>
-                            <%=Html.RouteLink(userEvent.FileName, "DownloadFile", new { id = userEvent.FileId, name = userEvent.FileName })%>
-                        </td>
-                         <td>
-                            <%=userEvent.Path%>
-                        </td>
-                        <td>
-                            <%=userEvent.FileSize / 1024%>
-                            КБайт
-                        </td>
-                        <td>
-                            <%=userEvent.Created%>
-                        </td>
+                        <td><%=userEvent.Description%></td>
+                        <td><%=Html.RouteLink(MyHelpers.ShowFileName(userEvent.FileName, 25), "DownloadFile", new { id = userEvent.FileId, name = userEvent.FileName }, new { title =userEvent.Path + "\\" + userEvent.FileName })%></td>
+                        <td><%=MyHelpers.ShowSize(userEvent.FileSize)%></td>
+                        <td><%=userEvent.Created%></td>
                     </tr>
                     <%} %>
                 </tbody>
