@@ -9,21 +9,21 @@
                 alert(object.error);
             }
             else {
-                location.href = '<%=Url.RouteUrl("ShowFolder",new{id=ViewData["directoryId"]})%>';
+                location.href = '<%=Url.RouteUrl("ShowFolder")%>/' + $("#outdirectoryid").val();
             }
         }
     </script>
-    <div id="left">
+    <div id="left" style="height:95%">
         <div class="post_small">
             <div class="posttop">
             </div>
             <div class="postitem">
                 <h2>Новая диретория</h2>
-
+                <% Html.RenderPartial("SelectFolder");%>
                 <% using (Ajax.BeginForm(new AjaxOptions { OnComplete = "ajaxOnComplete" }))
                    { %>
                 <div class="form">
-                    <%=Html.Hidden("directoryId", ViewData["directoryId"])%>
+                    <%=Html.Hidden("directoryId", ViewData["directoryId"], new { id = "outdirectoryid" })%>
                     <label for="email">Название</label>
                     <%=Html.TextBox("name")%>
                     <div class="clear2">

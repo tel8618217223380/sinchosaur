@@ -20,7 +20,7 @@ namespace Client
 
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        //--------------------------------------------------------------------------------
+        
         public MainForm()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace Client
 
             logger.Debug("Старт приложения");
         }
-        //--------------------------------------------------------------------------------
+        
 
         //инициализация класса синхронизации
         private void InitializeSinchronize()
@@ -40,8 +40,7 @@ namespace Client
             sinchronize.OnProcessFileInfo += sinchronize_OnProcessFileInfo;
             sinchronize.OnCreateFileListForSincronization += sinchronize_OnCreateChangedFilesList;
         }
-        //--------------------------------------------------------------------------------
-
+        
        
         //получен список файлов для синхронизации
         void sinchronize_OnCreateChangedFilesList(Sinchronize sender, List<MyFile> changedFileList)
@@ -59,8 +58,7 @@ namespace Client
             notifyIcon.ShowBalloonTip(200, "Sinchosaur", changedFileList.Count + " файлов будут синхронизированы", ToolTipIcon.Info);
             logger.Debug("Сформирован список из {0} файлов для синхронизации", changedFileList.Count);
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         //обработан файл
         void sinchronize_OnProcessFileInfo(Sinchronize sender, ProgressFileInfo progressFileInfo)
@@ -83,12 +81,9 @@ namespace Client
                     action = "Получение с сервера";
                     break;
             }
-            notifyIcon.ShowBalloonTip(200, "Sinchosaur", action + " " + progressFileInfo.File.Name, ToolTipIcon.Info);
             logger.Debug(action + " " + progressFileInfo.File.Name);
-            
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         //Изменен состояние синхронизации
         void sinchronize_OnChangeSinchronizeStatus(Sinchronize sender, SinchronizeStatus status)
@@ -102,7 +97,7 @@ namespace Client
             switch (status)
             {
                 case SinchronizeStatus.SinchronizeStarted: // начало синхронизации
-                    notifyIcon.ShowBalloonTip(200, "Sinchosaur", "Синхронизация начата", ToolTipIcon.Info);
+                    notifyIcon.Text = "Sinchosaur\nИдет синхронизация";
                     progressForm =new ProgressForm(sender.SinchronizeFileProgressInfo) ;
                     notifyIcon.Icon = Resurces.package_update;
                     timerSinchronize.Enabled = false;
@@ -110,9 +105,7 @@ namespace Client
                     break;
 
                 case SinchronizeStatus.SinchronizeFinished: // если синхронизация закончена
-                    notifyIcon.ShowBalloonTip(200, "Sinchosaur", "Синхронизация завершена", ToolTipIcon.Info);
                     progressForm.Dispose();
-
                     notifyIcon.Icon = Resurces.package_ok;
                     timerSinchronize.Enabled = true;
                     logger.Info("Синхронизация завершена");
@@ -132,6 +125,7 @@ namespace Client
                     timerSinchronize.Enabled = true;
                     logger.Trace("Все файлы синхронизированы");
                     break;
+
                 case SinchronizeStatus.GetServerFilesList: // Получение списка файлов на сервере
                     timerSinchronize.Enabled = false;
                     progressForm.Dispose();
@@ -140,23 +134,17 @@ namespace Client
                 case SinchronizeStatus.UserNotExist: // Такой пользователь не существует на сервере
                     timerSinchronize.Enabled = false;
                     notifyIcon.Icon = Resurces.package_bad;
-
                     notifyIcon.ShowBalloonTip(200, "Sinchosaur", "Такой пользователь не существует", ToolTipIcon.Info);
-
                     logger.Warn("Такой пользователь не существует");
-                    //MessageBox.Show("Пользователя с таким логином/паролем на сервере нет. Измените настройки","ошибка...");
-
+                    
                     SettingForm settingsForm = new SettingForm();
                     settingsForm.Deactivate += new EventHandler(settingsForm_Deactivate);
                     settingsForm.Activate();
                     settingsForm.Show();
-
                     break;
-                
              }
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         //заполняет на форме список файлов
         private void FillListView(List<MyFile> files)
@@ -174,8 +162,7 @@ namespace Client
                 i++;
             }
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         //кнопка настоек
         private void buttonSettings_Click(object sender, EventArgs e)
@@ -184,8 +171,7 @@ namespace Client
             settingsForm.Activate();
             settingsForm.Show();
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         //обработчик ресайза формы
         private void MainForm_Resize(object sender, EventArgs e)
@@ -197,8 +183,7 @@ namespace Client
                 Hide();
             }
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         //синхронизация файлов
         private void timerSinchronize_Tick(object sender, EventArgs e)
@@ -208,11 +193,9 @@ namespace Client
             thread.IsBackground=true;
             thread.Start();
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         //клик по иконке в трее
-        //--------------------------------------------------------------------------------
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
             Process.Start(Properties.Settings.Default.StorageFolder);
@@ -220,23 +203,23 @@ namespace Client
 
         #region  Context menu
 
-        //--------------------------------------------------------------------------------
+        
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             logger.Info("Завершение приложения");
             Application.Exit();
-        }//--------------------------------------------------------------------------------
+        }
 
 
-        //--------------------------------------------------------------------------------
+        
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Process.Start(Properties.Settings.Default.StorageFolder);
         }
-        //--------------------------------------------------------------------------------
+        
 
 
-        //--------------------------------------------------------------------------------
+        
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             SettingForm settingsForm = new SettingForm();
@@ -251,7 +234,7 @@ namespace Client
         {
             timerSinchronize.Enabled = true;
         }
-        //--------------------------------------------------------------------------------
+        
         #endregion
 
         private void buttonRefresh_Click(object sender, EventArgs e)
@@ -280,6 +263,6 @@ namespace Client
             AboutForm aboutForm = new AboutForm();
             aboutForm.Show();
         }
-        //--------------------------------------------------------------------------------
+        
     }
 }

@@ -12,7 +12,9 @@
         }
     }
 </script>
-    <div id="left">
+
+    <div id="left" style="height:95%">
+    
         <div class="post_small">
             <div class="posttop"></div>
             <div id="ajaxrespons"></div>

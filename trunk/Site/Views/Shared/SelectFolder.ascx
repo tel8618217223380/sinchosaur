@@ -10,13 +10,14 @@
             $("#tree").dynatree({
                 title: "Главная",
                 rootVisible: true,
-                minExpandLevel: 0, // 1: root node is not collapsible
+                minExpandLevel: 1, // 1: root node is not collapsible
                 persist: true,
                 checkbox: false,
                 selectMode: 3,
                 onPostInit: function (isReloading, isError) {
                     this.reactivate();
                 },
+                autoCollapse: true,
                 fx: { height: "toggle", duration: 200 },
                 initAjax: { 
                     url: "<%=Url.RouteUrl("GetTreeNode")%>",
@@ -46,5 +47,5 @@
         });
 
     </script>
-    <div id="tree">Loading...</div>
+    <div id="tree" style="padding-bottom:12px">Loading...</div>
 

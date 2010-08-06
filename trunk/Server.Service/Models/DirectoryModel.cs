@@ -70,7 +70,7 @@ namespace Server.Service.Models
         //возвращает директорию
         public Directory GetDirectory(string path, int userId)
         {
-            if (path == "\\")
+            if (path == "\\" || path == "")
                 return GetRootDirectory(userId);
             Directory rootDirectory = GetRootDirectory(userId);
             int parentId = rootDirectory.DirectoryId;

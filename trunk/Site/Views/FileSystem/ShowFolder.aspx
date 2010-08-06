@@ -33,8 +33,8 @@
     <div id="tab">
         <div id="tabhead">
             <ul>
-                <li><%=Html.RouteLink("Новая диретория", "CreateDirectory", new { directoryId = ViewData["currenId"] }, new { @class = "thickbox" })%> </li>
-                <li><a href="#">Загрузить файл</a></li>
+                <li><%=Html.RouteLink("Добавить диреторию", "CreateDirectory", new { directoryId = ViewData["currenId"] }, new { @class = "thickbox" })%> </li>
+                <li><%=Html.RouteLink("Загрузить файл", "Upload", null, new { @class = "thickbox" })%> </li>
             </ul>
         </div>
         <div id="tabcontent">
@@ -42,9 +42,9 @@
             <table cellspacing="0" cellpadding="0">
                 <tbody>
                     <tr>
-                        <th scope="col">Название</th>
-                        <th scope="col">Размер</th>
-                        <th scope="col">Синхронизирован</th>
+                        <th scope="col" >Название</th>
+                        <th scope="col" style="width:80px">Размер</th>
+                        <th scope="col" style="width:135px">Синхронизирован</th>
                     </tr>
                     <% 
                     if ( (int)ViewData["parentId"] > 1)
@@ -58,7 +58,7 @@
                         <tr align="left">
                             <td colspan="3">
                                 <div id="file_<%=file.FileId%>">
-                                    <%=Html.RouteLink(file.Name, "ShowFolder", new { id = file.FileId })%>
+                                    <%=Html.RouteLink(MyHelpers.ShowFileName(file.Name, 70), "ShowFolder", new { id = file.FileId }, new { title = file.Name })%>
                                 </div>
                                 <script type="text/javascript">addContextMenu(<%=file.FileId%>,1) </script>
                             </td>
@@ -67,11 +67,11 @@
                             <tr>
                                 <td>
                                     <div id="file_<%=file.FileId%>">
-                                        <%=Html.RouteLink(file.Name, "DownloadFile", new { name = file.Name, id = file.FileId })%>
+                                        <%=Html.RouteLink(MyHelpers.ShowFileName(file.Name, 35), "DownloadFile", new { name = file.Name, id = file.FileId }, new { title = file.Name })%>
                                     </div>
                                      <script type="text/javascript">addContextMenu(<%=file.FileId%>,0) </script>
                                 </td>
-                                <td><%=file.Size/1024%> КБайт</td>
+                                <td><%=MyHelpers.ShowSize(file.Size)%></td>
                                 <td><%=file.LastWriteTime%></td>
                             </tr>
                         <%} %>

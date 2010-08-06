@@ -92,10 +92,7 @@ namespace Client
                         Console.Write(ex.ToString());
                         break;
                 }
-
-                
-            }
-                        
+            }           
         }
         
 
