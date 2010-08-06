@@ -34,7 +34,7 @@
         <div id="tabhead">
             <ul>
                 <li><%=Html.RouteLink("Добавить диреторию", "CreateDirectory", new { directoryId = ViewData["currenId"] }, new { @class = "thickbox" })%> </li>
-                <li><%=Html.RouteLink("Загрузить файл", "Upload", null, new { @class = "thickbox" })%> </li>
+                <li><%=Html.RouteLink("Загрузить файл", "Upload")%> </li>
             </ul>
         </div>
         <div id="tabcontent">

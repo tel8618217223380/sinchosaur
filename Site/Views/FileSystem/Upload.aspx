@@ -1,4 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Layouts/Blank.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Layouts/Frontend.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
+    Загузить файлы
+</asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="/content/js/uploadify/swfobject.js" type="text/javascript"></script>
@@ -19,7 +22,7 @@
             'queueID': 'fileQueue',
             'displayData': 'speed',
             'auto': true,
-            'multi': false,
+            'multi': true,
             'sizeLimit': 100000000,
             'onSelectOnce': function () {
                 $("#uploadify").uploadifySettings('scriptData', { outDirectoryId: $("#outdirectoryid").val() });
@@ -30,7 +33,7 @@
                     alert(object.error);
                 }
                 else {
-                    location.href = '<%=Url.RouteUrl("ShowFolder")%>/' + object.id;
+                   // location.href = '<%=Url.RouteUrl("ShowFolder")%>/' + object.id;
                 }
 
             }
@@ -41,11 +44,11 @@
             location.href = '<%=Url.RouteUrl("ShowFolder")%>/' + $("#outdirectoryid").val();
         }
     </script>
-    <div id="left" style="height:95%">
-        <div class="post_small">
+    <div id="left">
+        <div class="post">
             <div class="posttop"></div>
             <div class="postitem">
-                <h2>Загрузить файл</h2>
+                <h2>Загрузить файлы</h2>
                 <% Html.RenderPartial("SelectFolder");%>
                 <div class="form">
                     <%=Html.Hidden("outDirectoryId",null, new { id = "outdirectoryid" })%>
