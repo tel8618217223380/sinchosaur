@@ -86,6 +86,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resurces.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service References\AccountServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -175,6 +180,19 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Service References\AccountServiceReference\Client.AccountServiceReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountServiceReference\Server.Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountServiceReference\service.wsdl" />
+    <None Include="Service References\AccountServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference\Client.ServiceReference.DynaTreeNode.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -246,6 +264,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccountServiceReference\" />
     <WCFMetadataStorage Include="Service References\ServiceReference\" />
     <WCFMetadataStorage Include="Service References\UserEventsServiceReference\" />
   </ItemGroup>
@@ -269,6 +288,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\UserEventsServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

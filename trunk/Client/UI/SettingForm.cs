@@ -25,12 +25,12 @@ namespace Client
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.ServerRemoteAddress=textBoxServerIP.Text ;
             CreateNewStorageFolder();
-                
+            Properties.Settings.Default.ServerRemoteAddress=textBoxServerIP.Text ;
             Properties.Settings.Default.UserLogin = textBoxLogin.Text;
             Properties.Settings.Default.UserPasswd = textBoxPasswd.Text;
             Properties.Settings.Default.Save();
+            
             this.Close();
         }
 

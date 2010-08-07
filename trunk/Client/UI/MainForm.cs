@@ -138,10 +138,23 @@ namespace Client
                     logger.Warn("Такой пользователь не существует");
                     
                     SettingForm settingsForm = new SettingForm();
-                    settingsForm.Deactivate += new EventHandler(settingsForm_Deactivate);
+                    settingsForm.Disposed += new EventHandler(settingsForm_Deactivate);
                     settingsForm.Activate();
                     settingsForm.Show();
                     break;
+                case SinchronizeStatus.ServerUrlNotCorrect: // Такой пользователь не существует на сервере
+                    timerSinchronize.Enabled = false;
+                    notifyIcon.Icon = Resurces.package_bad;
+                    notifyIcon.ShowBalloonTip(200, "Sinchosaur", "Указан не корректный ip-адрес сервера", ToolTipIcon.Info);
+                    logger.Warn("Указан не корректный ip-адрес сервера");
+
+                    settingsForm = new SettingForm();
+                    settingsForm.Disposed += new EventHandler(settingsForm_Deactivate);
+                    settingsForm.Activate();
+                    settingsForm.Show();
+                    break;
+                
+
              }
         }
         
@@ -164,15 +177,7 @@ namespace Client
         }
         
 
-        //кнопка настоек
-        private void buttonSettings_Click(object sender, EventArgs e)
-        {
-            SettingForm settingsForm = new SettingForm();
-            settingsForm.Activate();
-            settingsForm.Show();
-        }
         
-
         //обработчик ресайза формы
         private void MainForm_Resize(object sender, EventArgs e)
         {
@@ -222,12 +227,13 @@ namespace Client
         
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            SettingForm settingsForm = new SettingForm();
-            settingsForm.Deactivate += new EventHandler(settingsForm_Deactivate);
-            settingsForm.Activate();
-            settingsForm.Show();
             // отлючение синхронизаци
             timerSinchronize.Enabled = false;
+            SettingForm settingsForm = new SettingForm();
+            settingsForm.Disposed += new EventHandler(settingsForm_Deactivate);
+            settingsForm.Activate();
+            settingsForm.Show();
+            
         }
 
         void settingsForm_Deactivate(object sender, EventArgs e)

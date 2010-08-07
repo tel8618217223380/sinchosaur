@@ -30,8 +30,8 @@ namespace Server.Service.Models
         {
             DatabaseClassesDataContext db = new DatabaseClassesDataContext();
             var result = from u in db.Users
-                         where u.Email == Email && u.Passwd == Passwd
-                         select u;
+                            where u.Email == Email && u.Passwd == Passwd
+                            select u;
 
             if (result.Count<User>() > 0)
                 return true;

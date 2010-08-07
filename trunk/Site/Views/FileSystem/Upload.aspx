@@ -18,7 +18,6 @@
             'script': '<%=Url.RouteUrl("Upload")%>',
             'scriptData': { 'outDirectoryId': 1, ASPSESSID: ASPSESSID, AUTHID: auth },
             'cancelImg': '/content/js/uploadify/cancel.png',
-            'folder': '/App_Data',
             'queueID': 'fileQueue',
             'displayData': 'speed',
             'auto': true,
