@@ -10,7 +10,7 @@ namespace Client
 {
     public class ServerFileSystem
     {
-        public static readonly ServerFileSystem Instance = new ServerFileSystem();
+        public static ServerFileSystem Instance = new ServerFileSystem();
         private FileSystemClient serverFileSystem ;
         static ServerFileSystem(){}
 
@@ -21,6 +21,12 @@ namespace Client
             string ServerRemoteAddress = "http://" + Properties.Settings.Default.ServerRemoteAddress + "/FileSystem/";
             serverFileSystem = new FileSystemClient("BasicHttpBinding_IFileSystem", new EndpointAddress(ServerRemoteAddress));
         }
+
+        public void ReInitial()
+        {
+            ServerFileSystem.Instance = new ServerFileSystem();
+        }
+
         
 
         //возвращает список файлов на сервере

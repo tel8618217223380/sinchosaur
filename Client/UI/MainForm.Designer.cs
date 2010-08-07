@@ -36,7 +36,6 @@
             this.Folder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonSettings = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.trayContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,17 +92,6 @@
             // 
             this.Status.Text = "Статус";
             this.Status.Width = 90;
-            // 
-            // buttonSettings
-            // 
-            this.buttonSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSettings.Location = new System.Drawing.Point(521, 94);
-            this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Size = new System.Drawing.Size(119, 31);
-            this.buttonSettings.TabIndex = 4;
-            this.buttonSettings.Text = "Настройки";
-            this.buttonSettings.UseVisualStyleBackColor = true;
-            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
             // notifyIcon
             // 
@@ -182,7 +170,6 @@
             this.ClientSize = new System.Drawing.Size(652, 349);
             this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.listServerFiles);
-            this.Controls.Add(this.buttonSettings);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(575, 380);
             this.Name = "MainForm";
@@ -202,7 +189,6 @@
         private System.Windows.Forms.ColumnHeader Folder;
         private System.Windows.Forms.ColumnHeader Size;
         private System.Windows.Forms.ColumnHeader Status;
-        private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.Timer timerSinchronize;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;

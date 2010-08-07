@@ -24,7 +24,8 @@ namespace Client
         SinchronizeFinished,
         GetFilesListForSinchronize,
         NoFilesChanges,
-        UserNotExist
+        UserNotExist,
+        ServerUrlNotCorrect
     }
 
     // состояние прогресса синхронизации файла
@@ -53,7 +54,7 @@ namespace Client
         public event CreateFileListForSincronization OnCreateFileListForSincronization;
         // состояние прогресса синхронизации файла
         public ProgressFileInfo SinchronizeFileProgressInfo = new ProgressFileInfo();
-
+        //файлы для синхронизации
         public List<MyFile> filesForSinchronize = new List<MyFile>();
 
         private static Logger logger = LogManager.GetCurrentClassLogger();
@@ -63,6 +64,8 @@ namespace Client
         {
             try
             {
+                ServerFileSystem.Instance.ReInitial();
+
                 GetFilesListForSinchronize();
 
                 if (filesForSinchronize.Count == 0 && OnChangeSinchronizeStatus != null)
@@ -73,12 +76,25 @@ namespace Client
                     ServerFileSystem.Instance.SaveLastSinchronazeFilesList(); // сохранение состояния сервера
                     UpdateLastSinchronizeTime();
                 }
-            }
+            }           
+
             catch (EndpointNotFoundException)
             {
                 if (OnChangeSinchronizeStatus != null)
                     OnChangeSinchronizeStatus(this, SinchronizeStatus.ServerNotAvailable);
             }
+
+            catch (UriFormatException)
+            {
+                if (OnChangeSinchronizeStatus != null)
+                    OnChangeSinchronizeStatus(this, SinchronizeStatus.ServerUrlNotCorrect);
+            }    
+            catch (TypeInitializationException)
+            {
+                if (OnChangeSinchronizeStatus != null)
+                    OnChangeSinchronizeStatus(this, SinchronizeStatus.ServerUrlNotCorrect);
+            }
+
             catch (Exception ex)
             {
                 switch (ex.Message)
@@ -92,7 +108,7 @@ namespace Client
                         Console.Write(ex.ToString());
                         break;
                 }
-            }           
+            }         
         }
         
 
@@ -284,6 +300,13 @@ namespace Client
                 LastWriteTime = file.LastWriteTime,
                 FileId = file.FileId
             };
+        }
+
+
+        //проверяет существование такого пользователя на сервере
+        private bool ExistAccount()
+        {
+            return Account.Exist();
         }
         
     }
