@@ -18,13 +18,14 @@ namespace Client
         
         public ServerFileSystem() 
         {
-            string ServerRemoteAddress = "http://" + Properties.Settings.Default.ServerRemoteAddress + "/FileSystem/";
-            serverFileSystem = new FileSystemClient("BasicHttpBinding_IFileSystem", new EndpointAddress(ServerRemoteAddress));
+            //string ServerRemoteAddress = "http://" + Properties.Settings.Default.ServerRemoteAddress + "/FileSystem/";
+            //serverFileSystem = new FileSystemClient("BasicHttpBinding_IFileSystem", new EndpointAddress(ServerRemoteAddress));
         }
 
-        public void ReInitial()
+        public void Init()
         {
-            ServerFileSystem.Instance = new ServerFileSystem();
+            string ServerRemoteAddress = "http://" + Properties.Settings.Default.ServerRemoteAddress + "/FileSystem/";
+            serverFileSystem = new FileSystemClient("BasicHttpBinding_IFileSystem", new EndpointAddress(ServerRemoteAddress));
         }
 
         
