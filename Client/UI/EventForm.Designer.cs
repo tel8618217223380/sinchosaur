@@ -28,17 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ColumnHeader Created;
+            System.Windows.Forms.ColumnHeader Size;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventForm));
             this.listUserEvents = new System.Windows.Forms.ListView();
             this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Directory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FileSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Created = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FileId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonDownload = new System.Windows.Forms.Button();
             this.backgroundDownloader = new System.ComponentModel.BackgroundWorker();
+            Created = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listUserEvents
@@ -51,8 +53,8 @@
             this.FileName,
             this.Directory,
             this.FileSize,
-            this.Created,
-            this.Size,
+            Created,
+            Size,
             this.FileId});
             this.listUserEvents.FullRowSelect = true;
             this.listUserEvents.GridLines = true;
@@ -86,12 +88,12 @@
             // 
             // Created
             // 
-            this.Created.Text = "Синхронизирован";
-            this.Created.Width = 111;
+            Created.Text = "Синхронизирован";
+            Created.Width = 111;
             // 
             // Size
             // 
-            this.Size.Width = 0;
+            Size.Width = 0;
             // 
             // FileId
             // 
@@ -136,9 +138,7 @@
         private System.Windows.Forms.ColumnHeader Directory;
         private System.Windows.Forms.ColumnHeader FileSize;
         private System.Windows.Forms.Button buttonDownload;
-        private System.Windows.Forms.ColumnHeader Created;
         private System.Windows.Forms.ColumnHeader FileId;
-        private System.Windows.Forms.ColumnHeader Size;
         private System.ComponentModel.BackgroundWorker backgroundDownloader;
         private System.Windows.Forms.ColumnHeader Description;
 

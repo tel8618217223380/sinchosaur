@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ColumnHeader Number;
+            System.Windows.Forms.ColumnHeader Size;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.listServerFiles = new System.Windows.Forms.ListView();
             this.FileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Folder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.trayContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -47,6 +47,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.buttonRefresh = new System.Windows.Forms.Button();
             Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.trayContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             Number,
             this.FileName,
             this.Folder,
-            this.Size,
+            Size,
             this.Status});
             this.listServerFiles.Location = new System.Drawing.Point(12, 12);
             this.listServerFiles.Name = "listServerFiles";
@@ -85,8 +86,8 @@
             // 
             // Size
             // 
-            this.Size.Text = "Размер";
-            this.Size.Width = 90;
+            Size.Text = "Размер";
+            Size.Width = 90;
             // 
             // Status
             // 
@@ -187,7 +188,6 @@
         private System.Windows.Forms.ListView listServerFiles;
         private System.Windows.Forms.ColumnHeader FileName;
         private System.Windows.Forms.ColumnHeader Folder;
-        private System.Windows.Forms.ColumnHeader Size;
         private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.Timer timerSinchronize;

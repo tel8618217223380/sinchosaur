@@ -64,7 +64,7 @@ namespace Client
         {
             try
             {
-                ServerFileSystem.Instance.ReInitial();
+                ServerFileSystem.Instance.Init();
 
                 GetFilesListForSinchronize();
 
@@ -89,12 +89,7 @@ namespace Client
                 if (OnChangeSinchronizeStatus != null)
                     OnChangeSinchronizeStatus(this, SinchronizeStatus.ServerUrlNotCorrect);
             }    
-            catch (TypeInitializationException)
-            {
-                if (OnChangeSinchronizeStatus != null)
-                    OnChangeSinchronizeStatus(this, SinchronizeStatus.ServerUrlNotCorrect);
-            }
-
+           
             catch (Exception ex)
             {
                 switch (ex.Message)
