@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Client.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="StorageFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\ClientFolder</Value>
+    </Setting>
+    <Setting Name="LastCheckTime" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2015-02-11</Value>
+    </Setting>
+    <Setting Name="ServerRemoteAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1:8085</Value>
+    </Setting>
+    <Setting Name="UserLogin" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UserPasswd" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

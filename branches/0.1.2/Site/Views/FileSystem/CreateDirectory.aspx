@@ -1,0 +1,37 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Layouts/Blank.Master"
+    Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        function ajaxOnComplete(result) {
+            var object = result.get_response().get_object();
+            if (!object.success) {
+                alert(object.error);
+            }
+            else {
+                location.href = '<%=Url.RouteUrl("ShowFolder")%>/' + $("#outdirectoryid").val();
+            }
+        }
+    </script>
+    <div id="left" style="height:95%">
+        <div class="post_small">
+            <div class="posttop">
+            </div>
+            <div class="postitem">
+                <h2>Новая диретория</h2>
+                <% Html.RenderPartial("SelectFolder");%>
+                <% using (Ajax.BeginForm(new AjaxOptions { OnComplete = "ajaxOnComplete" }))
+                   { %>
+                <div class="form">
+                    <%=Html.Hidden("directoryId", ViewData["directoryId"], new { id = "outdirectoryid" })%>
+                    <label for="email">Название</label>
+                    <%=Html.TextBox("name")%>
+                    <div class="clear2">
+                    </div>
+                    <input class="button" name="Submit" type="submit" value="Создать" />
+                </div>
+                <%} %>
+            </div>
+        </div>
+    </div>
+</asp:Content>
