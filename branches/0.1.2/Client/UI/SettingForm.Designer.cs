@@ -30,140 +30,137 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingForm));
             this.buttonSave = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelServerIp = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonChoiseFolder = new System.Windows.Forms.Button();
             this.textBoxServerIP = new System.Windows.Forms.TextBox();
             this.textBoxPasswd = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelPass = new System.Windows.Forms.Label();
+            this.labelEmail = new System.Windows.Forms.Label();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelDirectory = new System.Windows.Forms.Label();
             this.textBoxStorageFolder = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.buttonChoiseFolder = new System.Windows.Forms.Button();
+            this.checkBoxAutoStart = new System.Windows.Forms.CheckBox();
+            this.labelLang = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxLang = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(90, 157);
+            resources.ApplyResources(this.buttonSave, "buttonSave");
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(96, 28);
-            this.buttonSave.TabIndex = 0;
-            this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // label1
+            // labelServerIp
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "IP сервера :";
+            resources.ApplyResources(this.labelServerIp, "labelServerIp");
+            this.labelServerIp.Name = "labelServerIp";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.buttonChoiseFolder);
             this.groupBox1.Controls.Add(this.textBoxServerIP);
             this.groupBox1.Controls.Add(this.textBoxPasswd);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.labelPass);
+            this.groupBox1.Controls.Add(this.labelEmail);
             this.groupBox1.Controls.Add(this.textBoxLogin);
-            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.labelDirectory);
             this.groupBox1.Controls.Add(this.textBoxStorageFolder);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Controls.Add(this.labelServerIp);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(262, 134);
-            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
+            // 
+            // buttonChoiseFolder
+            // 
+            resources.ApplyResources(this.buttonChoiseFolder, "buttonChoiseFolder");
+            this.buttonChoiseFolder.Name = "buttonChoiseFolder";
+            this.buttonChoiseFolder.UseVisualStyleBackColor = true;
+            this.buttonChoiseFolder.Click += new System.EventHandler(this.buttonChoiseFolder_Click);
             // 
             // textBoxServerIP
             // 
-            this.textBoxServerIP.Location = new System.Drawing.Point(88, 19);
-            this.textBoxServerIP.MaxLength = 30;
+            resources.ApplyResources(this.textBoxServerIP, "textBoxServerIP");
             this.textBoxServerIP.Name = "textBoxServerIP";
-            this.textBoxServerIP.Size = new System.Drawing.Size(163, 20);
-            this.textBoxServerIP.TabIndex = 10;
             // 
             // textBoxPasswd
             // 
-            this.textBoxPasswd.Location = new System.Drawing.Point(89, 99);
-            this.textBoxPasswd.MaxLength = 30;
+            resources.ApplyResources(this.textBoxPasswd, "textBoxPasswd");
             this.textBoxPasswd.Name = "textBoxPasswd";
-            this.textBoxPasswd.PasswordChar = '$';
-            this.textBoxPasswd.Size = new System.Drawing.Size(162, 20);
-            this.textBoxPasswd.TabIndex = 9;
             // 
-            // label7
+            // labelPass
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(35, 102);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Пароль:";
+            resources.ApplyResources(this.labelPass, "labelPass");
+            this.labelPass.Name = "labelPass";
             // 
-            // label4
+            // labelEmail
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 74);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Email:";
+            resources.ApplyResources(this.labelEmail, "labelEmail");
+            this.labelEmail.Name = "labelEmail";
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(88, 71);
-            this.textBoxLogin.MaxLength = 50;
+            resources.ApplyResources(this.textBoxLogin, "textBoxLogin");
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(163, 20);
-            this.textBoxLogin.TabIndex = 5;
             // 
-            // label3
+            // labelDirectory
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 48);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Директория:";
+            resources.ApplyResources(this.labelDirectory, "labelDirectory");
+            this.labelDirectory.Name = "labelDirectory";
             // 
             // textBoxStorageFolder
             // 
             this.textBoxStorageFolder.BackColor = System.Drawing.Color.White;
-            this.textBoxStorageFolder.Location = new System.Drawing.Point(88, 45);
+            resources.ApplyResources(this.textBoxStorageFolder, "textBoxStorageFolder");
             this.textBoxStorageFolder.Name = "textBoxStorageFolder";
             this.textBoxStorageFolder.ReadOnly = true;
-            this.textBoxStorageFolder.Size = new System.Drawing.Size(133, 20);
-            this.textBoxStorageFolder.TabIndex = 3;
             // 
-            // buttonChoiseFolder
+            // checkBoxAutoStart
             // 
-            this.buttonChoiseFolder.Location = new System.Drawing.Point(227, 45);
-            this.buttonChoiseFolder.Name = "buttonChoiseFolder";
-            this.buttonChoiseFolder.Size = new System.Drawing.Size(24, 20);
-            this.buttonChoiseFolder.TabIndex = 11;
-            this.buttonChoiseFolder.Text = "...";
-            this.buttonChoiseFolder.UseVisualStyleBackColor = true;
-            this.buttonChoiseFolder.Click += new System.EventHandler(this.buttonChoiseFolder_Click);
+            resources.ApplyResources(this.checkBoxAutoStart, "checkBoxAutoStart");
+            this.checkBoxAutoStart.Name = "checkBoxAutoStart";
+            this.checkBoxAutoStart.UseVisualStyleBackColor = true;
+            // 
+            // labelLang
+            // 
+            resources.ApplyResources(this.labelLang, "labelLang");
+            this.labelLang.Name = "labelLang";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.comboBoxLang);
+            this.groupBox2.Controls.Add(this.checkBoxAutoStart);
+            this.groupBox2.Controls.Add(this.labelLang);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // comboBoxLang
+            // 
+            this.comboBoxLang.AllowDrop = true;
+            this.comboBoxLang.Items.AddRange(new object[] {
+            resources.GetString("comboBoxLang.Items"),
+            resources.GetString("comboBoxLang.Items1")});
+            resources.ApplyResources(this.comboBoxLang, "comboBoxLang");
+            this.comboBoxLang.Name = "comboBoxLang";
             // 
             // SettingForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 194);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSave);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Настройки";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -171,16 +168,20 @@
         #endregion
 
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelServerIp;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelDirectory;
         private System.Windows.Forms.TextBox textBoxStorageFolder;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.TextBox textBoxLogin;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelPass;
         private System.Windows.Forms.TextBox textBoxPasswd;
         private System.Windows.Forms.TextBox textBoxServerIP;
         private System.Windows.Forms.Button buttonChoiseFolder;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.CheckBox checkBoxAutoStart;
+        private System.Windows.Forms.Label labelLang;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox comboBoxLang;
     }
 }
