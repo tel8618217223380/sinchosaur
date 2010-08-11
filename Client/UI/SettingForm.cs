@@ -13,16 +13,22 @@ namespace Client
         {
             InitializeComponent();
             ShowSettings();
+            Localization.LocalizeForm(this, comboBoxLang.Text);
         }
 
+        
+        //устанавливает настройки в форме
         void ShowSettings()
         {
             textBoxServerIP.Text = Properties.Settings.Default.ServerRemoteAddress;
             textBoxStorageFolder.Text = Properties.Settings.Default.StorageFolder;
             textBoxLogin.Text = Properties.Settings.Default.UserLogin;
             textBoxPasswd.Text = Properties.Settings.Default.UserPasswd;
+            comboBoxLang.Text = Properties.Settings.Default.Locale;
         }
 
+
+        //сохранение настроек
         private void buttonSave_Click(object sender, EventArgs e)
         {
             CreateNewStorageFolder();
@@ -30,10 +36,14 @@ namespace Client
             Properties.Settings.Default.UserLogin = textBoxLogin.Text;
             Properties.Settings.Default.UserPasswd = textBoxPasswd.Text;
             Properties.Settings.Default.Save();
-            
-            this.Close();
+
+            Localization.SetNewCulture(comboBoxLang.Text);
+            Localization.LocalizeForm(this, comboBoxLang.Text);
+
+            this.Dispose();
         }
 
+        
         private bool CreateNewStorageFolder()
         {
             if (textBoxStorageFolder.Text == "")
@@ -51,6 +61,8 @@ namespace Client
             return true;
         }
 
+
+        //окно выбора папки для синхронизации
         private void buttonChoiseFolder_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dlg = new FolderBrowserDialog()

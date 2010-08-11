@@ -117,394 +117,48 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="buttonSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 250</value>
-  </data>
-  <data name="buttonSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 28</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonSave.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="buttonSave.Text" xml:space="preserve">
-    <value>Сохранить</value>
+    <value>Save</value>
   </data>
-  <data name="&gt;&gt;buttonSave.Name" xml:space="preserve">
-    <value>buttonSave</value>
-  </data>
-  <data name="&gt;&gt;buttonSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonSave.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;buttonSave.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelServerIp.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labelServerIp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 22</value>
+    <value>25, 22</value>
   </data>
   <data name="labelServerIp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 13</value>
-  </data>
-  <data name="labelServerIp.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>57, 13</value>
   </data>
   <data name="labelServerIp.Text" xml:space="preserve">
-    <value>IP сервера :</value>
-  </data>
-  <data name="&gt;&gt;labelServerIp.Name" xml:space="preserve">
-    <value>labelServerIp</value>
-  </data>
-  <data name="&gt;&gt;labelServerIp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelServerIp.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;labelServerIp.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="buttonChoiseFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 45</value>
-  </data>
-  <data name="buttonChoiseFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 20</value>
-  </data>
-  <data name="buttonChoiseFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="buttonChoiseFolder.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;buttonChoiseFolder.Name" xml:space="preserve">
-    <value>buttonChoiseFolder</value>
-  </data>
-  <data name="&gt;&gt;buttonChoiseFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonChoiseFolder.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;buttonChoiseFolder.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="textBoxServerIP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 19</value>
-  </data>
-  <data name="textBoxServerIP.MaxLength" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="textBoxServerIP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 20</value>
-  </data>
-  <data name="textBoxServerIP.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;textBoxServerIP.Name" xml:space="preserve">
-    <value>textBoxServerIP</value>
-  </data>
-  <data name="&gt;&gt;textBoxServerIP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxServerIP.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;textBoxServerIP.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="textBoxPasswd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 99</value>
-  </data>
-  <data name="textBoxPasswd.MaxLength" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="textBoxPasswd.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
-    <value>$</value>
-  </data>
-  <data name="textBoxPasswd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 20</value>
-  </data>
-  <data name="textBoxPasswd.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;textBoxPasswd.Name" xml:space="preserve">
-    <value>textBoxPasswd</value>
-  </data>
-  <data name="&gt;&gt;textBoxPasswd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxPasswd.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;textBoxPasswd.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelPass.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelPass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 102</value>
+    <value>Server IP :</value>
   </data>
   <data name="labelPass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
-  </data>
-  <data name="labelPass.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>56, 13</value>
   </data>
   <data name="labelPass.Text" xml:space="preserve">
-    <value>Пароль:</value>
-  </data>
-  <data name="&gt;&gt;labelPass.Name" xml:space="preserve">
-    <value>labelPass</value>
-  </data>
-  <data name="&gt;&gt;labelPass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelPass.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;labelPass.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="labelEmail.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelEmail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 74</value>
-  </data>
-  <data name="labelEmail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
-  </data>
-  <data name="labelEmail.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="labelEmail.Text" xml:space="preserve">
-    <value>Email:</value>
-  </data>
-  <data name="&gt;&gt;labelEmail.Name" xml:space="preserve">
-    <value>labelEmail</value>
-  </data>
-  <data name="&gt;&gt;labelEmail.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelEmail.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;labelEmail.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="textBoxLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 71</value>
-  </data>
-  <data name="textBoxLogin.MaxLength" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="textBoxLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 20</value>
-  </data>
-  <data name="textBoxLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;textBoxLogin.Name" xml:space="preserve">
-    <value>textBoxLogin</value>
-  </data>
-  <data name="&gt;&gt;textBoxLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxLogin.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;textBoxLogin.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="labelDirectory.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>Password:</value>
   </data>
   <data name="labelDirectory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 48</value>
+    <value>30, 48</value>
   </data>
   <data name="labelDirectory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 13</value>
-  </data>
-  <data name="labelDirectory.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>52, 13</value>
   </data>
   <data name="labelDirectory.Text" xml:space="preserve">
-    <value>Директория:</value>
-  </data>
-  <data name="&gt;&gt;labelDirectory.Name" xml:space="preserve">
-    <value>labelDirectory</value>
-  </data>
-  <data name="&gt;&gt;labelDirectory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelDirectory.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;labelDirectory.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="textBoxStorageFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 45</value>
-  </data>
-  <data name="textBoxStorageFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 20</value>
-  </data>
-  <data name="textBoxStorageFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;textBoxStorageFolder.Name" xml:space="preserve">
-    <value>textBoxStorageFolder</value>
-  </data>
-  <data name="&gt;&gt;textBoxStorageFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxStorageFolder.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;textBoxStorageFolder.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>262, 135</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="checkBoxAutoStart.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxAutoStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 52</value>
+    <value>Directory:</value>
   </data>
   <data name="checkBoxAutoStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 17</value>
-  </data>
-  <data name="checkBoxAutoStart.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>117, 17</value>
   </data>
   <data name="checkBoxAutoStart.Text" xml:space="preserve">
-    <value>Запуск вместе с Windows</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoStart.Name" xml:space="preserve">
-    <value>checkBoxAutoStart</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoStart.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoStart.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labelLang.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>Start with Windows</value>
   </data>
   <data name="labelLang.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 19</value>
+    <value>19, 19</value>
   </data>
   <data name="labelLang.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 13</value>
-  </data>
-  <data name="labelLang.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>58, 13</value>
   </data>
   <data name="labelLang.Text" xml:space="preserve">
-    <value>Язык:</value>
-  </data>
-  <data name="&gt;&gt;labelLang.Name" xml:space="preserve">
-    <value>labelLang</value>
-  </data>
-  <data name="&gt;&gt;labelLang.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelLang.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;labelLang.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="comboBoxLang.Items" xml:space="preserve">
-    <value>ru-RU</value>
-  </data>
-  <data name="comboBoxLang.Items1" xml:space="preserve">
-    <value>en-US</value>
-  </data>
-  <data name="comboBoxLang.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 20</value>
-  </data>
-  <data name="comboBoxLang.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="comboBoxLang.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLang.Name" xml:space="preserve">
-    <value>comboBoxLang</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLang.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLang.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLang.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 160</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>262, 84</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>289, 295</value>
+    <value>Language:</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1540,23 +1194,7 @@
         /////////////////////////////////////////////////////////////////////////////w==
 </value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
-  <data name="&gt;&gt;folderBrowserDialog.Name" xml:space="preserve">
-    <value>folderBrowserDialog</value>
-  </data>
-  <data name="&gt;&gt;folderBrowserDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>SettingForm</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Settings</value>
   </data>
 </root>

@@ -17,5 +17,8 @@
     <Setting Name="UserPasswd" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Locale" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ru-RU</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

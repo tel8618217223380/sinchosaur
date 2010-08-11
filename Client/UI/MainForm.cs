@@ -24,11 +24,23 @@ namespace Client
         public MainForm()
         {
             InitializeComponent();
+
+            // установка культуры
+            Localization.Init();
+            LocalizateForm();
+
             InitializeSinchronize();
-            notifyIcon.Text = "Sinchosaur\nПодключение к серверу";
+            notifyIcon.Text = "Sinchosaur\n" + Localization.GetFormCultureString(this, "ConnectToServer");
             this.ShowInTaskbar = false;
 
             logger.Debug("Старт приложения");
+            
+        }
+
+        // локализация формы
+        public void LocalizateForm()
+        {
+            Localization.LocalizeForm(this, Localization.GetPropertiesCulture());
         }
         
 
@@ -55,7 +67,7 @@ namespace Client
             }
 
             FillListView(changedFileList);
-            notifyIcon.ShowBalloonTip(200, "Sinchosaur", changedFileList.Count + " файлов будут синхронизированы", ToolTipIcon.Info);
+            notifyIcon.ShowBalloonTip(200, "Sinchosaur", changedFileList.Count + Localization.GetFormCultureString(this, "CountFilesForSynch"), ToolTipIcon.Info);
             logger.Debug("Сформирован список из {0} файлов для синхронизации", changedFileList.Count);
         }
         
@@ -97,7 +109,7 @@ namespace Client
             switch (status)
             {
                 case SinchronizeStatus.SinchronizeStarted: // начало синхронизации
-                    notifyIcon.Text = "Sinchosaur\nИдет синхронизация";
+                    notifyIcon.Text = "Sinchosaur\n" + Localization.GetFormCultureString(this, "SynchProcesing");
                     progressForm =new ProgressForm(sender.SinchronizeFileProgressInfo) ;
                     notifyIcon.Icon = Resurces.package_update;
                     timerSinchronize.Enabled = false;
@@ -112,7 +124,7 @@ namespace Client
                     break;
 
                 case SinchronizeStatus.ServerNotAvailable: // сервер не доступен
-                    notifyIcon.Text = "Sinchosaur\nСервер не доступен";
+                    notifyIcon.Text = "Sinchosaur\n" + Localization.GetFormCultureString(this, "ServerNotAvailable");
                     progressForm.Dispose();
                     notifyIcon.Icon = Resurces.package_bad;
                     timerSinchronize.Enabled = true;
@@ -120,7 +132,7 @@ namespace Client
                     break;
 
                 case SinchronizeStatus.NoFilesChanges: // нет изменений
-                    notifyIcon.Text = "Sinchosaur\nВсе файлы синхронизированы";
+                    notifyIcon.Text = "Sinchosaur\n" + Localization.GetFormCultureString(this, "AllFilesDone");
                     notifyIcon.Icon = Resurces.package_ok;
                     timerSinchronize.Enabled = true;
                     logger.Trace("Все файлы синхронизированы");
@@ -131,10 +143,10 @@ namespace Client
                     progressForm.Dispose();
                     break;
 
-                case SinchronizeStatus.UserNotExist: // Такой пользователь не существует на сервере
+                case SinchronizeStatus.UserNotExist: // такой пользователь не существует на сервере
                     timerSinchronize.Enabled = false;
                     notifyIcon.Icon = Resurces.package_bad;
-                    notifyIcon.ShowBalloonTip(200, "Sinchosaur", "Такой пользователь не существует", ToolTipIcon.Info);
+                    notifyIcon.ShowBalloonTip(200, "Sinchosaur", Localization.GetFormCultureString(this, "UserNotExist"), ToolTipIcon.Info);
                     logger.Warn("Такой пользователь не существует");
                     
                     SettingForm settingsForm = new SettingForm();
@@ -142,10 +154,11 @@ namespace Client
                     settingsForm.Activate();
                     settingsForm.Show();
                     break;
-                case SinchronizeStatus.ServerUrlNotCorrect: // Такой пользователь не существует на сервере
+
+                case SinchronizeStatus.ServerUrlNotCorrect: // указан некорректный ip адресс сервера
                     timerSinchronize.Enabled = false;
                     notifyIcon.Icon = Resurces.package_bad;
-                    notifyIcon.ShowBalloonTip(200, "Sinchosaur", "Указан не корректный ip-адрес сервера", ToolTipIcon.Info);
+                    notifyIcon.ShowBalloonTip(200, "Sinchosaur", Localization.GetFormCultureString(this, "ServerIpNotCorrect"), ToolTipIcon.Info);
                     logger.Warn("Указан не корректный ip-адрес сервера");
 
                     settingsForm = new SettingForm();
@@ -153,8 +166,6 @@ namespace Client
                     settingsForm.Activate();
                     settingsForm.Show();
                     break;
-                
-
              }
         }
         
@@ -238,6 +249,7 @@ namespace Client
 
         void settingsForm_Deactivate(object sender, EventArgs e)
         {
+            LocalizateForm();
             timerSinchronize.Enabled = true;
         }
         
