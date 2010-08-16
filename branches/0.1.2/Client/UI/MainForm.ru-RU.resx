@@ -2207,4 +2207,7 @@
   <data name="UserNotExist" xml:space="preserve">
     <value>Пользователь не существует</value>
   </data>
+  <data name="notifyIcon.Text" xml:space="preserve">
+    <value>Подключение к серверу</value>
+  </data>
 </root>

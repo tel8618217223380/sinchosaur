@@ -30,7 +30,6 @@ namespace Client
             LocalizateForm();
 
             InitializeSinchronize();
-            notifyIcon.Text = "Sinchosaur\n" + Localization.GetFormCultureString(this, "ConnectToServer");
             this.ShowInTaskbar = false;
 
             logger.Debug("Старт приложения");
@@ -112,6 +111,7 @@ namespace Client
                     notifyIcon.Text = "Sinchosaur\n" + Localization.GetFormCultureString(this, "SynchProcesing");
                     progressForm =new ProgressForm(sender.SinchronizeFileProgressInfo) ;
                     notifyIcon.Icon = Resurces.package_update;
+                    trayContextMenu.Items[1].Visible = true;
                     timerSinchronize.Enabled = false;
                     logger.Info("Синхронизация начата");
                     break;
@@ -119,14 +119,17 @@ namespace Client
                 case SinchronizeStatus.SinchronizeFinished: // если синхронизация закончена
                     progressForm.Dispose();
                     notifyIcon.Icon = Resurces.package_ok;
+                    trayContextMenu.Items[1].Visible = true;
                     timerSinchronize.Enabled = true;
                     logger.Info("Синхронизация завершена");
                     break;
 
                 case SinchronizeStatus.ServerNotAvailable: // сервер не доступен
+                    trayContextMenu.Items[1].Visible = false;
                     notifyIcon.Text = "Sinchosaur\n" + Localization.GetFormCultureString(this, "ServerNotAvailable");
                     progressForm.Dispose();
                     notifyIcon.Icon = Resurces.package_bad;
+                    trayContextMenu.Items[1].Visible = false;
                     timerSinchronize.Enabled = true;
                     logger.Trace("Сервер не доступен");
                     break;
@@ -134,16 +137,19 @@ namespace Client
                 case SinchronizeStatus.NoFilesChanges: // нет изменений
                     notifyIcon.Text = "Sinchosaur\n" + Localization.GetFormCultureString(this, "AllFilesDone");
                     notifyIcon.Icon = Resurces.package_ok;
+                    trayContextMenu.Items[1].Visible = true;
                     timerSinchronize.Enabled = true;
                     logger.Trace("Все файлы синхронизированы");
                     break;
 
                 case SinchronizeStatus.GetServerFilesList: // Получение списка файлов на сервере
+                    trayContextMenu.Items[1].Visible = false;
                     timerSinchronize.Enabled = false;
                     progressForm.Dispose();
                     break;
 
                 case SinchronizeStatus.UserNotExist: // такой пользователь не существует на сервере
+                    trayContextMenu.Items[1].Visible = false;
                     timerSinchronize.Enabled = false;
                     notifyIcon.Icon = Resurces.package_bad;
                     notifyIcon.ShowBalloonTip(200, "Sinchosaur", Localization.GetFormCultureString(this, "UserNotExist"), ToolTipIcon.Info);
@@ -156,6 +162,7 @@ namespace Client
                     break;
 
                 case SinchronizeStatus.ServerUrlNotCorrect: // указан некорректный ip адресс сервера
+                    trayContextMenu.Items[1].Visible = true;
                     timerSinchronize.Enabled = false;
                     notifyIcon.Icon = Resurces.package_bad;
                     notifyIcon.ShowBalloonTip(200, "Sinchosaur", Localization.GetFormCultureString(this, "ServerIpNotCorrect"), ToolTipIcon.Info);
@@ -272,6 +279,7 @@ namespace Client
         {
             EventForm eventForm = new EventForm();
             eventForm.Show();
+            eventForm.FillListView();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
