@@ -1167,4 +1167,13 @@
   <data name="SelectFile" xml:space="preserve">
     <value>Вы должны выбрать файл</value>
   </data>
+  <data name="ServerIpNotCorrect" xml:space="preserve">
+    <value>Указан не корректный ip адресс сервера</value>
+  </data>
+  <data name="ServerNotAvailable" xml:space="preserve">
+    <value>Сервер не доступен</value>
+  </data>
+  <data name="UserNotExist" xml:space="preserve">
+    <value>Пользователь не существует</value>
+  </data>
 </root>

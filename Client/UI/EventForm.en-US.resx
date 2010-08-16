@@ -1185,4 +1185,13 @@
   <data name="SelectFile" xml:space="preserve">
     <value>You must select a file</value>
   </data>
+  <data name="ServerIpNotCorrect" xml:space="preserve">
+    <value>Invalid ip address of the server</value>
+  </data>
+  <data name="ServerNotAvailable" xml:space="preserve">
+    <value>Server is not available</value>
+  </data>
+  <data name="UserNotExist" xml:space="preserve">
+    <value>User is not exist</value>
+  </data>
 </root>

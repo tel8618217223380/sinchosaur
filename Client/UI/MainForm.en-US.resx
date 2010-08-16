@@ -2240,4 +2240,7 @@
   <data name="UserNotExist" xml:space="preserve">
     <value>User is not exist</value>
   </data>
+  <data name="notifyIcon.Text" xml:space="preserve">
+    <value>Connecting to Server</value>
+  </data>
 </root>

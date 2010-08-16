@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using Client.UserEventsServiceReference;
 using Client.ServiceReference;
 using System.IO;
+using System.ServiceModel;
+using NLog;
 
 
 
@@ -16,6 +18,7 @@ namespace Client
 {
     public partial class EventForm : Form
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         // состояние прогресса синхронизации файла
         public ProgressFileInfo SinchronizeFileProgressInfo = new ProgressFileInfo();
@@ -26,50 +29,78 @@ namespace Client
         // id выбранного файла
         public int selectedFileId;
 
-        
+
         public EventForm()
         {
             InitializeComponent();
-            FillListView();
         }
-        
+
 
         //Заполняет список измененных файлов
-        private void FillListView()
+        public void FillListView()
         {
-            EventInfo [] userEvents = null;
+            EventInfo[] userEvents = null;
 
-            using (UserEventsClient client = new UserEventsClient())
+            try
             {
-                userEvents = client.GetEvents(Account.GetUserEmail(), Account.GetUserPass());
-            }
-            listUserEvents.Items.Clear();
-           
-            foreach (var userEvent in userEvents)
-            {
-                ListViewItem item = new ListViewItem(userEvent.Description);
-
-                item.SubItems.Add(userEvent.FileName);
-
-                item.SubItems.Add(userEvent.Path);
-                float fileSize = (float)userEvent.FileSize / 1024.0f;
-                string suffix = Localization.GetFormCultureString(this, "KByte");
-
-                if (fileSize > 1000.0f)
+                using (UserEventsClient client = new UserEventsClient())
                 {
-                    fileSize /= 1024.0f;
-                    suffix = Localization.GetFormCultureString(this, "MByte");
+                    userEvents = client.GetEvents(Account.GetUserEmail(), Account.GetUserPass());
                 }
-                item.SubItems.Add(string.Format("{0:0.0} {1}", fileSize, suffix));
 
-                item.SubItems.Add(userEvent.Created.ToString());
-                item.SubItems.Add(userEvent.FileSize.ToString());
-                item.SubItems.Add(userEvent.FileId.ToString());
+                listUserEvents.Items.Clear();
 
-                listUserEvents.Items.Add(item);
+                foreach (var userEvent in userEvents)
+                {
+                    ListViewItem item = new ListViewItem(userEvent.Description);
+
+                    item.SubItems.Add(userEvent.FileName);
+
+                    item.SubItems.Add(userEvent.Path);
+                    float fileSize = (float)userEvent.FileSize / 1024.0f;
+                    string suffix = Localization.GetFormCultureString(this, "KByte");
+
+                    if (fileSize > 1000.0f)
+                    {
+                        fileSize /= 1024.0f;
+                        suffix = Localization.GetFormCultureString(this, "MByte");
+                    }
+                    item.SubItems.Add(string.Format("{0:0.0} {1}", fileSize, suffix));
+
+                    item.SubItems.Add(userEvent.Created.ToString());
+                    item.SubItems.Add(userEvent.FileSize.ToString());
+                    item.SubItems.Add(userEvent.FileId.ToString());
+
+                    listUserEvents.Items.Add(item);
+                }
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show(Localization.GetFormCultureString(this, "ServerNotAvailable"));
+                Close();
+            }
+            catch (UriFormatException)
+            {
+                MessageBox.Show(Localization.GetFormCultureString(this, "ServerIpNotCorrect"));
+                Close();
+            }
+
+            catch (Exception ex)
+            {
+                switch (ex.Message)
+                {
+                    case "UserNotExist":
+                        MessageBox.Show(Localization.GetFormCultureString(this, "UserNotExist"));
+                        Close();
+                        break;
+                    default:
+                        logger.Fatal(ex.ToString());
+                        Console.Write(ex.ToString());
+                        break;
+                }
             }
         }
-        
+
         //кнопка скачать файл
         private void buttonDownload_Click(object sender, EventArgs e)
         {
@@ -78,9 +109,9 @@ namespace Client
             else
             {
                 ListViewItem item = listUserEvents.SelectedItems[0];
-                
+
                 string fileName = item.SubItems[1].Text;
-              
+
                 SaveFileDialog dlg = new SaveFileDialog()
                 {
                     RestoreDirectory = true,
@@ -107,12 +138,12 @@ namespace Client
                 }
             }
         }
-        
+
 
         //сохранение файла
         private void backgroundDownloader_DoWork(object sender, DoWorkEventArgs e)
         {
-            MyFile file=(MyFile)e.Argument;
+            MyFile file = (MyFile)e.Argument;
             using (FileStream output = new FileStream(file.Path, FileMode.Create))
             {
                 SinchronizeFileProgressInfo.ProgressBytes = 0;
@@ -127,13 +158,13 @@ namespace Client
                 }
             }
         }
-        
-        
+
+
         private void backgroundDownloader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             progressForm.Dispose();
         }
-        
+
 
         //устанавливает прогресс синхронизации
         void SetProgressInfoData(object sender, StreamWithProgress.ProgressChangedEventArgs e)
@@ -147,8 +178,8 @@ namespace Client
                     SinchronizeFileProgressInfo.ProgressProcent = (int)(progressProcent * 100); // процент обработки
             }
         }
-        
 
-        
+
+
     }
 }
