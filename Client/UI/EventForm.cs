@@ -26,14 +26,13 @@ namespace Client
         // id выбранного файла
         public int selectedFileId;
 
-        //--------------------------------------------------------------------------------
+        
         public EventForm()
         {
             InitializeComponent();
             FillListView();
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         //Заполняет список измененных файлов
         private void FillListView()
@@ -44,9 +43,7 @@ namespace Client
             {
                 userEvents = client.GetEvents(Account.GetUserEmail(), Account.GetUserPass());
             }
-
             listUserEvents.Items.Clear();
-
            
             foreach (var userEvent in userEvents)
             {
@@ -56,12 +53,12 @@ namespace Client
 
                 item.SubItems.Add(userEvent.Path);
                 float fileSize = (float)userEvent.FileSize / 1024.0f;
-                string suffix = "KБайт";
+                string suffix = Localization.GetFormCultureString(this, "KByte");
 
                 if (fileSize > 1000.0f)
                 {
                     fileSize /= 1024.0f;
-                    suffix = "MБайт";
+                    suffix = Localization.GetFormCultureString(this, "MByte");
                 }
                 item.SubItems.Add(string.Format("{0:0.0} {1}", fileSize, suffix));
 
@@ -72,15 +69,12 @@ namespace Client
                 listUserEvents.Items.Add(item);
             }
         }
-        //--------------------------------------------------------------------------------
-
-
-
-        //--------------------------------------------------------------------------------
+        
+        //кнопка скачать файл
         private void buttonDownload_Click(object sender, EventArgs e)
         {
             if (listUserEvents.SelectedItems.Count == 0)
-                MessageBox.Show("Вы должны выбрать файл!");
+                MessageBox.Show(Localization.GetFormCultureString(this, "SelectFile"));
             else
             {
                 ListViewItem item = listUserEvents.SelectedItems[0];
@@ -91,7 +85,7 @@ namespace Client
                 {
                     RestoreDirectory = true,
                     OverwritePrompt = true,
-                    Title = "Сохранить как...",
+                    Title = Localization.GetFormCultureString(this, "SaveAs"),
                     FileName = fileName
                 };
 
@@ -113,8 +107,7 @@ namespace Client
                 }
             }
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         //сохранение файла
         private void backgroundDownloader_DoWork(object sender, DoWorkEventArgs e)
@@ -134,16 +127,13 @@ namespace Client
                 }
             }
         }
-        //--------------------------------------------------------------------------------
-
-
-        //--------------------------------------------------------------------------------
+        
+        
         private void backgroundDownloader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             progressForm.Dispose();
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         //устанавливает прогресс синхронизации
         void SetProgressInfoData(object sender, StreamWithProgress.ProgressChangedEventArgs e)
@@ -157,8 +147,7 @@ namespace Client
                     SinchronizeFileProgressInfo.ProgressProcent = (int)(progressProcent * 100); // процент обработки
             }
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         
     }

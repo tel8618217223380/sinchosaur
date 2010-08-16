@@ -217,6 +217,13 @@ namespace Client
             Process.Start(Properties.Settings.Default.StorageFolder);
         }
 
+        // деактивация окна настроек
+        void settingsForm_Deactivate(object sender, EventArgs e)
+        {
+            LocalizateForm();
+            timerSinchronize.Enabled = true;
+        }
+
         #region  Context menu
 
         
@@ -226,14 +233,11 @@ namespace Client
             Application.Exit();
         }
 
-
         
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Process.Start(Properties.Settings.Default.StorageFolder);
         }
-        
-
 
         
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -247,12 +251,6 @@ namespace Client
             
         }
 
-        void settingsForm_Deactivate(object sender, EventArgs e)
-        {
-            LocalizateForm();
-            timerSinchronize.Enabled = true;
-        }
-        
         #endregion
 
         private void buttonRefresh_Click(object sender, EventArgs e)
