@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.ColumnHeader Created;
-            System.Windows.Forms.ColumnHeader Size;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventForm));
+            System.Windows.Forms.ColumnHeader Size;
             this.listUserEvents = new System.Windows.Forms.ListView();
             this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,11 +43,17 @@
             Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
+            // Created
+            // 
+            resources.ApplyResources(Created, "Created");
+            // 
+            // Size
+            // 
+            resources.ApplyResources(Size, "Size");
+            // 
             // listUserEvents
             // 
-            this.listUserEvents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.listUserEvents, "listUserEvents");
             this.listUserEvents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Description,
             this.FileName,
@@ -58,56 +64,35 @@
             this.FileId});
             this.listUserEvents.FullRowSelect = true;
             this.listUserEvents.GridLines = true;
-            this.listUserEvents.Location = new System.Drawing.Point(12, 12);
             this.listUserEvents.Name = "listUserEvents";
-            this.listUserEvents.Size = new System.Drawing.Size(694, 313);
-            this.listUserEvents.TabIndex = 0;
             this.listUserEvents.UseCompatibleStateImageBehavior = false;
             this.listUserEvents.View = System.Windows.Forms.View.Details;
             this.listUserEvents.DoubleClick += new System.EventHandler(this.buttonDownload_Click);
             // 
             // Description
             // 
-            this.Description.Text = "Действие";
-            this.Description.Width = 68;
+            resources.ApplyResources(this.Description, "Description");
             // 
             // FileName
             // 
-            this.FileName.Text = "Файл";
-            this.FileName.Width = 218;
+            resources.ApplyResources(this.FileName, "FileName");
             // 
             // Directory
             // 
-            this.Directory.Text = "Директория";
-            this.Directory.Width = 218;
+            resources.ApplyResources(this.Directory, "Directory");
             // 
             // FileSize
             // 
-            this.FileSize.Text = "Размер";
-            this.FileSize.Width = 73;
-            // 
-            // Created
-            // 
-            Created.Text = "Синхронизирован";
-            Created.Width = 111;
-            // 
-            // Size
-            // 
-            Size.Width = 0;
+            resources.ApplyResources(this.FileSize, "FileSize");
             // 
             // FileId
             // 
-            this.FileId.Text = "id";
-            this.FileId.Width = 0;
+            resources.ApplyResources(this.FileId, "FileId");
             // 
             // buttonDownload
             // 
-            this.buttonDownload.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonDownload.Location = new System.Drawing.Point(263, 331);
+            resources.ApplyResources(this.buttonDownload, "buttonDownload");
             this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.Size = new System.Drawing.Size(179, 33);
-            this.buttonDownload.TabIndex = 1;
-            this.buttonDownload.Text = "Скачать файл";
             this.buttonDownload.UseVisualStyleBackColor = true;
             this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
             // 
@@ -118,15 +103,11 @@
             // 
             // EventForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 375);
             this.Controls.Add(this.buttonDownload);
             this.Controls.Add(this.listUserEvents);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EventForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "События";
             this.ResumeLayout(false);
 
         }
