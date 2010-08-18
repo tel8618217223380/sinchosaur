@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-using Client.ServiceReference;
+using Client.FileSystemServiceReference;
 
 using System.IO;
 using NLog;

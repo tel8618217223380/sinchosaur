@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Sinchosaur" Class="DatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=COMPUTER\SQLEXPRESS;Initial Catalog=Sinchosaur;Integrated Security=True" SettingsObjectName="Server.Service.Properties.Settings" SettingsPropertyName="SinchosaurConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="User">
-      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
-      <Column Name="Passwd" Type="System.String" DbType="NChar(32) NOT NULL" CanBeNull="false" />
-      <Column Name="SpaceLimit" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.Events" Member="Events">
     <Type Name="Event">
       <Column Name="EventId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -30,7 +22,7 @@
       <Column Name="IsPublic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsActual" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="File_Event" Member="Events" ThisKey="FileId" OtherKey="FileId" Type="Event" />
-      <Association Name="Directories_File" Member="Directory" ThisKey="DirectoryId" OtherKey="DirectoryId" Type="Directory" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Directory_File" Member="Directory" ThisKey="DirectoryId" OtherKey="DirectoryId" Type="Directory" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Directories" Member="Directory">
@@ -42,7 +34,15 @@
       <Column Name="IsPublic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsActual" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Directories_File" Member="File" ThisKey="DirectoryId" OtherKey="DirectoryId" Type="File" />
+      <Association Name="Directory_File" Member="File" ThisKey="DirectoryId" OtherKey="DirectoryId" Type="File" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="User">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="Passwd" Type="System.String" DbType="NChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceLimit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

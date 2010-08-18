@@ -77,5 +77,9 @@ namespace Server.Service
         //возвращает путь для файла/диретории
         [OperationContract]
         string GetFilePath(int fileId, int isDirectory, string userEmail, string userPass);
+
+        // проверяет доступное дисковое простанство для заливки файла
+        [OperationContract]
+        bool CanUploadFile(long fileSize, string userEmail, string userPass);
     }
 }

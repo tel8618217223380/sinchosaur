@@ -92,7 +92,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\ServiceReference\Reference.cs">
+    <Compile Include="Service References\FileSystemServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -209,23 +209,23 @@
     <None Include="Service References\AccountServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\Client.ServiceReference.DynaTreeNode.datasource">
+    <None Include="Service References\FileSystemServiceReference\Client.FileSystemServiceReference.DynaTreeNode.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\Client.ServiceReference.MyFile.datasource">
+    <None Include="Service References\FileSystemServiceReference\Client.FileSystemServiceReference.MyFile.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\Message.xsd">
+    <None Include="Service References\FileSystemServiceReference\Message.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\Server.Service.xsd">
+    <None Include="Service References\FileSystemServiceReference\Server.Service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\service.wsdl" />
-    <None Include="Service References\ServiceReference\service.xsd">
+    <None Include="Service References\FileSystemServiceReference\service.wsdl" />
+    <None Include="Service References\FileSystemServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\service1.xsd">
+    <None Include="Service References\FileSystemServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserEventsServiceReference\Client.UserEventsServiceReference.EventInfo.datasource">
@@ -281,17 +281,17 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AccountServiceReference\" />
-    <WCFMetadataStorage Include="Service References\ServiceReference\" />
+    <WCFMetadataStorage Include="Service References\FileSystemServiceReference\" />
     <WCFMetadataStorage Include="Service References\UserEventsServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\FileSystemServiceReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference\configuration.svcinfo" />
+    <None Include="Service References\FileSystemServiceReference\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference\Reference.svcmap">
+    <None Include="Service References\FileSystemServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

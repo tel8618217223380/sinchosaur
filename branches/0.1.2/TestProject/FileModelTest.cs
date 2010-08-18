@@ -145,5 +145,21 @@ namespace TestProject
             if (actual.Name != fileName)
                 Assert.Fail();
         }
+
+        /// <summary>
+        ///A test for IsCanUploadFile
+        ///</summary>
+        [TestMethod()]
+        public void IsCanUploadFileTest()
+        {
+            FileModel target = new FileModel(); 
+            int userId = 2; 
+            long spaceLimit = 90000000; 
+            long fileSize = 91000000; 
+            bool expected = true; 
+            bool actual;
+            actual = target.IsCanUploadFile(userId, spaceLimit, fileSize);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
