@@ -111,11 +111,28 @@ namespace Server.Service
         }
 
 
+
+        // проверяет доступное дисковое простанство для заливки файла
+        public bool CanUploadFile(long fileSize, string userEmail, string userPass)
+        {
+            User userInfo = UserModel.Instance.GetUser(userEmail, userPass);
+
+            if (!FileModel.Instance.IsCanUploadFile(userInfo.UserId, userInfo.SpaceLimit, fileSize))
+                return false;
+            return true;
+        }
+
+
         //сохраняет файл на сервере
         public void UploadFile(FileUploadMessage uploadMessage)
         {
             // получение инфы пользователя
             User userInfo = UserModel.Instance.GetUser(uploadMessage.userEmail, uploadMessage.userPass);
+
+            if (!FileModel.Instance.IsCanUploadFile(userInfo.UserId, userInfo.SpaceLimit, uploadMessage.file.Size))
+                throw new Exception("DiskSpacelimit");
+
+
             logger.Info("Получение файла: {0}, с клиента: {1}", uploadMessage.file.ToString(), uploadMessage.userEmail);
 
             string saveFilePath = GetFileSavePath();

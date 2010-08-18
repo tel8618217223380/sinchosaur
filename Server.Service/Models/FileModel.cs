@@ -168,6 +168,20 @@ namespace Server.Service.Models
         }
 
 
+        //проверяет возможность залить файл
+        public bool IsCanUploadFile(int userId, long spaceLimit, long fileSize )
+        {
+            DatabaseClassesDataContext db = new DatabaseClassesDataContext();
+            Nullable<long> usedSpace = (from f in db.Files
+                                        where f.UserId == userId && f.IsActual == true && f.Size > 0
+                                        select f).Sum(f => (long?)f.Size);
+
+            if ( ( usedSpace.HasValue && spaceLimit - usedSpace > fileSize ) || ( !usedSpace.HasValue && spaceLimit > fileSize) )
+                return true;
+            return false;
+        }
+
+
         //переименование файла
         public void Rename(int fileId, string newName, int userId)
         {

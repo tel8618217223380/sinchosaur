@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Client.UserEventsServiceReference;
-using Client.ServiceReference;
+using Client.FileSystemServiceReference;
 using System.IO;
 using System.ServiceModel;
 using NLog;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Client.ServiceReference;
+using Client.FileSystemServiceReference;
 using System.IO;
 using System.ComponentModel;
 using System.ServiceModel;
@@ -25,7 +25,8 @@ namespace Client
         GetFilesListForSinchronize,
         NoFilesChanges,
         UserNotExist,
-        ServerUrlNotCorrect
+        ServerUrlNotCorrect,
+        DiskSpacelimit
     }
 
     // состояние прогресса синхронизации файла
@@ -48,18 +49,22 @@ namespace Client
 
         // изменено состояние процесса синхронизации
         public event ChangeSinchronizeStatus OnChangeSinchronizeStatus;
+
         // изменение файла
         public event ProcessFileInfo OnProcessFileInfo;
+
         // получен список измененых файлов
         public event CreateFileListForSincronization OnCreateFileListForSincronization;
+
         // состояние прогресса синхронизации файла
         public ProgressFileInfo SinchronizeFileProgressInfo = new ProgressFileInfo();
+
         //файлы для синхронизации
         public List<MyFile> filesForSinchronize = new List<MyFile>();
 
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        
+        //запуск синхронизации        
         public void Start()
         {
             try
@@ -98,6 +103,11 @@ namespace Client
                         if (OnChangeSinchronizeStatus != null)
                             OnChangeSinchronizeStatus(this, SinchronizeStatus.UserNotExist);
                         break;
+                    case "DiskSpacelimit":
+                        if (OnChangeSinchronizeStatus != null)
+                            OnChangeSinchronizeStatus(this, SinchronizeStatus.DiskSpacelimit);
+                        break;
+
                     default:
                         logger.Fatal(ex.ToString());
                         Console.Write(ex.ToString());
@@ -229,6 +239,14 @@ namespace Client
                     if (file.IsDirectory)
                         ServerFileSystem.Instance.CreateDirectory(file.Path);
                     else
+                    {
+                        if (!ServerFileSystem.Instance.CanUploadFile(file.Size))
+                        {
+                            if (OnChangeSinchronizeStatus != null)
+                                OnChangeSinchronizeStatus(this, SinchronizeStatus.DiskSpacelimit);
+                            continue;
+                        }
+
                         using (FileStream fileStream = ClientFileSystem.Instance.GetFileStream(file.Path, file.Name))
                         {
                             StreamWithProgress fileSourceStream = new StreamWithProgress(fileStream);
@@ -236,6 +254,7 @@ namespace Client
                             file.SizeSpecified = true;
                             ServerFileSystem.Instance.UploadFile(file, fileSourceStream );
                         }
+                    }
 
                 }
             }

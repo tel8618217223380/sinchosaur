@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.ServiceModel;
-using Client.ServiceReference;
+using Client.FileSystemServiceReference;
 using System.Threading;
 using System.Diagnostics;
 using NLog;
@@ -140,6 +140,15 @@ namespace Client
                     trayContextMenu.Items[1].Visible = true;
                     timerSinchronize.Enabled = true;
                     logger.Trace("Все файлы синхронизированы");
+                    break;
+
+                case SinchronizeStatus.DiskSpacelimit: // Файл добавить нельзя, так как закончилось место на диске
+                    notifyIcon.Text = "Sinchosaur\n bad" ;
+                    notifyIcon.Icon = Resurces.package_bad;
+                    trayContextMenu.Items[1].Visible = true;
+                    timerSinchronize.Enabled = true;
+                    notifyIcon.ShowBalloonTip(200, "Sinchosaur", "Не могу залить файл " + sender.SinchronizeFileProgressInfo.File.Name + ", лимит на сервере", ToolTipIcon.Info);
+                    logger.Warn("Не могу залить файл " + sender.SinchronizeFileProgressInfo.File.ToString() + ", лимит на сервере");
                     break;
 
                 case SinchronizeStatus.GetServerFilesList: // Получение списка файлов на сервере

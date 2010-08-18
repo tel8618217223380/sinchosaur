@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
-using Client.ServiceReference;
+using Client.FileSystemServiceReference;
 using System.ServiceModel;
 
 
@@ -21,7 +21,7 @@ namespace Client
         
         long CountFileDownloadBytesPred = 0;// количество скачанных байт каждого файла
 
-        //--------------------------------------------------------------------------------
+        
         public ProgressForm(ProgressFileInfo progressFileInfo)
         {
             InitializeComponent();
@@ -29,16 +29,13 @@ namespace Client
             this.progressFileInfo = progressFileInfo;
             timerUpdateData.Enabled = true;
         }
-        //--------------------------------------------------------------------------------
+        
 
-
-        //--------------------------------------------------------------------------------
         public ProgressForm()
         {
             InitializeComponent();
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         //таймер обновления данных синхронизации
         private void timerUpdateData_Tick(object sender, EventArgs e)
@@ -58,10 +55,6 @@ namespace Client
                     break;
             }
 
-           
-
-
-
             labelSinchType.Text = action;
             labelFileName.Text = progressFileInfo.File.Name; // Название файла
             labelPath.Text = progressFileInfo.File.Path; // Директория
@@ -70,8 +63,7 @@ namespace Client
             labelSpeed.Text = GetFormatedSizeString(GetCurrentSpeed())+ "/с"; // Скорость
             progressBar.Value = progressFileInfo.ProgressProcent;
         }
-        //--------------------------------------------------------------------------------
-
+        
 
         private string GetFormatedSizeString(long size)
         {
@@ -94,7 +86,7 @@ namespace Client
             return downloadedBytes * (1000/timerUpdateData.Interval);
             
         }
-        //--------------------------------------------------------------------------------
+        
 
 
    

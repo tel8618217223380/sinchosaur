@@ -1,7 +1,7 @@
 ﻿using Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using Client.ServiceReference;
+using Client.FileSystemServiceReference;
 using System.Collections.Generic;
 
 namespace TestProject

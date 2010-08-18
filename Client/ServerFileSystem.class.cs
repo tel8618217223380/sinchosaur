@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Client.ServiceReference;
+using Client.FileSystemServiceReference;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.ServiceModel;
+using System.Runtime.Serialization;
 
 namespace Client
 {
@@ -13,7 +14,6 @@ namespace Client
         public static ServerFileSystem Instance = new ServerFileSystem();
         private FileSystemClient serverFileSystem ;
         static ServerFileSystem(){}
-
 
         
         public ServerFileSystem() 
@@ -28,8 +28,7 @@ namespace Client
             serverFileSystem = new FileSystemClient("BasicHttpBinding_IFileSystem", new EndpointAddress(ServerRemoteAddress));
         }
 
-        
-
+      
         //возвращает список файлов на сервере
         public List<MyFile> GetFilesList()
         {
@@ -40,7 +39,12 @@ namespace Client
                 serverFileslist.Add(serverFile);
             return serverFileslist;
         }
-        
+      
+        //проверяет начилие доступного дискового пространиства на сервере
+        public bool CanUploadFile(long fileSize)
+        {
+            return serverFileSystem.CanUploadFile(fileSize, Account.GetUserEmail(), Account.GetUserPass());
+        }
 
         //возвращает список файлов после последней синхронизации
         public List<MyFile> GetLastSinchronazeFilesList()
@@ -72,15 +76,23 @@ namespace Client
         //десериализация объекта
         private List<MyFile> LoadFromBinaryFile(string fileName)
         {
+             
             BinaryFormatter binFormat = new BinaryFormatter();
             List<MyFile> serverFiles = new List<MyFile>();
             if (!File.Exists(fileName))
-            {
                 return serverFiles;
-            }
-            using (Stream fStream = File.OpenRead(fileName))
+            
+            try
             {
-                serverFiles = (List<MyFile>)binFormat.Deserialize(fStream);
+                using (Stream fStream = File.OpenRead(fileName))
+                {
+                    serverFiles = (List<MyFile>)binFormat.Deserialize(fStream);
+                }
+                
+            }
+            catch (SerializationException)
+            {
+                File.Delete("LastSinchronizeServerFilesList.dat");
             }
             return serverFiles;
         }
