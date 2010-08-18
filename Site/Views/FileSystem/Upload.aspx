@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Layouts/Frontend.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
-    Загузить файлы
+    <%=LocaleRes.Localize.Upload%>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -47,7 +47,7 @@
         <div class="post">
             <div class="posttop"></div>
             <div class="postitem">
-                <h2>Загрузить файлы</h2>
+                <h2><%=LocaleRes.Localize.Upload%></h2>
                 <% Html.RenderPartial("SelectFolder");%>
                 <div class="form">
                     <%=Html.Hidden("outDirectoryId",null, new { id = "outdirectoryid" })%>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Site.UserEventsServiceReference;
+using Site.Libs;
 
 namespace Site.Controllers
 {
@@ -14,12 +15,12 @@ namespace Site.Controllers
 
         public ActionResult Main()
         {
-            return View();
+            return new LocalizedViewResult("Main");
         }
 
         public ActionResult Download()
         {
-            return View();
+            return new LocalizedViewResult("Download");
         }
 
         [Authorize]
@@ -36,6 +37,5 @@ namespace Site.Controllers
             return View();
 
         }
-
     }
 }

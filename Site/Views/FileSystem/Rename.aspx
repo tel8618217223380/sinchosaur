@@ -18,7 +18,7 @@
             <div class="posttop">
             </div>
             <div class="postitem">
-                <h2>Переименование</h2>
+                <h2><%=LocaleRes.Localize.Rename%></h2>
 
                 <% using (Ajax.BeginForm(new AjaxOptions { OnComplete = "ajaxOnComplete" }))
                    { %>
@@ -26,11 +26,11 @@
                     <%=Html.Hidden("fileId", ViewData["fileId"])%>
                     <%=Html.Hidden("isDirectory", ViewData["isDirectory"])%>
                     
-                    <label for="email">Новое название</label>
+                    <label for="email"><%=LocaleRes.Localize.NewName%></label>
                     <%=Html.TextBox("name",ViewData["name"])%>
                     <div class="clear2">
                     </div>
-                    <input class="button" name="Submit" type="submit" value="Создать" />
+                    <input class="button" name="Submit" type="submit" value="go" />
                 </div>
                 <%} %>
             </div>

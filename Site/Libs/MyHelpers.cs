@@ -10,12 +10,12 @@ namespace Site.Helpers
         public static string ShowSize( long size)
         {
             float fileSize = (float)size / 1024.0f;
-            string suffix = "KБайт";
+            string suffix = LocaleRes.Localize.Kbyte;
 
             if (fileSize > 1000.0f)
             {
                 fileSize /= 1024.0f;
-                suffix = "MБайт";
+                suffix = LocaleRes.Localize.Mbyte;
             }
             return string.Format("{0:0.0} {1}", fileSize, suffix);
         }

@@ -18,17 +18,17 @@
             <div class="posttop">
             </div>
             <div class="postitem">
-                <h2>Новая диретория</h2>
+                <h2><%=LocaleRes.Localize.NewDirectory%></h2>
                 <% Html.RenderPartial("SelectFolder");%>
                 <% using (Ajax.BeginForm(new AjaxOptions { OnComplete = "ajaxOnComplete" }))
                    { %>
                 <div class="form">
                     <%=Html.Hidden("directoryId", ViewData["directoryId"], new { id = "outdirectoryid" })%>
-                    <label for="email">Название</label>
+                    <label for="email"><%=LocaleRes.Localize.Name%></label>
                     <%=Html.TextBox("name")%>
                     <div class="clear2">
                     </div>
-                    <input class="button" name="Submit" type="submit" value="Создать" />
+                    <input class="button" name="Submit" type="submit" value="go" />
                 </div>
                 <%} %>
             </div>
