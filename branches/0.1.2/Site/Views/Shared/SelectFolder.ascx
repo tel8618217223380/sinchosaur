@@ -8,7 +8,7 @@
 <script type='text/javascript'>
         $(function () {
             $("#tree").dynatree({
-                title: "Главная",
+                title: "<%=LocaleRes.Localize.Main%>",
                 rootVisible: true,
                 minExpandLevel: 1, // 1: root node is not collapsible
                 persist: true,

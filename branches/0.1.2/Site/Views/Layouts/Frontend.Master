@@ -18,7 +18,7 @@
         <div id="header">
             <div class="clear"></div>
             <h1 id="sitename">
-                <a href="/">Sinchosaur</a> <span class="description">Синхронизируй  свои файлы!</span>
+                <a href="/">Sinchosaur</a> <span class="description"><%=LocaleRes.Localize.SiteSlogan%></span>
             </h1>
         </div>
         <div id="content">
@@ -26,20 +26,20 @@
                 <div class="sidebartop">
                 </div>
                 <div id="sidebarcontent">
-                    <h2>Меню</h2>
+                    <h2><%=LocaleRes.Localize.Menu%></h2>
                     <ul>
-                        <li><a href="/">Главная</a> </li>
-                        <li><%=Html.RouteLink("Скачать","DownloadPage") %></li>
+                        <li><a href="/"><%=LocaleRes.Localize.MainPage%></a> </li>
+                        <li><%=Html.RouteLink(LocaleRes.Localize.Download,"DownloadPage") %></li>
                         <% System.Security.Principal.IPrincipal User = HttpContext.Current.User;
                         if (User.Identity.IsAuthenticated)
                         {%>
-                            <li><%=Html.RouteLink("Мои файлы","ShowFolder") %></li>
-                            <li><%=Html.RouteLink("События","UserEvents") %></li>
-                            <li><%=Html.RouteLink("Выход","Logout") %></li>
+                            <li><%=Html.RouteLink(LocaleRes.Localize.MyFiles, "ShowFolder")%></li>
+                            <li><%=Html.RouteLink(LocaleRes.Localize.Events, "UserEvents")%></li>
+                            <li><%=Html.RouteLink(LocaleRes.Localize.LogOut, "Logout")%></li>
                         <%}
                         else
                         {%>
-                            <li><%=Html.RouteLink("Вход","Login") %></li>
+                            <li><%=Html.RouteLink(LocaleRes.Localize.LogIn, "Login")%></li>
                         <%}%>
                     </ul>
                 </div>

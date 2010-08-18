@@ -10,20 +10,20 @@
             $('#file_' + fileId).contextMenu('ContextMenu', {
                 bindings: {
                     'move': function (t) {
-                        tb_show('Переместить', '<%=Url.RouteUrl("Move")%>?fileId=' + fileId + '&isDirectory=' + isDirectory, "");
+                        tb_show('<%=LocaleRes.Localize.Move%>', '<%=Url.RouteUrl("Move")%>?fileId=' + fileId + '&isDirectory=' + isDirectory, "");
                     },
 
                     'copyto': function (t) {
-                        tb_show('Копировать', '<%=Url.RouteUrl("Copy")%>?fileId=' + fileId + '&isDirectory=' + isDirectory, "");
+                        tb_show('<%=LocaleRes.Localize.Copy%>', '<%=Url.RouteUrl("Copy")%>?fileId=' + fileId + '&isDirectory=' + isDirectory, "");
                     },
 
                     'rename': function (t) {
-                        tb_show('Переименовать', '<%=Url.RouteUrl("Rename")%>?fileId=' + fileId + '&isDirectory=' + isDirectory, "");
+                        tb_show('<%=LocaleRes.Localize.Rename%>', '<%=Url.RouteUrl("Rename")%>?fileId=' + fileId + '&isDirectory=' + isDirectory, "");
                     },
 
                     'delete': function (t) {
-                        confirm_message = isDirectory == 1 ? 'эту директорию ?' : 'этот файл ?';
-                        if (confirm('Вы уверены что хотите удалить ' + confirm_message))
+                        confirm_message = isDirectory == 1 ? '<%=LocaleRes.Localize.ThisDirectory%>' : '<%=LocaleRes.Localize.ThisFile%>';
+                        if (confirm('<%=LocaleRes.Localize.AreYouSureToDelete%>' + confirm_message + ' ?'))
                             location.href = '/file/delete?fileId=' + fileId + '&isDirectory=' + isDirectory;
                     }
                 }
@@ -33,8 +33,8 @@
     <div id="tab">
         <div id="tabhead">
             <ul>
-                <li><%=Html.RouteLink("Добавить диреторию", "CreateDirectory", new { directoryId = ViewData["currenId"] }, new { @class = "thickbox" })%> </li>
-                <li><%=Html.RouteLink("Загрузить файл", "Upload")%> </li>
+                <li><%=Html.RouteLink(LocaleRes.Localize.AddDirectory, "CreateDirectory", new { directoryId = ViewData["currenId"] }, new { @class = "thickbox" })%> </li>
+                <li><%=Html.RouteLink(LocaleRes.Localize.Upload, "Upload")%> </li>
             </ul>
         </div>
         <div id="tabcontent">
@@ -42,9 +42,9 @@
             <table cellspacing="0" cellpadding="0">
                 <tbody>
                     <tr>
-                        <th scope="col" >Название</th>
-                        <th scope="col" style="width:80px">Размер</th>
-                        <th scope="col" style="width:135px">Синхронизирован</th>
+                        <th scope="col" ><%=LocaleRes.Localize.Name%></th>
+                        <th scope="col" style="width:80px"><%=LocaleRes.Localize.Size%></th>
+                        <th scope="col" style="width:135px"><%=LocaleRes.Localize.Synchronized%></th>
                     </tr>
                     <% 
                     if ( (int)ViewData["parentId"] > 1)
@@ -80,12 +80,13 @@
             </table>
         </div>
     </div>
+
     <div class="contextMenu" id="ContextMenu">
       <ul>
-        <li id="move"><img src="/content/images/move.png" alt=""/> Переместить</li>
-        <li id="copyto"><img src="/content/images/copy.png" alt=""/> Скопировать</li>
-        <li id="rename"><img src="/content/images/rename.png" alt=""/> Переименовать</li>
-        <li id="delete"><img src="/content/images/delete.png" alt=""/> Удалить</li>
+        <li id="move"><img src="/content/images/move.png" alt=""/> <%=LocaleRes.Localize.Move%></li>
+        <li id="copyto"><img src="/content/images/copy.png" alt=""/> <%=LocaleRes.Localize.Copy%></li>
+        <li id="rename"><img src="/content/images/rename.png" alt=""/> <%=LocaleRes.Localize.Rename%></li>
+        <li id="delete"><img src="/content/images/delete.png" alt=""/> <%=LocaleRes.Localize.Delete%></li>
       </ul>
     </div>
     

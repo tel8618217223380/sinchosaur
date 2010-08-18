@@ -17,7 +17,7 @@
             <div class="posttop"></div>
             <div id="ajaxrespons"></div>
             <div class="postitem">
-                <h2>Скопировать в директорию </h2>
+                <h2><%=LocaleRes.Localize.CopyInDirectory%></h2>
                 <% Html.RenderPartial("SelectFolder");%>
                 <% using (Ajax.BeginForm(new AjaxOptions { OnComplete = "ajaxOnComplete" }))
                    { %>
@@ -27,7 +27,7 @@
                     <%=Html.Hidden("outDirectoryId", ViewData["outDirectoryId"], new { id = "outdirectoryid" })%>
                     <div class="clear2">
                     </div>
-                    <input class="button" name="Submit" type="submit" value="пошел" />
+                    <input class="button" name="Submit" type="submit" value="go" />
                 </div>
                 <%} %>
             </div>
