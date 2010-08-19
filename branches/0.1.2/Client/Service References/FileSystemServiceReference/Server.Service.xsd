@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Server.Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Server.Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfMyFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MyFile" type="tns:MyFile" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMyFile" nillable="true" type="tns:ArrayOfMyFile" />
+  <xs:complexType name="MyFile">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileId" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDirectory" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPublic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastWriteTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentDirectoryId" type="xs:int" />
+      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Size" type="xs:long" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="status" type="tns:FileStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MyFile" nillable="true" type="tns:MyFile" />
+  <xs:simpleType name="FileStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Download" />
+      <xs:enumeration value="Upload" />
+      <xs:enumeration value="Delete" />
+      <xs:enumeration value="NotChange" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FileStatus" nillable="true" type="tns:FileStatus" />
+  <xs:complexType name="ArrayOfDynaTreeNode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DynaTreeNode" type="tns:DynaTreeNode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDynaTreeNode" nillable="true" type="tns:ArrayOfDynaTreeNode" />
+  <xs:complexType name="DynaTreeNode">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="isFolder" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isLazy" type="xs:boolean" />
+      <xs:element minOccurs="0" name="key" type="xs:int" />
+      <xs:element minOccurs="0" name="title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DynaTreeNode" nillable="true" type="tns:DynaTreeNode" />
+</xs:schema>
