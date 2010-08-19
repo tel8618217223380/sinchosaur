@@ -87,6 +87,21 @@ namespace Server.Service.Models
         }
 
 
+        //проверка на публичность директории
+        public bool IsPublicDirectory(int directoryId, int userId)
+        {
+            Directory directoryInfo = GetDirectoryById( directoryId, userId);
+            while(directoryInfo.ParentId>0)
+            {
+                if (directoryInfo.Name == "Public")
+                    return true;
+
+                directoryInfo = GetDirectoryById(directoryInfo.ParentId, userId);
+            }
+            return false;
+        }
+
+
         //проверяет существование главной диретории
         public bool ExistRootDirectory(int userId)
         {

@@ -17,6 +17,11 @@ namespace Site
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+             "ShowPublicLink",
+             "public_link/show/",
+             new { controller = "FileSystem", action = "ShowPublicLink" }
+           );
             
             routes.MapRoute(
               "GetTreeNode",
@@ -64,6 +69,12 @@ namespace Site
                "DownloadEventFile",
                "events/download",
                new { controller = "FileSystem", action = "DownloadEventFile"} 
+            );
+
+            routes.MapRoute(
+               "DownloadPublicFile",
+               "file/u/{userId}/{fileId}/",
+               new { controller = "FileSystem", action = "DownloadPublicFile" }
             );
 
             routes.MapRoute(

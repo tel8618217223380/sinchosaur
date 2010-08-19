@@ -38,6 +38,26 @@ namespace Server.Service
         }
 
 
+          //возвращает файловый поток публичного файла
+        public Stream GetPublicFileStream(int fileId, int userId)
+        {
+            if (FileModel.Instance.ExistById(fileId, userId))
+            {
+                File fileInfo = FileModel.Instance.GetFileById(fileId, userId);
+                if (!DirectoryModel.Instance.IsPublicDirectory(fileInfo.DirectoryId, userId))
+                    throw new Exception("FileNotPublic");
+
+                string fileFullPath = StorageFolder + fileInfo.PhysicalPath;
+                if (!System.IO.File.Exists(fileFullPath))
+                    throw new Exception("FileNotExist");
+
+                logger.Info("Отправка публичного файла: {0}", fileId);
+                return new FileStream(fileFullPath, FileMode.Open, FileAccess.Read);
+            }
+            throw new Exception("FileNotExist");
+        }
+
+
         // возвращает все файлы пользователя
         public List<MyFile> GetAllFiles(string userEmail, string userPass)
         {
@@ -68,6 +88,8 @@ namespace Server.Service
 
                 string directoryPath = DirectoryModel.Instance.GetDirectoryPath(directoryId, userInfo.UserId);
 
+                bool publicDirectory = DirectoryModel.Instance.IsPublicDirectory(directoryId, userInfo.UserId);
+
                 //добавление списка файлов
                 foreach (File file in files)
                 {
@@ -80,14 +102,15 @@ namespace Server.Service
                         LastWriteTime = file.LastWrite,
                         IsDirectory = false,
                         FileId = file.FileId,
-                        ParentDirectoryId=file.DirectoryId
+                        ParentDirectoryId=file.DirectoryId,
+                        UserId = userInfo.UserId,
+                        IsPublic = publicDirectory
                     });
                 }
 
                 //добавление списка вложенных директорий
                 foreach (Directory directory in directories)
                 {
-
                     directoryFiles.Add(new MyFile{
                         Name = directory.Name,
                         Path = (directoryPath + "\\" + directory.Name).Replace("\\\\","\\"),
@@ -96,7 +119,9 @@ namespace Server.Service
                         LastWriteTime = directory.Created,
                         IsDirectory = true,
                         FileId = directory.DirectoryId,
-                        ParentDirectoryId=directory.ParentId
+                        ParentDirectoryId=directory.ParentId,
+                        UserId = userInfo.UserId,
+                        IsPublic = DirectoryModel.Instance.IsPublicDirectory(directory.DirectoryId, userInfo.UserId)
                     });
 
                     if (recursive)
@@ -294,7 +319,8 @@ namespace Server.Service
                     LastWriteTime = directoryInfo.Created,
                     IsDirectory = true,
                     FileId = directoryInfo.DirectoryId,
-                    ParentDirectoryId = directoryInfo.ParentId
+                    ParentDirectoryId = directoryInfo.ParentId,
+                    UserId = userInfo.UserId
                 };
             }
 
@@ -309,7 +335,8 @@ namespace Server.Service
                     LastWriteTime = directoryInfo.Created,
                     IsDirectory = true,
                     FileId = directoryInfo.DirectoryId,
-                    ParentDirectoryId = directoryInfo.ParentId
+                    ParentDirectoryId = directoryInfo.ParentId,
+                    UserId = userInfo.UserId
                 };
             }
 
@@ -335,7 +362,8 @@ namespace Server.Service
                     LastWriteTime = fileInfo.LastWrite,
                     IsDirectory = true,
                     FileId = fileInfo.FileId,
-                    ParentDirectoryId = fileInfo.DirectoryId
+                    ParentDirectoryId = fileInfo.DirectoryId,
+                    UserId = userInfo.UserId
                 };
             }
             throw new Exception("FileNotFound");

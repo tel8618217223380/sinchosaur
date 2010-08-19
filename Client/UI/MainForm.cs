@@ -66,7 +66,7 @@ namespace Client
             }
 
             FillListView(changedFileList);
-            notifyIcon.ShowBalloonTip(200, "Sinchosaur", changedFileList.Count + Localization.GetFormCultureString(this, "CountFilesForSynch"), ToolTipIcon.Info);
+            notifyIcon.ShowBalloonTip(2000, "Sinchosaur", changedFileList.Count + Localization.GetFormCultureString(this, "CountFilesForSynch"), ToolTipIcon.Info);
             logger.Debug("Сформирован список из {0} файлов для синхронизации", changedFileList.Count);
         }
         
@@ -147,7 +147,7 @@ namespace Client
                     notifyIcon.Icon = Resurces.package_bad;
                     trayContextMenu.Items[1].Visible = true;
                     timerSinchronize.Enabled = true;
-                    notifyIcon.ShowBalloonTip(200, "Sinchosaur", "Не могу залить файл " + sender.SinchronizeFileProgressInfo.File.Name + ", лимит на сервере", ToolTipIcon.Info);
+                    notifyIcon.ShowBalloonTip(2000, "Sinchosaur", "Не могу залить файл " + sender.SinchronizeFileProgressInfo.File.Name + ", лимит на сервере", ToolTipIcon.Info);
                     logger.Warn("Не могу залить файл " + sender.SinchronizeFileProgressInfo.File.ToString() + ", лимит на сервере");
                     break;
 
@@ -161,7 +161,7 @@ namespace Client
                     trayContextMenu.Items[1].Visible = false;
                     timerSinchronize.Enabled = false;
                     notifyIcon.Icon = Resurces.package_bad;
-                    notifyIcon.ShowBalloonTip(200, "Sinchosaur", Localization.GetFormCultureString(this, "UserNotExist"), ToolTipIcon.Info);
+                    notifyIcon.ShowBalloonTip(2000, "Sinchosaur", Localization.GetFormCultureString(this, "UserNotExist"), ToolTipIcon.Info);
                     logger.Warn("Такой пользователь не существует");
                     
                     SettingForm settingsForm = new SettingForm();
@@ -174,7 +174,7 @@ namespace Client
                     trayContextMenu.Items[1].Visible = true;
                     timerSinchronize.Enabled = false;
                     notifyIcon.Icon = Resurces.package_bad;
-                    notifyIcon.ShowBalloonTip(200, "Sinchosaur", Localization.GetFormCultureString(this, "ServerIpNotCorrect"), ToolTipIcon.Info);
+                    notifyIcon.ShowBalloonTip(2000, "Sinchosaur", Localization.GetFormCultureString(this, "ServerIpNotCorrect"), ToolTipIcon.Info);
                     logger.Warn("Указан не корректный ip-адрес сервера");
 
                     settingsForm = new SettingForm();
