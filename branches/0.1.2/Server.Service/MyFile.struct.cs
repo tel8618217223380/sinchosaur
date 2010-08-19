@@ -30,18 +30,9 @@ namespace Server.Service
         public bool IsDirectory;
         public int FileId;
         public int ParentDirectoryId;
+        public int UserId;
+        public bool IsPublic;
 
-        public MyFile(string Name, string Path, long Size, FileStatus status, DateTime LastWriteTime, bool IsDirectory, int FileId, int ParentDirectoryId)
-        {
-            this.Name = Name;
-            this.Path = Path;
-            this.Size = Size;
-            this.status = status;
-            this.LastWriteTime = LastWriteTime;
-            this.IsDirectory = IsDirectory;
-            this.FileId = FileId;
-            this.ParentDirectoryId = ParentDirectoryId;
-        }
         
         public override string ToString()
         {

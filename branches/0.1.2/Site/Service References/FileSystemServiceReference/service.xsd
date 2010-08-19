@@ -33,6 +33,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetPublicFileStream">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fileId" type="xs:int" />
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPublicFileStreamResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/Message" name="GetPublicFileStreamResult" type="q3:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetDirectory">
     <xs:complexType>
       <xs:sequence>
@@ -45,7 +60,7 @@
   <xs:element name="GetDirectoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Server.Service" minOccurs="0" name="GetDirectoryResult" type="q3:MyFile" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Server.Service" minOccurs="0" name="GetDirectoryResult" type="q4:MyFile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -61,7 +76,7 @@
   <xs:element name="GetFileResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Server.Service" minOccurs="0" name="GetFileResult" type="q4:MyFile" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Server.Service" minOccurs="0" name="GetFileResult" type="q5:MyFile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -94,18 +109,18 @@
   <xs:element name="GetDirectoryFilesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Server.Service" minOccurs="0" name="GetDirectoryFilesResult" nillable="true" type="q5:ArrayOfMyFile" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Server.Service" minOccurs="0" name="GetDirectoryFilesResult" nillable="true" type="q6:ArrayOfMyFile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="FileUploadMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.microsoft.com/Message" name="sourceStream" type="q6:StreamBody" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/Message" name="sourceStream" type="q7:StreamBody" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Server.Service" name="file" type="q7:MyFile" />
+  <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Server.Service" name="file" type="q8:MyFile" />
   <xs:element name="userEmail" nillable="true" type="xs:string" />
   <xs:element name="userPass" nillable="true" type="xs:string" />
   <xs:element name="DeleteFile">
@@ -162,7 +177,7 @@
   <xs:element name="GetDirectorySubDirectoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Server.Service" minOccurs="0" name="GetDirectorySubDirectoriesResult" nillable="true" type="q8:ArrayOfDynaTreeNode" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Server.Service" minOccurs="0" name="GetDirectorySubDirectoriesResult" nillable="true" type="q9:ArrayOfDynaTreeNode" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -228,6 +243,22 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="GetFilePathResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUploadFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fileSize" type="xs:long" />
+        <xs:element minOccurs="0" name="userEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userPass" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUploadFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CanUploadFileResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

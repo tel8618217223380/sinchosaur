@@ -192,6 +192,9 @@
   <data name="Passwd" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="PublicLink" xml:space="preserve">
+    <value>Public Link</value>
+  </data>
   <data name="Rename" xml:space="preserve">
     <value>Rename</value>
   </data>

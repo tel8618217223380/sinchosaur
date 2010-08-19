@@ -312,7 +312,8 @@ namespace Client
                 status = status,
                 IsDirectory=file.IsDirectory,
                 LastWriteTime = file.LastWriteTime,
-                FileId = file.FileId
+                FileId = file.FileId,
+                UserId = file.UserId
             };
         }
 

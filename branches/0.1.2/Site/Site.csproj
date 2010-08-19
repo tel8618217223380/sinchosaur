@@ -131,7 +131,6 @@
     <Content Include="Content\images\tabhover.jpg" />
     <Content Include="Content\images\tabnormal.jpg" />
     <Content Include="Content\images\topmenu.png" />
-    <Content Include="Content\images\updating.gif" />
     <Content Include="Content\js\contextmenu.js" />
     <Content Include="Content\js\dynatree\jquery.dynatree.min.js" />
     <Content Include="Content\js\dynatree\skin\cbChecked.gif" />
@@ -165,6 +164,8 @@
     <Content Include="Content\js\dynatree\skin\rbUnchecked_hover.gif" />
     <Content Include="Content\js\dynatree\skin\ui.dynatree.css" />
     <Content Include="Content\js\jquery.cookie.js" />
+    <Content Include="Content\js\jquery.copy.js" />
+    <Content Include="Content\js\jquery.copy.swf" />
     <Content Include="Content\js\thickbox.js" />
     <Content Include="Content\js\ui.core.js" />
     <Content Include="Content\js\uploadify\cancel.png" />
@@ -212,6 +213,7 @@
     <Content Include="Views\FileSystem\ShowFolder.aspx" />
     <Content Include="Views\FileSystem\Copy.aspx" />
     <Content Include="Views\FileSystem\Rename.aspx" />
+    <Content Include="Views\FileSystem\ShowPublicLink.aspx" />
     <Content Include="Views\FileSystem\Upload.aspx" />
     <Content Include="Views\Pages\Main.en.aspx" />
     <Content Include="Views\Pages\Download.en.aspx" />

@@ -192,6 +192,9 @@
   <data name="Passwd" xml:space="preserve">
     <value>Пароль</value>
   </data>
+  <data name="PublicLink" xml:space="preserve">
+    <value>Общая ссылка</value>
+  </data>
   <data name="Rename" xml:space="preserve">
     <value>Переименовать</value>
   </data>

@@ -20,6 +20,12 @@
   <wsdl:message name="IFileSystem_GetFileStream_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetFileStreamResponse" />
   </wsdl:message>
+  <wsdl:message name="IFileSystem_GetPublicFileStream_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPublicFileStream" />
+  </wsdl:message>
+  <wsdl:message name="IFileSystem_GetPublicFileStream_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPublicFileStreamResponse" />
+  </wsdl:message>
   <wsdl:message name="IFileSystem_GetDirectory_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDirectory" />
   </wsdl:message>
@@ -101,6 +107,12 @@
   <wsdl:message name="IFileSystem_GetFilePath_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetFilePathResponse" />
   </wsdl:message>
+  <wsdl:message name="IFileSystem_CanUploadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:CanUploadFile" />
+  </wsdl:message>
+  <wsdl:message name="IFileSystem_CanUploadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CanUploadFileResponse" />
+  </wsdl:message>
   <wsdl:portType name="IFileSystem">
     <wsdl:operation name="GetAllFiles">
       <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/GetAllFiles" message="tns:IFileSystem_GetAllFiles_InputMessage" />
@@ -109,6 +121,10 @@
     <wsdl:operation name="GetFileStream">
       <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/GetFileStream" message="tns:IFileSystem_GetFileStream_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFileSystem/GetFileStreamResponse" message="tns:IFileSystem_GetFileStream_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicFileStream">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/GetPublicFileStream" message="tns:IFileSystem_GetPublicFileStream_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileSystem/GetPublicFileStreamResponse" message="tns:IFileSystem_GetPublicFileStream_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetDirectory">
       <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/GetDirectory" message="tns:IFileSystem_GetDirectory_InputMessage" />
@@ -162,6 +178,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/GetFilePath" message="tns:IFileSystem_GetFilePath_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFileSystem/GetFilePathResponse" message="tns:IFileSystem_GetFilePath_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CanUploadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileSystem/CanUploadFile" message="tns:IFileSystem_CanUploadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileSystem/CanUploadFileResponse" message="tns:IFileSystem_CanUploadFile_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IFileSystem" type="tns:IFileSystem">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -176,6 +196,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetFileStream">
       <soap:operation soapAction="http://tempuri.org/IFileSystem/GetFileStream" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicFileStream">
+      <soap:operation soapAction="http://tempuri.org/IFileSystem/GetPublicFileStream" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -296,6 +325,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetFilePath">
       <soap:operation soapAction="http://tempuri.org/IFileSystem/GetFilePath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanUploadFile">
+      <soap:operation soapAction="http://tempuri.org/IFileSystem/CanUploadFile" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

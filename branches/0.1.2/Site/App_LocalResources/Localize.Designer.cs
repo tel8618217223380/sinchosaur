@@ -286,6 +286,15 @@ namespace LocaleRes {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Общая ссылка.
+        /// </summary>
+        public static string PublicLink {
+            get {
+                return ResourceManager.GetString("PublicLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Переименовать.
         /// </summary>
         public static string Rename {

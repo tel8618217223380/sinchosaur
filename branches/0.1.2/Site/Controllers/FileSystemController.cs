@@ -61,6 +61,41 @@ namespace Site.Controllers
         }
 
 
+        public ActionResult DownloadPublicFile(int fileId, int userId, string name)
+        {
+            FileSystemClient serverFileSystem = new FileSystemClient();
+            try
+            {
+                return File(serverFileSystem.GetPublicFileStream(fileId, userId), "application/octet-stream", name);
+            }
+            catch (Exception)
+            {
+                throw new HttpException(404, "HTTP/1.1 404 Not Found");
+            }
+        }
+
+
+        [Authorize]
+        public ActionResult ShowPublicLink(int fileId)
+        {
+            string userEmail = (string)Session["email"];
+            string userPassword = (string)Session["password"];
+
+            if (userEmail == null || userPassword == null)
+                return RedirectToRoute("Logout");
+
+            FileSystemClient serverFileSystem = new FileSystemClient();
+
+            MyFile fileInfo = serverFileSystem.GetFile(fileId, userEmail, userPassword);
+
+            ViewData["name"] = fileInfo.Name;
+            ViewData["fileId"] = fileId;
+            ViewData["userId"] = fileInfo.UserId;
+
+            return View();
+
+        }
+
         [Authorize]
         public ActionResult CreateDirectory(int directoryId=0, string name="")
         {
@@ -300,8 +335,6 @@ namespace Site.Controllers
             return RedirectToRoute("ShowFolder", new { id = fileInfo.ParentDirectoryId });
         }
 
-
-        
        
         [Authorize]
         public ActionResult GetTreeNode( string sleep, string mode,int key=0)

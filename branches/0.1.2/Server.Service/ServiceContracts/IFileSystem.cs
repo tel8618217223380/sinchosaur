@@ -18,6 +18,11 @@ namespace Server.Service
         Stream GetFileStream(int fileId, string userEmail, string userPass);
 
 
+        //возвращает поток публичного файла StreamWithProgress упакованный в Stream
+        [OperationContract]
+        Stream GetPublicFileStream(int fileId, int userId);
+
+
         //возвращает каталог
         [OperationContract]
         MyFile GetDirectory(int directoryId, string userEmail, string userPass);
