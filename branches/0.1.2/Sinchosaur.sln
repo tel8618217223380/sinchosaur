@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminTool", "AdminTool\AdminTool.csproj", "{AA0C36CB-6F8A-4F83-ADBB-C0B9F8546F75}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Sinchosaur.vsmdi
@@ -83,6 +85,16 @@ Global
 		{6425D95B-9A9F-4D0F-B39F-6032790BB699}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6425D95B-9A9F-4D0F-B39F-6032790BB699}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6425D95B-9A9F-4D0F-B39F-6032790BB699}.Release|x86.ActiveCfg = Release|Any CPU
+		{AA0C36CB-6F8A-4F83-ADBB-C0B9F8546F75}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{AA0C36CB-6F8A-4F83-ADBB-C0B9F8546F75}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{AA0C36CB-6F8A-4F83-ADBB-C0B9F8546F75}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{AA0C36CB-6F8A-4F83-ADBB-C0B9F8546F75}.Debug|x86.ActiveCfg = Debug|x86
+		{AA0C36CB-6F8A-4F83-ADBB-C0B9F8546F75}.Debug|x86.Build.0 = Debug|x86
+		{AA0C36CB-6F8A-4F83-ADBB-C0B9F8546F75}.Release|Any CPU.ActiveCfg = Release|x86
+		{AA0C36CB-6F8A-4F83-ADBB-C0B9F8546F75}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{AA0C36CB-6F8A-4F83-ADBB-C0B9F8546F75}.Release|Mixed Platforms.Build.0 = Release|x86
+		{AA0C36CB-6F8A-4F83-ADBB-C0B9F8546F75}.Release|x86.ActiveCfg = Release|x86
+		{AA0C36CB-6F8A-4F83-ADBB-C0B9F8546F75}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
