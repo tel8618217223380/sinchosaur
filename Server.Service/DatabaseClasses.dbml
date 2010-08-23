@@ -37,14 +37,6 @@
       <Association Name="Directory_File" Member="File" ThisKey="DirectoryId" OtherKey="DirectoryId" Type="File" />
     </Type>
   </Table>
-  <Table Name="dbo.Users" Member="User">
-    <Type Name="User">
-      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
-      <Column Name="Passwd" Type="System.String" DbType="NChar(32) NOT NULL" CanBeNull="false" />
-      <Column Name="SpaceLimit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.Operators" Member="Operator">
     <Type Name="Operator">
       <Column Name="OperatorId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -52,6 +44,14 @@
       <Column Name="Login" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Passwd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="User">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Passwd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SpaceLimit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

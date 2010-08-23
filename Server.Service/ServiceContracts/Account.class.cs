@@ -16,16 +16,29 @@ namespace Server.Service
         
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
+        //проверка сущствования пользователя
         public bool Exist(string userEmail, string userPass)
         {
             return UserModel.Instance.Exist(userEmail, userPass);
         }
 
 
+        // проверка существования оператора
         public bool ExistOperator(string login, string password)
         {
             logger.Info("Проверка сущуствания оператора: {0}", login);
             return OperatorModel.Instance.Exist(login, password);
+        }
+
+
+        //возвращает количество пользователей
+        public int GetCountUsers(string login, string password)
+        {
+            if(!OperatorModel.Instance.Exist(login, password))
+                throw new Exception("OperatorNotExist");
+
+            logger.Info("Получение количества пользователей, оператор: {0}", login);
+            return UserModel.Instance.GetCountUsers();
         }
 
 

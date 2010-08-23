@@ -39,12 +39,12 @@ namespace Server.Service
 	partial void InsertDirectory(Directory instance);
 	partial void UpdateDirectory(Directory instance);
 	partial void DeleteDirectory(Directory instance);
-	partial void InsertUser(User instance);
-	partial void UpdateUser(User instance);
-	partial void DeleteUser(User instance);
 	partial void InsertOperator(Operator instance);
 	partial void UpdateOperator(Operator instance);
 	partial void DeleteOperator(Operator instance);
+	partial void InsertUser(User instance);
+	partial void UpdateUser(User instance);
+	partial void DeleteUser(User instance);
 	#endregion
 		
 		public DatabaseClassesDataContext() : 
@@ -101,19 +101,19 @@ namespace Server.Service
 			}
 		}
 		
-		public System.Data.Linq.Table<User> Users
-		{
-			get
-			{
-				return this.GetTable<User>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Operator> Operators
 		{
 			get
 			{
 				return this.GetTable<Operator>();
+			}
+		}
+		
+		public System.Data.Linq.Table<User> Users
+		{
+			get
+			{
+				return this.GetTable<User>();
 			}
 		}
 	}
@@ -874,140 +874,6 @@ namespace Server.Service
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UserId;
-		
-		private string _Email;
-		
-		private string _Passwd;
-		
-		private long _SpaceLimit;
-		
-	#region Extensibility Method Definitions
-	partial void OnLoaded();
-	partial void OnValidate(System.Data.Linq.ChangeAction action);
-	partial void OnCreated();
-	partial void OnUserIdChanging(int value);
-	partial void OnUserIdChanged();
-	partial void OnEmailChanging(string value);
-	partial void OnEmailChanged();
-	partial void OnPasswdChanging(string value);
-	partial void OnPasswdChanged();
-	partial void OnSpaceLimitChanging(long value);
-	partial void OnSpaceLimitChanged();
-	#endregion
-		
-		public User()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NChar(40) NOT NULL", CanBeNull=false)]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Passwd", DbType="NChar(32) NOT NULL", CanBeNull=false)]
-		public string Passwd
-		{
-			get
-			{
-				return this._Passwd;
-			}
-			set
-			{
-				if ((this._Passwd != value))
-				{
-					this.OnPasswdChanging(value);
-					this.SendPropertyChanging();
-					this._Passwd = value;
-					this.SendPropertyChanged("Passwd");
-					this.OnPasswdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SpaceLimit", DbType="BigInt NOT NULL")]
-		public long SpaceLimit
-		{
-			get
-			{
-				return this._SpaceLimit;
-			}
-			set
-			{
-				if ((this._SpaceLimit != value))
-				{
-					this.OnSpaceLimitChanging(value);
-					this.SendPropertyChanging();
-					this._SpaceLimit = value;
-					this.SendPropertyChanged("SpaceLimit");
-					this.OnSpaceLimitChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Operators")]
 	public partial class Operator : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1141,6 +1007,140 @@ namespace Server.Service
 					this._Created = value;
 					this.SendPropertyChanged("Created");
 					this.OnCreatedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserId;
+		
+		private string _Email;
+		
+		private string _Passwd;
+		
+		private long _SpaceLimit;
+		
+	#region Extensibility Method Definitions
+	partial void OnLoaded();
+	partial void OnValidate(System.Data.Linq.ChangeAction action);
+	partial void OnCreated();
+	partial void OnUserIdChanging(int value);
+	partial void OnUserIdChanged();
+	partial void OnEmailChanging(string value);
+	partial void OnEmailChanged();
+	partial void OnPasswdChanging(string value);
+	partial void OnPasswdChanged();
+	partial void OnSpaceLimitChanging(long value);
+	partial void OnSpaceLimitChanged();
+	#endregion
+		
+		public User()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Passwd", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Passwd
+		{
+			get
+			{
+				return this._Passwd;
+			}
+			set
+			{
+				if ((this._Passwd != value))
+				{
+					this.OnPasswdChanging(value);
+					this.SendPropertyChanging();
+					this._Passwd = value;
+					this.SendPropertyChanged("Passwd");
+					this.OnPasswdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SpaceLimit", DbType="BigInt NOT NULL")]
+		public long SpaceLimit
+		{
+			get
+			{
+				return this._SpaceLimit;
+			}
+			set
+			{
+				if ((this._SpaceLimit != value))
+				{
+					this.OnSpaceLimitChanging(value);
+					this.SendPropertyChanging();
+					this._SpaceLimit = value;
+					this.SendPropertyChanged("SpaceLimit");
+					this.OnSpaceLimitChanged();
 				}
 			}
 		}

@@ -54,5 +54,17 @@ namespace AdminTool
         }
 
 
+        //возвращает пользователей постранично
+        public User[] GetUsers(int page, int pageRowsCount)
+        {
+            return accountManage.GetAllUsers(page,  pageRowsCount, OperatorLogin, OperatorPassword);
+        }
+
+
+        public int GetCountUsers()
+        {
+            return accountManage.GetCountUsers(OperatorLogin, OperatorPassword);
+        }
+
     }
 }

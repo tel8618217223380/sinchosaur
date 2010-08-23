@@ -116,6 +116,9 @@ namespace AdminTool.AccountServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/ExistOperator", ReplyAction="http://tempuri.org/IAccount/ExistOperatorResponse")]
         bool ExistOperator(string login, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/GetCountUsers", ReplyAction="http://tempuri.org/IAccount/GetCountUsersResponse")]
+        int GetCountUsers(string login, string password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/GetAllUsers", ReplyAction="http://tempuri.org/IAccount/GetAllUsersResponse")]
         AdminTool.AccountServiceReference.User[] GetAllUsers(int page, int pageRowsCount, string operatorLogin, string operatorPass);
         
@@ -162,6 +165,10 @@ namespace AdminTool.AccountServiceReference {
         
         public bool ExistOperator(string login, string password) {
             return base.Channel.ExistOperator(login, password);
+        }
+        
+        public int GetCountUsers(string login, string password) {
+            return base.Channel.GetCountUsers(login, password);
         }
         
         public AdminTool.AccountServiceReference.User[] GetAllUsers(int page, int pageRowsCount, string operatorLogin, string operatorPass) {
