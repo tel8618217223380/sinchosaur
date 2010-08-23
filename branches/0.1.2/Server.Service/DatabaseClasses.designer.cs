@@ -42,6 +42,9 @@ namespace Server.Service
 	partial void InsertUser(User instance);
 	partial void UpdateUser(User instance);
 	partial void DeleteUser(User instance);
+	partial void InsertOperator(Operator instance);
+	partial void UpdateOperator(Operator instance);
+	partial void DeleteOperator(Operator instance);
 	#endregion
 		
 		public DatabaseClassesDataContext() : 
@@ -103,6 +106,14 @@ namespace Server.Service
 			get
 			{
 				return this.GetTable<User>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Operator> Operators
+		{
+			get
+			{
+				return this.GetTable<Operator>();
 			}
 		}
 	}
@@ -972,6 +983,164 @@ namespace Server.Service
 					this._SpaceLimit = value;
 					this.SendPropertyChanged("SpaceLimit");
 					this.OnSpaceLimitChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Operators")]
+	public partial class Operator : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _OperatorId;
+		
+		private string _Name;
+		
+		private string _Login;
+		
+		private string _Passwd;
+		
+		private System.DateTime _Created;
+		
+	#region Extensibility Method Definitions
+	partial void OnLoaded();
+	partial void OnValidate(System.Data.Linq.ChangeAction action);
+	partial void OnCreated();
+	partial void OnOperatorIdChanging(int value);
+	partial void OnOperatorIdChanged();
+	partial void OnNameChanging(string value);
+	partial void OnNameChanged();
+	partial void OnLoginChanging(string value);
+	partial void OnLoginChanged();
+	partial void OnPasswdChanging(string value);
+	partial void OnPasswdChanged();
+	partial void OnCreatedChanging(System.DateTime value);
+	partial void OnCreatedChanged();
+	#endregion
+		
+		public Operator()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OperatorId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int OperatorId
+		{
+			get
+			{
+				return this._OperatorId;
+			}
+			set
+			{
+				if ((this._OperatorId != value))
+				{
+					this.OnOperatorIdChanging(value);
+					this.SendPropertyChanging();
+					this._OperatorId = value;
+					this.SendPropertyChanged("OperatorId");
+					this.OnOperatorIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Login", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Login
+		{
+			get
+			{
+				return this._Login;
+			}
+			set
+			{
+				if ((this._Login != value))
+				{
+					this.OnLoginChanging(value);
+					this.SendPropertyChanging();
+					this._Login = value;
+					this.SendPropertyChanged("Login");
+					this.OnLoginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Passwd", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Passwd
+		{
+			get
+			{
+				return this._Passwd;
+			}
+			set
+			{
+				if ((this._Passwd != value))
+				{
+					this.OnPasswdChanging(value);
+					this.SendPropertyChanging();
+					this._Passwd = value;
+					this.SendPropertyChanged("Passwd");
+					this.OnPasswdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Created", DbType="DateTime NOT NULL")]
+		public System.DateTime Created
+		{
+			get
+			{
+				return this._Created;
+			}
+			set
+			{
+				if ((this._Created != value))
+				{
+					this.OnCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._Created = value;
+					this.SendPropertyChanged("Created");
+					this.OnCreatedChanged();
 				}
 			}
 		}

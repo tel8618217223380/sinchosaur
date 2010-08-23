@@ -30,41 +30,41 @@
         {
             System.Windows.Forms.ColumnHeader Id;
             System.Windows.Forms.ColumnHeader Email;
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Folder1_1");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Folder1_2");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Folder1", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12});
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Folder2");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14});
             System.Windows.Forms.ColumnHeader File;
-            this.listView1 = new System.Windows.Forms.ListView();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Folder1_1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Folder1_2");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Folder1", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Folder2");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4});
+            this.UsersList = new System.Windows.Forms.ListView();
             this.SpaceLimit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.HistorySpace = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Created = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.nextLabel = new System.Windows.Forms.LinkLabel();
-            this.prevLabel = new System.Windows.Forms.LinkLabel();
-            this.firstLabel = new System.Windows.Forms.LinkLabel();
-            this.lastLabel = new System.Windows.Forms.LinkLabel();
+            this.NextPageLabel = new System.Windows.Forms.LinkLabel();
+            this.PrevPageLabel = new System.Windows.Forms.LinkLabel();
+            this.FirstPageLabel = new System.Windows.Forms.LinkLabel();
+            this.LastPageLabel = new System.Windows.Forms.LinkLabel();
             this.pageNumberUpDown = new System.Windows.Forms.NumericUpDown();
-            this.button2 = new System.Windows.Forms.Button();
+            this.DeleteUserButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.FindUserButton = new System.Windows.Forms.Button();
+            this.EditUserButton = new System.Windows.Forms.Button();
+            this.HistoryUserButton = new System.Windows.Forms.Button();
+            this.AddUserButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.FoldersTree = new System.Windows.Forms.TreeView();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.DownloadUserFileButton = new System.Windows.Forms.Button();
+            this.UserFoldersTree = new System.Windows.Forms.TreeView();
+            this.UserFilesList = new System.Windows.Forms.ListView();
             this.Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Synchronized = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.HistorySpace = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button7 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.FindUserFileButton = new System.Windows.Forms.Button();
+            this.DeleteUserFileButton = new System.Windows.Forms.Button();
             Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             File = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -83,75 +83,85 @@
             Email.Text = "Email";
             Email.Width = 151;
             // 
-            // listView1
+            // File
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            File.Text = "File";
+            File.Width = 211;
+            // 
+            // UsersList
+            // 
+            this.UsersList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             Id,
             Email,
             this.SpaceLimit,
             this.HistorySpace,
             this.Created});
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(15, 37);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(577, 224);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.UsersList.GridLines = true;
+            this.UsersList.Location = new System.Drawing.Point(15, 37);
+            this.UsersList.Name = "UsersList";
+            this.UsersList.Size = new System.Drawing.Size(577, 224);
+            this.UsersList.TabIndex = 0;
+            this.UsersList.UseCompatibleStateImageBehavior = false;
+            this.UsersList.View = System.Windows.Forms.View.Details;
             // 
             // SpaceLimit
             // 
             this.SpaceLimit.Text = "Space limit";
             this.SpaceLimit.Width = 96;
             // 
+            // HistorySpace
+            // 
+            this.HistorySpace.Text = "History Space";
+            this.HistorySpace.Width = 97;
+            // 
             // Created
             // 
             this.Created.Text = "Created";
             this.Created.Width = 91;
             // 
-            // nextLabel
+            // NextPageLabel
             // 
-            this.nextLabel.AutoSize = true;
-            this.nextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nextLabel.Location = new System.Drawing.Point(344, 272);
-            this.nextLabel.Name = "nextLabel";
-            this.nextLabel.Size = new System.Drawing.Size(15, 16);
-            this.nextLabel.TabIndex = 2;
-            this.nextLabel.TabStop = true;
-            this.nextLabel.Text = ">";
+            this.NextPageLabel.AutoSize = true;
+            this.NextPageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NextPageLabel.Location = new System.Drawing.Point(344, 272);
+            this.NextPageLabel.Name = "NextPageLabel";
+            this.NextPageLabel.Size = new System.Drawing.Size(15, 16);
+            this.NextPageLabel.TabIndex = 2;
+            this.NextPageLabel.TabStop = true;
+            this.NextPageLabel.Text = ">";
             // 
-            // prevLabel
+            // PrevPageLabel
             // 
-            this.prevLabel.AutoSize = true;
-            this.prevLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.prevLabel.Location = new System.Drawing.Point(255, 272);
-            this.prevLabel.Name = "prevLabel";
-            this.prevLabel.Size = new System.Drawing.Size(15, 16);
-            this.prevLabel.TabIndex = 3;
-            this.prevLabel.TabStop = true;
-            this.prevLabel.Text = "<";
+            this.PrevPageLabel.AutoSize = true;
+            this.PrevPageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PrevPageLabel.Location = new System.Drawing.Point(255, 272);
+            this.PrevPageLabel.Name = "PrevPageLabel";
+            this.PrevPageLabel.Size = new System.Drawing.Size(15, 16);
+            this.PrevPageLabel.TabIndex = 3;
+            this.PrevPageLabel.TabStop = true;
+            this.PrevPageLabel.Text = "<";
             // 
-            // firstLabel
+            // FirstPageLabel
             // 
-            this.firstLabel.AutoSize = true;
-            this.firstLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.firstLabel.Location = new System.Drawing.Point(230, 272);
-            this.firstLabel.Name = "firstLabel";
-            this.firstLabel.Size = new System.Drawing.Size(22, 16);
-            this.firstLabel.TabIndex = 5;
-            this.firstLabel.TabStop = true;
-            this.firstLabel.Text = "<<";
+            this.FirstPageLabel.AutoSize = true;
+            this.FirstPageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FirstPageLabel.Location = new System.Drawing.Point(230, 272);
+            this.FirstPageLabel.Name = "FirstPageLabel";
+            this.FirstPageLabel.Size = new System.Drawing.Size(22, 16);
+            this.FirstPageLabel.TabIndex = 5;
+            this.FirstPageLabel.TabStop = true;
+            this.FirstPageLabel.Text = "<<";
             // 
-            // lastLabel
+            // LastPageLabel
             // 
-            this.lastLabel.AutoSize = true;
-            this.lastLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lastLabel.Location = new System.Drawing.Point(361, 272);
-            this.lastLabel.Name = "lastLabel";
-            this.lastLabel.Size = new System.Drawing.Size(22, 16);
-            this.lastLabel.TabIndex = 4;
-            this.lastLabel.TabStop = true;
-            this.lastLabel.Text = ">>";
+            this.LastPageLabel.AutoSize = true;
+            this.LastPageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LastPageLabel.Location = new System.Drawing.Point(361, 272);
+            this.LastPageLabel.Name = "LastPageLabel";
+            this.LastPageLabel.Size = new System.Drawing.Size(22, 16);
+            this.LastPageLabel.TabIndex = 4;
+            this.LastPageLabel.TabStop = true;
+            this.LastPageLabel.Text = ">>";
             // 
             // pageNumberUpDown
             // 
@@ -160,43 +170,70 @@
             this.pageNumberUpDown.Size = new System.Drawing.Size(65, 20);
             this.pageNumberUpDown.TabIndex = 6;
             // 
-            // button2
+            // DeleteUserButton
             // 
-            this.button2.Location = new System.Drawing.Point(598, 182);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.DeleteUserButton.Location = new System.Drawing.Point(598, 182);
+            this.DeleteUserButton.Name = "DeleteUserButton";
+            this.DeleteUserButton.Size = new System.Drawing.Size(90, 23);
+            this.DeleteUserButton.TabIndex = 8;
+            this.DeleteUserButton.Text = "Delete";
+            this.DeleteUserButton.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button9);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.FindUserButton);
+            this.groupBox1.Controls.Add(this.EditUserButton);
+            this.groupBox1.Controls.Add(this.HistoryUserButton);
+            this.groupBox1.Controls.Add(this.AddUserButton);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.listView1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.nextLabel);
-            this.groupBox1.Controls.Add(this.prevLabel);
+            this.groupBox1.Controls.Add(this.UsersList);
+            this.groupBox1.Controls.Add(this.DeleteUserButton);
+            this.groupBox1.Controls.Add(this.NextPageLabel);
+            this.groupBox1.Controls.Add(this.PrevPageLabel);
             this.groupBox1.Controls.Add(this.pageNumberUpDown);
-            this.groupBox1.Controls.Add(this.lastLabel);
-            this.groupBox1.Controls.Add(this.firstLabel);
+            this.groupBox1.Controls.Add(this.LastPageLabel);
+            this.groupBox1.Controls.Add(this.FirstPageLabel);
             this.groupBox1.Location = new System.Drawing.Point(12, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(694, 303);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
-            // button3
+            // FindUserButton
             // 
-            this.button3.Location = new System.Drawing.Point(598, 71);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Download";
-            this.button3.UseVisualStyleBackColor = true;
+            this.FindUserButton.Location = new System.Drawing.Point(598, 37);
+            this.FindUserButton.Name = "FindUserButton";
+            this.FindUserButton.Size = new System.Drawing.Size(90, 23);
+            this.FindUserButton.TabIndex = 15;
+            this.FindUserButton.Text = "Find";
+            this.FindUserButton.UseVisualStyleBackColor = true;
+            // 
+            // EditUserButton
+            // 
+            this.EditUserButton.Location = new System.Drawing.Point(598, 153);
+            this.EditUserButton.Name = "EditUserButton";
+            this.EditUserButton.Size = new System.Drawing.Size(90, 23);
+            this.EditUserButton.TabIndex = 13;
+            this.EditUserButton.Text = "Edit";
+            this.EditUserButton.UseVisualStyleBackColor = true;
+            // 
+            // HistoryUserButton
+            // 
+            this.HistoryUserButton.Location = new System.Drawing.Point(598, 80);
+            this.HistoryUserButton.Name = "HistoryUserButton";
+            this.HistoryUserButton.Size = new System.Drawing.Size(90, 23);
+            this.HistoryUserButton.TabIndex = 13;
+            this.HistoryUserButton.Text = "History";
+            this.HistoryUserButton.UseVisualStyleBackColor = true;
+            // 
+            // AddUserButton
+            // 
+            this.AddUserButton.Location = new System.Drawing.Point(598, 124);
+            this.AddUserButton.Name = "AddUserButton";
+            this.AddUserButton.Size = new System.Drawing.Size(90, 23);
+            this.AddUserButton.TabIndex = 8;
+            this.AddUserButton.Text = "Add";
+            this.AddUserButton.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -208,66 +245,47 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Users list";
             // 
-            // button1
+            // DownloadUserFileButton
             // 
-            this.button1.Location = new System.Drawing.Point(598, 124);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.DownloadUserFileButton.Location = new System.Drawing.Point(598, 71);
+            this.DownloadUserFileButton.Name = "DownloadUserFileButton";
+            this.DownloadUserFileButton.Size = new System.Drawing.Size(90, 23);
+            this.DownloadUserFileButton.TabIndex = 10;
+            this.DownloadUserFileButton.Text = "Download";
+            this.DownloadUserFileButton.UseVisualStyleBackColor = true;
             // 
-            // FoldersTree
+            // UserFoldersTree
             // 
-            this.FoldersTree.Location = new System.Drawing.Point(15, 42);
-            this.FoldersTree.Name = "FoldersTree";
-            treeNode11.Name = "Folder1_1";
-            treeNode11.Text = "Folder1_1";
-            treeNode12.Name = "Folder1_2";
-            treeNode12.Text = "Folder1_2";
-            treeNode13.Name = "Folder1";
-            treeNode13.Text = "Folder1";
-            treeNode14.Name = "Folder2";
-            treeNode14.Text = "Folder2";
-            treeNode15.Name = "Root";
-            treeNode15.Text = "Root";
-            this.FoldersTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode15});
-            this.FoldersTree.Size = new System.Drawing.Size(144, 240);
-            this.FoldersTree.TabIndex = 11;
+            this.UserFoldersTree.Location = new System.Drawing.Point(15, 42);
+            this.UserFoldersTree.Name = "UserFoldersTree";
+            treeNode1.Name = "Folder1_1";
+            treeNode1.Text = "Folder1_1";
+            treeNode2.Name = "Folder1_2";
+            treeNode2.Text = "Folder1_2";
+            treeNode3.Name = "Folder1";
+            treeNode3.Text = "Folder1";
+            treeNode4.Name = "Folder2";
+            treeNode4.Text = "Folder2";
+            treeNode5.Name = "Root";
+            treeNode5.Text = "Root";
+            this.UserFoldersTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode5});
+            this.UserFoldersTree.Size = new System.Drawing.Size(144, 240);
+            this.UserFoldersTree.TabIndex = 11;
             // 
-            // listView2
+            // UserFilesList
             // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.UserFilesList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             File,
             this.Size,
             this.Synchronized});
-            this.listView2.GridLines = true;
-            this.listView2.Location = new System.Drawing.Point(165, 42);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(427, 240);
-            this.listView2.TabIndex = 12;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.listView2);
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.FoldersTree);
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Location = new System.Drawing.Point(12, 315);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(694, 295);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            // 
-            // File
-            // 
-            File.Text = "File";
-            File.Width = 211;
+            this.UserFilesList.GridLines = true;
+            this.UserFilesList.Location = new System.Drawing.Point(165, 42);
+            this.UserFilesList.Name = "UserFilesList";
+            this.UserFilesList.Size = new System.Drawing.Size(427, 240);
+            this.UserFilesList.TabIndex = 12;
+            this.UserFilesList.UseCompatibleStateImageBehavior = false;
+            this.UserFilesList.View = System.Windows.Forms.View.Details;
             // 
             // Size
             // 
@@ -280,55 +298,19 @@
             this.Synchronized.Text = "Synchronized";
             this.Synchronized.Width = 92;
             // 
-            // button4
+            // groupBox3
             // 
-            this.button4.Location = new System.Drawing.Point(598, 100);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(90, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Delete";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(598, 42);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(90, 23);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "Find";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(598, 153);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(90, 23);
-            this.button6.TabIndex = 13;
-            this.button6.Text = "Edit";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // HistorySpace
-            // 
-            this.HistorySpace.Text = "History Space";
-            this.HistorySpace.Width = 97;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(598, 37);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(90, 23);
-            this.button7.TabIndex = 15;
-            this.button7.Text = "Find";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(598, 80);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(90, 23);
-            this.button9.TabIndex = 13;
-            this.button9.Text = "History";
-            this.button9.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.UserFilesList);
+            this.groupBox3.Controls.Add(this.FindUserFileButton);
+            this.groupBox3.Controls.Add(this.UserFoldersTree);
+            this.groupBox3.Controls.Add(this.DeleteUserFileButton);
+            this.groupBox3.Controls.Add(this.DownloadUserFileButton);
+            this.groupBox3.Location = new System.Drawing.Point(12, 315);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(694, 295);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
             // 
             // label1
             // 
@@ -340,6 +322,24 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "User files";
             // 
+            // FindUserFileButton
+            // 
+            this.FindUserFileButton.Location = new System.Drawing.Point(598, 42);
+            this.FindUserFileButton.Name = "FindUserFileButton";
+            this.FindUserFileButton.Size = new System.Drawing.Size(90, 23);
+            this.FindUserFileButton.TabIndex = 12;
+            this.FindUserFileButton.Text = "Find";
+            this.FindUserFileButton.UseVisualStyleBackColor = true;
+            // 
+            // DeleteUserFileButton
+            // 
+            this.DeleteUserFileButton.Location = new System.Drawing.Point(598, 100);
+            this.DeleteUserFileButton.Name = "DeleteUserFileButton";
+            this.DeleteUserFileButton.Size = new System.Drawing.Size(90, 23);
+            this.DeleteUserFileButton.TabIndex = 11;
+            this.DeleteUserFileButton.Text = "Delete";
+            this.DeleteUserFileButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,6 +349,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
             this.Text = "Admin Tool";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pageNumberUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -360,30 +361,30 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView UsersList;
         private System.Windows.Forms.ColumnHeader SpaceLimit;
         private System.Windows.Forms.ColumnHeader Created;
-        private System.Windows.Forms.LinkLabel nextLabel;
-        private System.Windows.Forms.LinkLabel prevLabel;
-        private System.Windows.Forms.LinkLabel firstLabel;
-        private System.Windows.Forms.LinkLabel lastLabel;
+        private System.Windows.Forms.LinkLabel NextPageLabel;
+        private System.Windows.Forms.LinkLabel PrevPageLabel;
+        private System.Windows.Forms.LinkLabel FirstPageLabel;
+        private System.Windows.Forms.LinkLabel LastPageLabel;
         private System.Windows.Forms.NumericUpDown pageNumberUpDown;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button DeleteUserButton;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button DownloadUserFileButton;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TreeView FoldersTree;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.Button AddUserButton;
+        private System.Windows.Forms.TreeView UserFoldersTree;
+        private System.Windows.Forms.Button FindUserFileButton;
+        private System.Windows.Forms.Button DeleteUserFileButton;
+        private System.Windows.Forms.ListView UserFilesList;
         private System.Windows.Forms.ColumnHeader Size;
         private System.Windows.Forms.ColumnHeader Synchronized;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ColumnHeader HistorySpace;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button FindUserButton;
+        private System.Windows.Forms.Button EditUserButton;
+        private System.Windows.Forms.Button HistoryUserButton;
         private System.Windows.Forms.Label label1;
     }
 }

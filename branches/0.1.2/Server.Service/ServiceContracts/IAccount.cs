@@ -8,8 +8,17 @@ namespace Server.Service
     [ServiceContract]
    public interface IAccount
     {
+        //проверяет существование пользователя
         [OperationContract]
         bool Exist(string userEmail, string userPass);
+
+        //проверяет существование оператора
+        [OperationContract]
+        bool ExistOperator(string login, string password);
+
+        //возвращает список пользователей по странично 
+        [OperationContract]
+        List<User> GetAllUsers(int page, int pageRowsCount, string operatorLogin, string operatorPass);
 
         [OperationContract]
         User GetUser(string userEmail, string userPass);

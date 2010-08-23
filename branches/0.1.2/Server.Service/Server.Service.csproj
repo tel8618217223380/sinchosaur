@@ -58,6 +58,7 @@
     <Compile Include="Models\DirectoryModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\FileModel.cs" />
+    <Compile Include="Models\OperatorModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="MyFile.struct.cs" />
     <Compile Include="ServiceContracts\UserEvents.class.cs" />
