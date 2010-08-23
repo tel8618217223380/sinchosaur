@@ -47,6 +47,14 @@ namespace Server.Service.Models
                     select u).Skip((page - 1) * pageRowsCount).Take(pageRowsCount).ToList();
         }
 
+        //возвращает количество пользователей
+        public int GetCountUsers()
+        {
+            DatabaseClassesDataContext db = new DatabaseClassesDataContext();
+            return (from u in db.Users
+                    select u).Count();
+        }
+
         //Добавляет нового пользователя
         public void AddUser(string Email, string Passwd)
         {

@@ -16,6 +16,11 @@ namespace Server.Service
         [OperationContract]
         bool ExistOperator(string login, string password);
 
+
+        //возвращает количество пользователей
+        [OperationContract]
+        int GetCountUsers(string login, string password);
+
         //возвращает список пользователей по странично 
         [OperationContract]
         List<User> GetAllUsers(int page, int pageRowsCount, string operatorLogin, string operatorPass);

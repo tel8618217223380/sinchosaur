@@ -31,15 +31,15 @@
             System.Windows.Forms.ColumnHeader Id;
             System.Windows.Forms.ColumnHeader Email;
             System.Windows.Forms.ColumnHeader File;
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Folder1_1");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Folder1_2");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Folder1", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Folder2");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
+            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Folder1_1");
+            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("Folder1_2");
+            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("Folder1", new System.Windows.Forms.TreeNode[] {
+            treeNode46,
+            treeNode47});
+            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("Folder2");
+            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode48,
+            treeNode49});
             this.UsersList = new System.Windows.Forms.ListView();
             this.SpaceLimit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.HistorySpace = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -81,7 +81,7 @@
             // Email
             // 
             Email.Text = "Email";
-            Email.Width = 151;
+            Email.Width = 225;
             // 
             // File
             // 
@@ -117,7 +117,7 @@
             // Created
             // 
             this.Created.Text = "Created";
-            this.Created.Width = 91;
+            this.Created.Width = 120;
             // 
             // NextPageLabel
             // 
@@ -129,6 +129,7 @@
             this.NextPageLabel.TabIndex = 2;
             this.NextPageLabel.TabStop = true;
             this.NextPageLabel.Text = ">";
+            this.NextPageLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NextPageLabel_LinkClicked);
             // 
             // PrevPageLabel
             // 
@@ -140,6 +141,7 @@
             this.PrevPageLabel.TabIndex = 3;
             this.PrevPageLabel.TabStop = true;
             this.PrevPageLabel.Text = "<";
+            this.PrevPageLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.PrevPageLabel_LinkClicked);
             // 
             // FirstPageLabel
             // 
@@ -151,6 +153,7 @@
             this.FirstPageLabel.TabIndex = 5;
             this.FirstPageLabel.TabStop = true;
             this.FirstPageLabel.Text = "<<";
+            this.FirstPageLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.FirstPageLabel_LinkClicked);
             // 
             // LastPageLabel
             // 
@@ -162,13 +165,32 @@
             this.LastPageLabel.TabIndex = 4;
             this.LastPageLabel.TabStop = true;
             this.LastPageLabel.Text = ">>";
+            this.LastPageLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LastPageLabel_LinkClicked);
             // 
             // pageNumberUpDown
             // 
+            this.pageNumberUpDown.AllowDrop = true;
             this.pageNumberUpDown.Location = new System.Drawing.Point(273, 270);
+            this.pageNumberUpDown.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.pageNumberUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.pageNumberUpDown.Name = "pageNumberUpDown";
             this.pageNumberUpDown.Size = new System.Drawing.Size(65, 20);
             this.pageNumberUpDown.TabIndex = 6;
+            this.pageNumberUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.pageNumberUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.pageNumberUpDown.ValueChanged += new System.EventHandler(this.pageNumberUpDown_ValueChanged);
             // 
             // DeleteUserButton
             // 
@@ -258,18 +280,18 @@
             // 
             this.UserFoldersTree.Location = new System.Drawing.Point(15, 42);
             this.UserFoldersTree.Name = "UserFoldersTree";
-            treeNode1.Name = "Folder1_1";
-            treeNode1.Text = "Folder1_1";
-            treeNode2.Name = "Folder1_2";
-            treeNode2.Text = "Folder1_2";
-            treeNode3.Name = "Folder1";
-            treeNode3.Text = "Folder1";
-            treeNode4.Name = "Folder2";
-            treeNode4.Text = "Folder2";
-            treeNode5.Name = "Root";
-            treeNode5.Text = "Root";
+            treeNode46.Name = "Folder1_1";
+            treeNode46.Text = "Folder1_1";
+            treeNode47.Name = "Folder1_2";
+            treeNode47.Text = "Folder1_2";
+            treeNode48.Name = "Folder1";
+            treeNode48.Text = "Folder1";
+            treeNode49.Name = "Folder2";
+            treeNode49.Text = "Folder2";
+            treeNode50.Name = "Root";
+            treeNode50.Text = "Root";
             this.UserFoldersTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+            treeNode50});
             this.UserFoldersTree.Size = new System.Drawing.Size(144, 240);
             this.UserFoldersTree.TabIndex = 11;
             // 
