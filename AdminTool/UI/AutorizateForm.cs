@@ -7,19 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AdminTool
+namespace AdminTool.UI
 {
-    public partial class MainForm : Form
+    public partial class AutorizateForm : Form
     {
-        public MainForm()
+        public AutorizateForm()
         {
             InitializeComponent();
-        }
-
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

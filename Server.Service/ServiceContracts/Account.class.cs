@@ -21,6 +21,21 @@ namespace Server.Service
             return UserModel.Instance.Exist(userEmail, userPass);
         }
 
+
+        public bool ExistOperator(string login, string password)
+        {
+            logger.Info("Проверка сущуствания оператора: {0}", login);
+            return OperatorModel.Instance.Exist(login, password);
+        }
+
+
+        //возвращает список пользователей
+        public List<User> GetAllUsers(int page, int pageRowsCount, string operatorLogin, string operatorPass)
+        {
+            return UserModel.Instance.GetAllUsers(page, pageRowsCount);
+        }
+
+
         public bool Register(string userEmail, string userPass)
         {
             throw new NotImplementedException();

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="50e42b14-d4c4-418a-9e5d-1caba8e755a0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8085/Account/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="58944b32-71d4-472c-8c86-6b326b9c9620" SourceId="1" SourceUrl="http://localhost:8085/Account/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="59b13fc4-ae3d-4357-8760-80907bbfa5a7" SourceId="1" SourceUrl="http://localhost:8085/Account/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="068f0cb1-5e75-4c72-9c11-e1ee646cd669" SourceId="1" SourceUrl="http://localhost:8085/Account/mex" />
+    <MetadataFile FileName="Server.Service.xsd" MetadataType="Schema" ID="05f9ba93-eece-4a2a-a041-655fdfea76cc" SourceId="1" SourceUrl="http://localhost:8085/Account/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -23,7 +23,7 @@ namespace Server.Service.Models
                 return (result).First<User>();
             throw new Exception("UserNotExist");
         }
-        //-------------------------------------------------------------------
+        
 
         //Проверяет существование пользователя
         public bool Exist(string Email, string Passwd)
@@ -37,15 +37,22 @@ namespace Server.Service.Models
                 return true;
             return false;
         }
-        //-------------------------------------------------------------------
 
+
+        // возвращает список пользователей построчно
+        public List<User> GetAllUsers(int page, int pageRowsCount)
+        {
+            DatabaseClassesDataContext db = new DatabaseClassesDataContext();
+            return (from u in db.Users
+                    select u).Skip((page - 1) * pageRowsCount).Take(pageRowsCount).ToList();
+        }
 
         //Добавляет нового пользователя
         public void AddUser(string Email, string Passwd)
         {
             throw new NotImplementedException();
         }
-        //-------------------------------------------------------------------
+        
 
 
         //Удаляет пользователя
@@ -53,6 +60,6 @@ namespace Server.Service.Models
         {
             throw new NotImplementedException();
         }
-        //-------------------------------------------------------------------
+
     }
 }
