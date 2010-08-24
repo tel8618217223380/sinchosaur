@@ -67,28 +67,44 @@ namespace Server.Service
         }
 
 
-        //возвращает клиенту список файлов и вложенных директорий
+        //возвращает список файлов и вложенных директорий - для клиента
         public List<MyFile> GetDirectoryFiles(int directoryId, bool recursive, string userEmail, string userPass)
         {
             User userInfo = UserModel.Instance.GetUser(userEmail, userPass);
+            return _GetDirectoryFiles(directoryId, userInfo.UserId, recursive);
+        }
+
+
+        //возвращает список файлов и вложенных директорий - для оператора
+        public List<MyFile> GetDirectoryFilesOperator(int directoryId, int userId, string operatorLogin, string operatorPass)
+        {
+            if (!OperatorModel.Instance.Exist(operatorLogin, operatorPass))
+                throw new Exception("OperatorNotExist");
+            return _GetDirectoryFiles(directoryId, userId, false);
+        }
+
+
+        //служебная функция поиска файлов/диреторий в каталоге
+        private List<MyFile> _GetDirectoryFiles(int directoryId, int userId, bool recursive)
+        {
             List<MyFile> directoryFiles = new List<MyFile>();
             // если главная директория
             if (directoryId == 1)
             {
-                if (!DirectoryModel.Instance.ExistRootDirectory(userInfo.UserId))
-                    DirectoryModel.Instance.CreateDirectory(userInfo.UserId, "\\", false);
-                Directory rootDirectoryInfo = DirectoryModel.Instance.GetRootDirectory(userInfo.UserId);
+                if (!DirectoryModel.Instance.ExistRootDirectory(userId))
+                    DirectoryModel.Instance.CreateDirectory(userId, "\\", false);
+                Directory rootDirectoryInfo = DirectoryModel.Instance.GetRootDirectory(userId);
                 directoryId = rootDirectoryInfo.DirectoryId;
             }
 
-            if (DirectoryModel.Instance.ExistById(directoryId, userInfo.UserId))
+            if (DirectoryModel.Instance.ExistById(directoryId, userId))
             {
-                List<File> files = FileModel.Instance.GetDirectoryFiles(directoryId, userInfo.UserId);
-                List<Directory> directories = DirectoryModel.Instance.GetChildDirectories(directoryId, userInfo.UserId);
+                List<File> files = FileModel.Instance.GetDirectoryFiles(directoryId, userId);
+                List<Directory> directories = DirectoryModel.Instance.GetChildDirectories(directoryId, userId);
 
-                string directoryPath = DirectoryModel.Instance.GetDirectoryPath(directoryId, userInfo.UserId);
+                string directoryPath = DirectoryModel.Instance.GetDirectoryPath(directoryId, userId);
 
-                bool publicDirectory = DirectoryModel.Instance.IsPublicDirectory(directoryId, userInfo.UserId);
+                bool publicDirectory = DirectoryModel.Instance.IsPublicDirectory(directoryId, userId);
 
                 //добавление списка файлов
                 foreach (File file in files)
@@ -102,8 +118,8 @@ namespace Server.Service
                         LastWriteTime = file.LastWrite,
                         IsDirectory = false,
                         FileId = file.FileId,
-                        ParentDirectoryId=file.DirectoryId,
-                        UserId = userInfo.UserId,
+                        ParentDirectoryId = file.DirectoryId,
+                        UserId = userId,
                         IsPublic = publicDirectory
                     });
                 }
@@ -111,30 +127,29 @@ namespace Server.Service
                 //добавление списка вложенных директорий
                 foreach (Directory directory in directories)
                 {
-                    directoryFiles.Add(new MyFile{
+                    directoryFiles.Add(new MyFile
+                    {
                         Name = directory.Name,
-                        Path = (directoryPath + "\\" + directory.Name).Replace("\\\\","\\"),
+                        Path = (directoryPath + "\\" + directory.Name).Replace("\\\\", "\\"),
                         Size = 0,
                         status = FileStatus.Download,
                         LastWriteTime = directory.Created,
                         IsDirectory = true,
                         FileId = directory.DirectoryId,
-                        ParentDirectoryId=directory.ParentId,
-                        UserId = userInfo.UserId,
-                        IsPublic = DirectoryModel.Instance.IsPublicDirectory(directory.DirectoryId, userInfo.UserId)
+                        ParentDirectoryId = directory.ParentId,
+                        UserId = userId,
+                        IsPublic = DirectoryModel.Instance.IsPublicDirectory(directory.DirectoryId, userId)
                     });
 
-                    if (recursive)
-                    {
-                        List<MyFile> subFiles = GetDirectoryFiles(directory.DirectoryId, recursive, userEmail, userPass);
+
+                    List<MyFile> subFiles = _GetDirectoryFiles(directory.DirectoryId, userId, recursive);
                         foreach (MyFile file in subFiles)
                             directoryFiles.Add(file);
-                    }
+                  
                 }
             }
             return directoryFiles;
         }
-
 
 
         // проверяет доступное дисковое простанство для заливки файла
@@ -550,6 +565,35 @@ namespace Server.Service
                 });
             }
             return returnSubDirectories;
+        }
+
+
+        //возвращает дерево папок пользователя
+        public DirectoryTree GetUserDirectoryTree(int userId, string operatorLogin, string operatorPass)
+        {
+            Directory rootDirectory=DirectoryModel.Instance.GetRootDirectory(userId);
+            return GetDirectoryTree(rootDirectory.DirectoryId, userId);
+        }
+
+
+        //рекурсивная функция поиска дерева каталогов пользователя    
+        private DirectoryTree GetDirectoryTree(int parentDirectoryId, int userId)
+        {
+            Directory directoryInfo=DirectoryModel.Instance.GetDirectoryById(parentDirectoryId, userId);
+            DirectoryTree directoryTree = new DirectoryTree
+            {
+                Name = directoryInfo.Name,
+                DirectoryId = directoryInfo.DirectoryId,
+                ParentId = directoryInfo.ParentId,
+                ChildTree = new List<DirectoryTree>()
+            };
+
+            List<Directory> childsDirectories = DirectoryModel.Instance.GetChildDirectories(parentDirectoryId, userId);
+            if (childsDirectories.Count > 0)
+                foreach (Directory childDirectory in childsDirectories)
+                    directoryTree.ChildTree.Add(GetDirectoryTree(childDirectory.DirectoryId, userId));
+            
+            return directoryTree;
         }
 
 

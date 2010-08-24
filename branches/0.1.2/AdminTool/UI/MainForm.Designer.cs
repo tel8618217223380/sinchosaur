@@ -31,15 +31,7 @@
             System.Windows.Forms.ColumnHeader Id;
             System.Windows.Forms.ColumnHeader Email;
             System.Windows.Forms.ColumnHeader File;
-            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Folder1_1");
-            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("Folder1_2");
-            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("Folder1", new System.Windows.Forms.TreeNode[] {
-            treeNode46,
-            treeNode47});
-            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("Folder2");
-            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
-            treeNode48,
-            treeNode49});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Root");
             this.UsersList = new System.Windows.Forms.ListView();
             this.SpaceLimit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.HistorySpace = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -48,9 +40,9 @@
             this.PrevPageLabel = new System.Windows.Forms.LinkLabel();
             this.FirstPageLabel = new System.Windows.Forms.LinkLabel();
             this.LastPageLabel = new System.Windows.Forms.LinkLabel();
-            this.pageNumberUpDown = new System.Windows.Forms.NumericUpDown();
             this.DeleteUserButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.NumberPageComboBox = new System.Windows.Forms.ComboBox();
             this.FindUserButton = new System.Windows.Forms.Button();
             this.EditUserButton = new System.Windows.Forms.Button();
             this.HistoryUserButton = new System.Windows.Forms.Button();
@@ -68,7 +60,6 @@
             Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             File = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            ((System.ComponentModel.ISupportInitialize)(this.pageNumberUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -96,13 +87,17 @@
             this.SpaceLimit,
             this.HistorySpace,
             this.Created});
+            this.UsersList.FullRowSelect = true;
             this.UsersList.GridLines = true;
+            this.UsersList.HideSelection = false;
             this.UsersList.Location = new System.Drawing.Point(15, 37);
+            this.UsersList.MultiSelect = false;
             this.UsersList.Name = "UsersList";
             this.UsersList.Size = new System.Drawing.Size(577, 224);
             this.UsersList.TabIndex = 0;
             this.UsersList.UseCompatibleStateImageBehavior = false;
             this.UsersList.View = System.Windows.Forms.View.Details;
+            this.UsersList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.UsersList_ItemSelectionChanged);
             // 
             // SpaceLimit
             // 
@@ -167,31 +162,6 @@
             this.LastPageLabel.Text = ">>";
             this.LastPageLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LastPageLabel_LinkClicked);
             // 
-            // pageNumberUpDown
-            // 
-            this.pageNumberUpDown.AllowDrop = true;
-            this.pageNumberUpDown.Location = new System.Drawing.Point(273, 270);
-            this.pageNumberUpDown.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.pageNumberUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.pageNumberUpDown.Name = "pageNumberUpDown";
-            this.pageNumberUpDown.Size = new System.Drawing.Size(65, 20);
-            this.pageNumberUpDown.TabIndex = 6;
-            this.pageNumberUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.pageNumberUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.pageNumberUpDown.ValueChanged += new System.EventHandler(this.pageNumberUpDown_ValueChanged);
-            // 
             // DeleteUserButton
             // 
             this.DeleteUserButton.Location = new System.Drawing.Point(598, 182);
@@ -203,6 +173,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.NumberPageComboBox);
             this.groupBox1.Controls.Add(this.FindUserButton);
             this.groupBox1.Controls.Add(this.EditUserButton);
             this.groupBox1.Controls.Add(this.HistoryUserButton);
@@ -212,7 +183,6 @@
             this.groupBox1.Controls.Add(this.DeleteUserButton);
             this.groupBox1.Controls.Add(this.NextPageLabel);
             this.groupBox1.Controls.Add(this.PrevPageLabel);
-            this.groupBox1.Controls.Add(this.pageNumberUpDown);
             this.groupBox1.Controls.Add(this.LastPageLabel);
             this.groupBox1.Controls.Add(this.FirstPageLabel);
             this.groupBox1.Location = new System.Drawing.Point(12, 6);
@@ -220,6 +190,15 @@
             this.groupBox1.Size = new System.Drawing.Size(694, 303);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
+            // 
+            // NumberPageComboBox
+            // 
+            this.NumberPageComboBox.FormattingEnabled = true;
+            this.NumberPageComboBox.Location = new System.Drawing.Point(275, 271);
+            this.NumberPageComboBox.Name = "NumberPageComboBox";
+            this.NumberPageComboBox.Size = new System.Drawing.Size(63, 21);
+            this.NumberPageComboBox.TabIndex = 16;
+            this.NumberPageComboBox.SelectedIndexChanged += new System.EventHandler(this.NumberPageComboBox_SelectedIndexChanged);
             // 
             // FindUserButton
             // 
@@ -280,20 +259,13 @@
             // 
             this.UserFoldersTree.Location = new System.Drawing.Point(15, 42);
             this.UserFoldersTree.Name = "UserFoldersTree";
-            treeNode46.Name = "Folder1_1";
-            treeNode46.Text = "Folder1_1";
-            treeNode47.Name = "Folder1_2";
-            treeNode47.Text = "Folder1_2";
-            treeNode48.Name = "Folder1";
-            treeNode48.Text = "Folder1";
-            treeNode49.Name = "Folder2";
-            treeNode49.Text = "Folder2";
-            treeNode50.Name = "Root";
-            treeNode50.Text = "Root";
+            treeNode1.Name = "Root";
+            treeNode1.Text = "Root";
             this.UserFoldersTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode50});
+            treeNode1});
             this.UserFoldersTree.Size = new System.Drawing.Size(144, 240);
             this.UserFoldersTree.TabIndex = 11;
+            this.UserFoldersTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.UserFoldersTree_NodeMouseClick);
             // 
             // UserFilesList
             // 
@@ -372,7 +344,6 @@
             this.Name = "MainForm";
             this.Text = "Admin Tool";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.pageNumberUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -390,7 +361,6 @@
         private System.Windows.Forms.LinkLabel PrevPageLabel;
         private System.Windows.Forms.LinkLabel FirstPageLabel;
         private System.Windows.Forms.LinkLabel LastPageLabel;
-        private System.Windows.Forms.NumericUpDown pageNumberUpDown;
         private System.Windows.Forms.Button DeleteUserButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button DownloadUserFileButton;
@@ -408,6 +378,7 @@
         private System.Windows.Forms.Button EditUserButton;
         private System.Windows.Forms.Button HistoryUserButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox NumberPageComboBox;
     }
 }
 

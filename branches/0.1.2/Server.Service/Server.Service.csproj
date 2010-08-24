@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="EventInfo.struct.cs" />
     <Compile Include="FileUploadMessage.class.cs" />
+    <Compile Include="DirectoryTree.struct.cs" />
     <Compile Include="Models\DirectoryModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\FileModel.cs" />
