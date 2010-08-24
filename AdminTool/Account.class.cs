@@ -66,5 +66,16 @@ namespace AdminTool
             return accountManage.GetCountUsers(OperatorLogin, OperatorPassword);
         }
 
+
+        public string GetOperatorLogin()
+        {
+            return OperatorLogin;
+        }
+
+        public string GetOperatorPass()
+        {
+            return OperatorPassword;
+        }
+
     }
 }

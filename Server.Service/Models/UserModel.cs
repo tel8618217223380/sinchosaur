@@ -44,7 +44,7 @@ namespace Server.Service.Models
         {
             DatabaseClassesDataContext db = new DatabaseClassesDataContext();
             return (from u in db.Users
-                    select u).Skip((page - 1) * pageRowsCount).Take(pageRowsCount).ToList();
+                    select u).Skip((page) * pageRowsCount).Take(pageRowsCount).ToList();
         }
 
         //возвращает количество пользователей

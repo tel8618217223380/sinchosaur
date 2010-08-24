@@ -37,9 +37,14 @@ namespace Server.Service
         int GetParentDirectoryId(int directoryId, string userEmail, string userPass);
 
 
-        //возвращает все файлы/диретории пользователя в указанной диретории
+        //возвращает все файлы/диретории пользователя в указанной диретории - для клиента
         [OperationContract]
         List<MyFile> GetDirectoryFiles(int directoryId, bool recursive, string userEmail, string userPass);
+
+
+        //возвращает все файлы/диретории пользователя в указанной диретории - для оператора
+        [OperationContract]
+        List<MyFile> GetDirectoryFilesOperator(int directoryId, int userId, string operatorLogin, string operatorPass);
 
 
         //добавление файла
@@ -86,5 +91,10 @@ namespace Server.Service
         // проверяет доступное дисковое простанство для заливки файла
         [OperationContract]
         bool CanUploadFile(long fileSize, string userEmail, string userPass);
+
+
+        //возвращает дерево каталогов пользователя
+        [OperationContract]
+        DirectoryTree GetUserDirectoryTree(int userId, string operatorLogin, string operatorPass);
     }
 }

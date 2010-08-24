@@ -202,5 +202,22 @@ namespace TestProject
             target.CopyFile(fileId, outputDirectoryId, userId);
             Assert.Inconclusive("Невозможно проверить метод, не возвращающий значение.");
         }
+
+        /// <summary>
+        ///A test for GetUserDirectoryTree
+        ///</summary>
+        [TestMethod()]
+        public void GetUserDirectoryTreeTest()
+        {
+            FileSystem target = new FileSystem(); 
+            int userId = 2; 
+            string operatorLogin = "oper1"; 
+            string operatorPass = "pass1"; 
+            DirectoryTree expected = new DirectoryTree(); 
+            DirectoryTree actual;
+            actual = target.GetUserDirectoryTree(userId, operatorLogin, operatorPass);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
     }
 }
