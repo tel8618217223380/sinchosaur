@@ -29,7 +29,7 @@ namespace Server.Service
         User GetUser(string userEmail, string userPass);
 
         [OperationContract]
-        bool Register(string userEmail, string userPass);
+        void Register(string userEmail, string userPass, int spaceLimit, string operatorLogin, string operatorPass);
 
         [OperationContract]
         bool Delete(string userEmail, string userPass);

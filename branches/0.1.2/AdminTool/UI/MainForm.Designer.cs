@@ -31,7 +31,7 @@
             System.Windows.Forms.ColumnHeader Id;
             System.Windows.Forms.ColumnHeader Email;
             System.Windows.Forms.ColumnHeader File;
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Root");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Root");
             this.UsersList = new System.Windows.Forms.ListView();
             this.SpaceLimit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.HistorySpace = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -208,6 +208,7 @@
             this.FindUserButton.TabIndex = 15;
             this.FindUserButton.Text = "Find";
             this.FindUserButton.UseVisualStyleBackColor = true;
+            this.FindUserButton.Click += new System.EventHandler(this.FindUserButton_Click);
             // 
             // EditUserButton
             // 
@@ -235,6 +236,7 @@
             this.AddUserButton.TabIndex = 8;
             this.AddUserButton.Text = "Add";
             this.AddUserButton.UseVisualStyleBackColor = true;
+            this.AddUserButton.Click += new System.EventHandler(this.AddUserButton_Click);
             // 
             // label4
             // 
@@ -259,10 +261,10 @@
             // 
             this.UserFoldersTree.Location = new System.Drawing.Point(15, 42);
             this.UserFoldersTree.Name = "UserFoldersTree";
-            treeNode1.Name = "Root";
-            treeNode1.Text = "Root";
+            treeNode2.Name = "Root";
+            treeNode2.Text = "Root";
             this.UserFoldersTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.UserFoldersTree.Size = new System.Drawing.Size(144, 240);
             this.UserFoldersTree.TabIndex = 11;
             this.UserFoldersTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.UserFoldersTree_NodeMouseClick);

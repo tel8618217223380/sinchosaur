@@ -55,10 +55,17 @@ namespace Server.Service.Models
                     select u).Count();
         }
 
+
         //Добавляет нового пользователя
-        public void AddUser(string Email, string Passwd)
+        public void AddUser(string email, string passwd, int spaceLimit)
         {
-            throw new NotImplementedException();
+            DatabaseClassesDataContext db = new DatabaseClassesDataContext();
+            User newUser = new User();
+            newUser.Email = email;
+            newUser.Passwd = passwd;
+            newUser.SpaceLimit = spaceLimit;
+            newUser.Created = DateTime.Now;
+            db.SubmitChanges();
         }
         
 

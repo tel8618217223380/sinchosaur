@@ -80,10 +80,10 @@ namespace TestProject
         [TestMethod()]
         public void AddUserTest()
         {
-            UserModel target = new UserModel(); 
+            /*UserModel target = new UserModel(); 
             string Email = string.Empty; 
             string Passwd = string.Empty; 
-            target.AddUser(Email, Passwd);
+            target.AddUser(Email, Passwd);*/
         }
 
         /// <summary>

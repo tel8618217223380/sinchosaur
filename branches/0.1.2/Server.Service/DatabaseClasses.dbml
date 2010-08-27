@@ -52,6 +52,7 @@
       <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Passwd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SpaceLimit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

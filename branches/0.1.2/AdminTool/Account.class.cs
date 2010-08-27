@@ -61,9 +61,17 @@ namespace AdminTool
         }
 
 
+        //возвращает количество пользователей
         public int GetCountUsers()
         {
             return accountManage.GetCountUsers(OperatorLogin, OperatorPassword);
+        }
+
+
+        //добавляет пользователя
+        public void AddUser(string email, string passwd, int spaceLimit)
+        {
+            accountManage.Register(email, passwd, spaceLimit, OperatorLogin, OperatorPassword);
         }
 
 
