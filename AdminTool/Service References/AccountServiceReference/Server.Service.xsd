@@ -8,6 +8,7 @@
   <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
   <xs:complexType name="User">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Created" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Passwd" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SpaceLimit" type="xs:long" />

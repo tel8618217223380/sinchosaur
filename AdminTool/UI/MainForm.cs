@@ -192,9 +192,21 @@ namespace AdminTool
         }
 
 
+        //отображает список файлов каталога
         private void UserFoldersTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             FillUserFilesList( FileSystem.Instance.GetUserDirectyFiles(Int32.Parse(UsersList.SelectedItems[0].Text), Int32.Parse(e.Node.Name)));
+        }
+
+
+        private void FindUserButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddUserButton_Click(object sender, EventArgs e)
+        {
+            new UserForm().Show();
         }
 
 

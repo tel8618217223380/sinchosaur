@@ -49,10 +49,15 @@ namespace Server.Service
         }
 
 
-        public bool Register(string userEmail, string userPass)
+        public void Register(string userEmail, string userPass, int spaceLimit, string operatorLogin, string operatorPass)
         {
-            throw new NotImplementedException();
+            if (!OperatorModel.Instance.Exist(operatorLogin, operatorPass))
+                throw new Exception("OperatorNotExist");
+
+            logger.Info("Регистрация пользователя {0}, оператор: {1}", userEmail, operatorLogin);
+            UserModel.Instance.AddUser(userEmail, userPass, spaceLimit);
         }
+
 
         public bool Delete(string userEmail, string userPass)
         {

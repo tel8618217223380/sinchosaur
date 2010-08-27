@@ -23,6 +23,9 @@ namespace AdminTool.AccountServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> CreatedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -41,6 +44,19 @@ namespace AdminTool.AccountServiceReference {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Created {
+            get {
+                return this.CreatedField;
+            }
+            set {
+                if ((this.CreatedField.Equals(value) != true)) {
+                    this.CreatedField = value;
+                    this.RaisePropertyChanged("Created");
+                }
             }
         }
         
@@ -126,7 +142,7 @@ namespace AdminTool.AccountServiceReference {
         AdminTool.AccountServiceReference.User GetUser(string userEmail, string userPass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/Register", ReplyAction="http://tempuri.org/IAccount/RegisterResponse")]
-        bool Register(string userEmail, string userPass);
+        void Register(string userEmail, string userPass, int spaceLimit, string operatorLogin, string operatorPass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/Delete", ReplyAction="http://tempuri.org/IAccount/DeleteResponse")]
         bool Delete(string userEmail, string userPass);
@@ -179,8 +195,8 @@ namespace AdminTool.AccountServiceReference {
             return base.Channel.GetUser(userEmail, userPass);
         }
         
-        public bool Register(string userEmail, string userPass) {
-            return base.Channel.Register(userEmail, userPass);
+        public void Register(string userEmail, string userPass, int spaceLimit, string operatorLogin, string operatorPass) {
+            base.Channel.Register(userEmail, userPass, spaceLimit, operatorLogin, operatorPass);
         }
         
         public bool Delete(string userEmail, string userPass) {

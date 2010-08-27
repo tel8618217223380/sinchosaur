@@ -1046,6 +1046,8 @@ namespace Server.Service
 		
 		private long _SpaceLimit;
 		
+		private System.Nullable<System.DateTime> _Created;
+		
 	#region Extensibility Method Definitions
 	partial void OnLoaded();
 	partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1058,6 +1060,8 @@ namespace Server.Service
 	partial void OnPasswdChanged();
 	partial void OnSpaceLimitChanging(long value);
 	partial void OnSpaceLimitChanged();
+	partial void OnCreatedChanging(System.Nullable<System.DateTime> value);
+	partial void OnCreatedChanged();
 	#endregion
 		
 		public User()
@@ -1141,6 +1145,26 @@ namespace Server.Service
 					this._SpaceLimit = value;
 					this.SendPropertyChanged("SpaceLimit");
 					this.OnSpaceLimitChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Created", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Created
+		{
+			get
+			{
+				return this._Created;
+			}
+			set
+			{
+				if ((this._Created != value))
+				{
+					this.OnCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._Created = value;
+					this.SendPropertyChanged("Created");
+					this.OnCreatedChanged();
 				}
 			}
 		}
